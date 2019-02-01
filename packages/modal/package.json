@@ -1,0 +1,29 @@
+{
+  "name": "@centrifuge/axis-modal",
+  "version": "0.0.1",
+  "description": "Modal component",
+  "author": "razvan <razvan@centrifuge.io>",
+  "homepage": "https://github.com/centrifuge/axis/tree/master/packages/modal#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/centrifuge/axis.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/centrifuge/axis/issues"
+  },
+  "peerDependencies": {
+    "grommet": "^2.3.1",
+    "react": "^16.7.0",
+    "styled-components": "^4.1.3",
+    "styled-icons": "^6.7.0"
+  },
+  "devDependencies": {
+    "@centrifuge/axis-theme": "file:../theme"
+  }
+}
