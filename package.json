@@ -16,7 +16,7 @@
     "test": "jest --coverage --verbose",
     "bootstrap": "lerna bootstrap",
     "build": "lerna exec --parallel -- babel src -d dist --ignore spec.js,stories.js",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -c .storybook -o storybook-static",
     "publish": "lerna publish --skip-git --skip-npm",
     "precommit": "npm test",
     "postinstall": "npm run bootstrap",
