@@ -1,0 +1,25 @@
+{
+  "name": "@centrifuge/axis-theme",
+  "version": "0.0.1",
+  "description": "Grommet theme supperset for Centrifuge",
+  "author": "razvan <razvan@centrifuge.io>",
+  "homepage": "https://github.com/centrifuge/axis/tree/master/packages/theme#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/centrifuge/axis.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/centrifuge/axis/issues"
+  },
+  "peerDependencies": {
+    "react": "^16.7.0",
+    "grommet": "^2.3.1",
+    "styled-components": "^4.1.3"
+  }
+}
