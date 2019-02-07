@@ -19,7 +19,8 @@
     "build-storybook": "build-storybook",
     "publish": "lerna publish --skip-git --skip-npm",
     "precommit": "npm test",
-    "postinstall": "npm run bootstrap"
+    "postinstall": "npm run bootstrap",
+    "format": "prettier --write \"./**/*.js\""
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
