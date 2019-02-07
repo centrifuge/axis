@@ -1,5 +1,5 @@
-import modal from '../src/modal';
+import modal from "../src/modal";
 
-describe('modal', () => {
-    it('needs tests');
+describe("modal", () => {
+  it("needs tests");
 });
