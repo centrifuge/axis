@@ -3,7 +3,7 @@ import {addDecorator, configure} from '@storybook/react'
 import {withOptions} from '@storybook/addon-options';
 import {configureViewport, INITIAL_VIEWPORTS,withViewport} from '@storybook/addon-viewport';
 
-const req = require.context('../packages', true, /.stories.js$/);
+const req = require.context('./src', true, /.js$/);
 
 function loadStories() {
     console.log('Load Stories', req.keys())

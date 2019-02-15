@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {storiesOf} from '@storybook/react';
-import {AxisTheme} from "./AxisTheme";
+import {AxisTheme} from "../../../packages/theme/src/AxisTheme";
 
 import {
     Accordion,

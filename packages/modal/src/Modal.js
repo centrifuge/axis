@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box, Button, Heading, Layer} from "grommet";
-import {Close} from "styled-icons/material";
+import {Close} from "styled-icons/material/Close";
 
 export const Modal = (props) => {
 
@@ -30,5 +30,3 @@ export const Modal = (props) => {
   </Layer>
 
 }
-
-
