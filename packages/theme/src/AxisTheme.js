@@ -1,8 +1,8 @@
 // Global Styles
-import React from "react";
-import { createGlobalStyle, ThemeProvider } from "styled-components/macro";
-import { Grommet, ThemeContext } from "grommet";
-import { axisTheme } from "./theme";
+import React from 'react';
+import {createGlobalStyle, ThemeProvider} from "styled-components";
+import {Grommet, ThemeContext} from "grommet";
+import {axisTheme} from "./theme";
 
 const GlobalsStyles = createGlobalStyle`
   * {
