@@ -1,2 +1,3 @@
-export { axisTheme } from "./theme";
-export { AxisTheme } from "./AxisTheme";
+export {axisThemeConfig} from "./theme";
+export {AxisTheme} from "./AxisTheme";
+

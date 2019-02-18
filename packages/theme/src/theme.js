@@ -49,7 +49,7 @@ const colorMap = (map, prefix) => {
   return colors;
 };
 
-export const axisTheme = deepMerge(baseTheme, {
+export const axisThemeConfig = deepMerge(baseTheme, {
   global: {
     colors: {
       background: darkColors[0],
