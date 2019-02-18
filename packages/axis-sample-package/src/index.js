@@ -1,2 +1,1 @@
-
-export {SampleComponent} from "./SampleComponent";
+export { SampleComponent } from "./SampleComponent";

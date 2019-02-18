@@ -23,7 +23,7 @@
     "release-all-patch": "npm run build && lerna publish patch --yes",
     "release-all-minor": "npm run build && lerna publish minor --yes",
     "release-all-major": "npm run build && lerna publish major --yes",
-    "precommit": "npm test",
+    "precommit": "npm run format && npm test",
     "postinstall": "npm run bootstrap",
     "format": "prettier --write \"./**/*.js\""
   },

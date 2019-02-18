@@ -1,6 +1,5 @@
-import theme from './theme';
+import theme from "./theme";
 
-describe('theme', () => {
-    it('needs tests', () => {
-    });
+describe("theme", () => {
+  it("needs tests", () => {});
 });

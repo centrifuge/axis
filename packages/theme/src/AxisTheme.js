@@ -1,8 +1,8 @@
 // Global Styles
-import React from 'react';
-import {createGlobalStyle, ThemeProvider} from "styled-components";
-import {Grommet, ThemeContext} from "grommet";
-import {axisThemeConfig} from "./theme";
+import React from "react";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { Grommet, ThemeContext } from "grommet";
+import { axisThemeConfig } from "./theme";
 
 const GlobalsStyles = createGlobalStyle`
   * {
@@ -12,7 +12,7 @@ const GlobalsStyles = createGlobalStyle`
     }
      
     &::-webkit-scrollbar-thumb {
-      background: ${axisTheme.global.colors['light-6']};
+      background: ${axisTheme.global.colors["light-6"]};
       border-radius: 20px;
     }
     
@@ -26,7 +26,7 @@ const GlobalsStyles = createGlobalStyle`
    body,html {
     margin:0;
     height:100%;
-    color: ${axisTheme.global.colors['light-1']};
+    color: ${axisTheme.global.colors["light-1"]};
     
   }
   a {
@@ -41,19 +41,16 @@ const GlobalsStyles = createGlobalStyle`
   }
 `;
 
-
-export const AxisTheme = (props) => {
+export const AxisTheme = props => {
   return (
     <Grommet full={true} theme={props.theme || axisThemeConfig}>
-      <GlobalsStyles/>
+      <GlobalsStyles />
       <ThemeContext.Consumer>
         {theme => {
           // Make theme available for all styled components
-          return <ThemeProvider theme={theme}>
-            {props.children}
-          </ThemeProvider>
+          return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
         }}
       </ThemeContext.Consumer>
     </Grommet>
-  )
-}
+  );
+};

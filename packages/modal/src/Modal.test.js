@@ -1,5 +1,3 @@
-describe('modal', () => {
-    it('needs tests', () => {
-
-    });
+describe("modal", () => {
+  it("needs tests", () => {});
 });
