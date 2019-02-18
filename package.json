@@ -10,6 +10,9 @@
   "bugs": {
     "url": "https://github.com/centrifuge/axis/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://github.com/centrifuge/axis/#readme",
   "scripts": {
     "start": "NODE_ENV=development start-storybook -p 5003 -c .storybook",
