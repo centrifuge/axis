@@ -20,7 +20,8 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna exec --stream -- rollup -c",
     "build-storybook": "build-storybook",
-    "publish": "lerna publish  patch --yes --no-git-tag-version --force-publish",
+    "publish-all-minor": "lerna publish minor --yes",
+    "publish-all-major": "lerna publish minor --yes",
     "precommit": "npm test",
     "postinstall": "npm run bootstrap"
   },
