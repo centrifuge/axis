@@ -1,6 +1,6 @@
 {
   "name": "@centrifuge/axis-modal",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Modal component",
   "author": "razvan <razvan@centrifuge.io>",
   "homepage": "https://github.com/centrifuge/axis/tree/master/packages/modal#readme",
