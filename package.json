@@ -20,6 +20,7 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna exec --stream -- rollup -c",
     "build-storybook": "build-storybook -c .storybook -o storybook-static",
+    "release-all-patch": "npm run build && lerna publish patch --yes",
     "release-all-minor": "npm run build && lerna publish minor --yes",
     "release-all-major": "npm run build && lerna publish major --yes",
     "precommit": "npm test",
