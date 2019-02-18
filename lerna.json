@@ -1,4 +1,15 @@
 {
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "a-sample-package"
+      ],
+      "message": "chore(release): publish"
+    },
+    "bootstrap": {
+      "ignore": "a-sample-package"
+    }
+  },
   "packages": [
     "packages/*"
   ],

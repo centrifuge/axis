@@ -69,6 +69,7 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "packages/**/src/**/*.js",
+      "!packages/a-sample-package/**",
       "!**/node_modules/**",
       "!**/storybook/**"
     ],
@@ -97,7 +98,8 @@
       "**/?(*.)(test).js?(x)"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>/node_modules/"
+      "<rootDir>/node_modules/",
+      "<rootDir>/packages/a-sample-package/"
     ]
   },
   "dependencies": {

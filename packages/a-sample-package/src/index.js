@@ -1,0 +1,2 @@
+
+export {SampleComponent} from "./SampleComponent";
