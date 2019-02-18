@@ -1,6 +1,6 @@
 {
   "name": "@centrifuge/axis-theme",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Grommet theme superset for Centrifuge",
   "author": "razvan <razvan@centrifuge.io>",
   "homepage": "https://github.com/centrifuge/axis/tree/master/packages/theme#readme",
@@ -57,5 +57,5 @@
     "styled-components": "^4.1.3",
     "styled-icons": "^6.7.0"
   },
-  "gitHead": "c020e10cbf13f040fe205aa24a890cea0ae15945"
+  "gitHead": "ef53db97aa8cc0b402b3544a731dc10c9ff12641"
 }
