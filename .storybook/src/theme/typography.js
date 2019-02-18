@@ -1,10 +1,58 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { AxisTheme } from "./AxisTheme";
+import { AxisTheme } from "../../../packages/theme/src/AxisTheme";
 import { Box, Heading, Paragraph } from "grommet";
 
 const headingSizes = ["xlarge", "large", "medium", "small"];
 const paragraghSizes = ["xxlarge", "xlarge", "large", "medium", "small"];
+
+storiesOf("Axis Theme | Typography /", module)
+  .add("Documentation", () => {
+    return (
+      <AxisTheme>
+        <div>
+          <Heading level={1}>Heading 1</Heading>
+          <Heading level={2}>Heading 2</Heading>
+          <Heading level={3}>Heading 3</Heading>
+          <Heading level={4}>Heading 4</Heading>
+          <Heading level={5}>Heading 5</Heading>
+          <Heading level={6}>Heading 6</Heading>
+        </div>
+      </AxisTheme>
+    );
+  })
+  .add("Sizes", () => {
+    return (
+      <AxisTheme>
+        <Box direction={"columns"} gap={"large"}>
+          {headingSizes.map(item => {
+            return (
+              <div key={item}>
+                <Heading level={1} size={item}>
+                  {item} H1
+                </Heading>
+                <Heading level={2} size={item}>
+                  {item} H2
+                </Heading>
+                <Heading level={3} size={item}>
+                  {item} H3
+                </Heading>
+                <Heading level={4} size={item}>
+                  {item} H4
+                </Heading>
+                <Heading level={5} size={item}>
+                  {item} H5
+                </Heading>
+                <Heading level={6} size={item}>
+                  {item} H6
+                </Heading>
+              </div>
+            );
+          })}
+        </Box>
+      </AxisTheme>
+    );
+  });
 
 storiesOf("Axis Theme | Typography / Headings", module)
   .add("Default", () => {

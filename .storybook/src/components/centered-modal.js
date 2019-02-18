@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 
 import { storiesOf } from "@storybook/react";
-import { Modal } from "./Modal";
-import { AxisTheme } from "@centrifuge/axis-theme";
+
+import { AxisTheme } from "../../../packages/theme/src";
 import { Box, Button, Paragraph } from "grommet";
+import { Modal } from "@centrifuge/axis-modal";
 
 storiesOf("Axis components | Modal", module).add("Centered modal", () => {
   class ModalContainer extends Component {

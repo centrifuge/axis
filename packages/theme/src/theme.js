@@ -1,6 +1,5 @@
-import { generate } from "grommet";
+import { generate, Grommet, ThemeContext } from "grommet";
 import { deepMerge } from "grommet/utils/object";
-import { createGlobalStyle, ThemeProvider } from "styled-components/macro";
 
 const brandColor = "#FF9F00";
 const accentColors = ["#43C17B", "#46C2B9", "#D3DB5E", "#CC48CE"];
@@ -50,7 +49,7 @@ const colorMap = (map, prefix) => {
   return colors;
 };
 
-export const axisTheme = deepMerge(baseTheme, {
+export const axisThemeConfig = deepMerge(baseTheme, {
   global: {
     colors: {
       background: darkColors[0],

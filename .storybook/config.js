@@ -7,7 +7,7 @@ import {
   withViewport
 } from "@storybook/addon-viewport";
 
-const req = require.context("../packages", true, /.stories.js$/);
+const req = require.context("./src", true, /.js$/);
 
 function loadStories() {
   console.log("Load Stories", req.keys());
