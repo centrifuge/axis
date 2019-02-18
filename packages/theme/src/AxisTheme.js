@@ -2,7 +2,7 @@
 import React from 'react';
 import {createGlobalStyle, ThemeProvider} from "styled-components";
 import {Grommet, ThemeContext} from "grommet";
-import {axisTheme} from "./theme";
+import {axisThemeConfig} from "./theme";
 
 const GlobalsStyles = createGlobalStyle`
   * {
@@ -44,7 +44,7 @@ const GlobalsStyles = createGlobalStyle`
 
 export const AxisTheme = (props) => {
   return (
-    <Grommet full={true} theme={props.theme || axisTheme}>
+    <Grommet full={true} theme={props.theme || axisThemeConfig}>
       <GlobalsStyles/>
       <ThemeContext.Consumer>
         {theme => {
