@@ -1,13 +1,20 @@
 {
   "command": {
+    "exec": {
+      "ignore": [
+        "@centrifuge/axis-sample-package"
+      ]
+    },
     "publish": {
-      "ignoreChanges": [
-        "a-sample-package"
+      "ignore": [
+        "@centriuge/axis-sample-package"
       ],
       "message": "chore(release): publish"
     },
     "bootstrap": {
-      "ignore": "a-sample-package"
+      "ignore": [
+        "@centrifuge/axis-sample-package"
+      ]
     }
   },
   "packages": [

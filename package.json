@@ -18,7 +18,7 @@
     "start": "NODE_ENV=development start-storybook -p 5003 -c .storybook",
     "test": "jest --no-cache --coverage --verbose",
     "bootstrap": "lerna bootstrap",
-    "build": "lerna exec --stream -- rollup -c",
+    "build": "lerna exec --stream  -- rollup -c ",
     "build-storybook": "build-storybook",
     "release-all-patch": "npm run build && lerna publish patch --yes",
     "release-all-minor": "npm run build && lerna publish minor --yes",
