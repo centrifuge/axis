@@ -6,8 +6,8 @@
       ]
     },
     "publish": {
-      "ignore": [
-        "@centriuge/axis-sample-package"
+      "ignoreChanges": [
+        "**/axis-sample-package/**"
       ],
       "message": "chore(release): publish"
     },
