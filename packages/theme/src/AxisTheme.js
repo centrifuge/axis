@@ -17,6 +17,12 @@ const GlobalsStyles = createGlobalStyle`
 
     --f-stack: AvenirNextLTW01, 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   }
+
+  /* HTML Element Overrides */
+  b, strong {
+    font-weight: var(--fw-demibold);
+    font-family: var(--f-stack);
+  }
 `;
 
 export const AxisTheme = props => {
@@ -24,10 +30,7 @@ export const AxisTheme = props => {
     <Grommet full={true} theme={props.theme || axisThemeConfig}>
       <GlobalsStyles />
       <ThemeContext.Consumer>
-        {theme => {
-          // Make theme available for all styled components
-          return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
-        }}
+        {theme => <ThemeProvider theme={theme}>{props.children}</ThemeProvider>}
       </ThemeContext.Consumer>
     </Grommet>
   );
