@@ -60,16 +60,12 @@ const GlobalsStyles = createGlobalStyle`
   }
 `;
 
-export const AxisTheme = props => {
-  console.log(AvenirRegular
-    ,AvenirMedium
-    ,AvenirDemiBold)
-
+export const AxisTheme = ({ theme, children, ...rest }) => {
   return (
-    <Grommet full={true} theme={props.theme || axisThemeConfig}>
+    <Grommet theme={theme || axisThemeConfig} {...rest}>
       <GlobalsStyles />
       <ThemeContext.Consumer>
-        {theme => <ThemeProvider theme={theme}>{props.children}</ThemeProvider>}
+        {theme => <ThemeProvider theme={theme}>{children}</ThemeProvider>}
       </ThemeContext.Consumer>
     </Grommet>
   );
