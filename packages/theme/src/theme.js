@@ -4,7 +4,136 @@ import { deepMerge } from "grommet/utils/object";
 
 const borderWidth = 1;
 
+/*
+  HEADINGS
+*/
+
+const isHeader = props => (props.level <= 2 || !props.level ? true : false);
+
+const isSubheader = props => (props.level >= 3 ? true : false);
+
+const generateHeadingSizes = specs => ({
+  small: specs,
+  medium: specs,
+  large: specs,
+  xlarge: specs,
+  xxlarge: specs
+});
+
+const headerSpecMedium = {
+  size: "20px",
+  height: "32px",
+  maxWidth: ""
+};
+
+const subheaderSpecMedium = {
+  size: "16px",
+  height: "24px",
+  maxWidth: ""
+};
+
+const headerSizes = generateHeadingSizes(headerSpecMedium);
+
+const subheaderSizes = generateHeadingSizes(subheaderSpecMedium);
+
+/*
+  TEXT & PARAGRAPHS
+*/
+
+const textSpecMedium = {
+  size: "14px",
+  height: "24px",
+  maxWidth: ""
+};
+
+const textSpecLarge = {
+  size: "16px",
+  height: "32px",
+  maxWidth: ""
+};
+
+const textSpecs = {
+  small: textSpecMedium,
+  medium: textSpecMedium,
+  large: textSpecLarge,
+  xlarge: textSpecLarge,
+  xxlarge: textSpecLarge
+};
+
+const textSizes = {
+  ...textSpecs,
+  extend: props => css`
+    ${!props.textAlign &&
+      css`
+        text-align: justify;
+      `};
+
+    ${!props.noHyphen &&
+      css`
+        hyphens: auto;
+      `}
+  `
+};
+
+/*
+  THEME BOI
+*/
+
 export const axisThemeConfig = deepMerge(base, {
+  heading: {
+    weight: "var(--fw-demibold)",
+    responsiveBreakpoint: null,
+    level: {
+      1: headerSizes,
+      2: headerSizes,
+      3: subheaderSizes,
+      4: subheaderSizes,
+      5: subheaderSizes,
+      6: subheaderSizes
+    },
+    extend: props => css`
+      margin-top: 0;
+      font-family: var(--f-stack);
+
+      /* Header */
+      ${isHeader(props) &&
+        css`
+          ${!props.margin &&
+            css`
+              margin-bottom: 64px;
+            `}
+        `}
+
+      /* Subheader */
+      ${isSubheader(props) &&
+        css`
+          ${!props.margin &&
+            css`
+              margin-bottom: 40px;
+            `}
+        `}
+
+        /* Lined Styles */
+        ${props.lined &&
+          css`
+          border-bottom: 1px solid black;
+
+          /* Lined Header */
+          ${isHeader(props) &&
+            css`
+              padding-bottom: 32px;
+            `}
+
+          /* Lined Subheader */
+          ${isSubheader(props) &&
+            css`
+              padding-bottom: 24px;
+            `}
+        `}
+    `
+  },
+  paragraph: textSizes,
+  text: textSizes,
   button: {
     padding: {
       horizontal: `${32 - borderWidth}px`,
