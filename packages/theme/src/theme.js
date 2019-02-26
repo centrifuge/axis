@@ -126,7 +126,8 @@ export const axisThemeConfig = deepMerge(base, {
       Documentation: "#94FFED",
       Design: "#FF85C9",
       "Code Review": "#FFCE9E",
-      Other: "#C2DBFF"
+      Other: "#C2DBFF",
+      placeholder: props => props.theme.global.colors.black
     },
     hover: {
       color: props => ({
@@ -324,5 +325,21 @@ export const axisThemeConfig = deepMerge(base, {
           }
         `}
     `
+  },
+  textInput: {
+    extend: props =>
+      props.newsletter &&
+      css`
+        font-weight: ${fwMedium};
+        font-family: ${ffStack};
+        color: ${props.theme.global.colors.black};
+        border: none;
+        border-bottom: ${borderWidth}px solid
+          ${props.newsletter && props.dark
+            ? props.theme.global.colors.black
+            : props.theme.global.colors.white};
+        border-radius: 0;
+        padding-bottom: calc(11px - 1px);
+      `
   }
 });
