@@ -91,21 +91,16 @@ const textSizes = {
 
 export const axisThemeConfig = deepMerge(base, {
   global: {
-    hover: {
-      color: {
-        light: "#2762FF",
-        dark: "#fff"
-      }
-    },
     colors: {
       "accent-1": "#FCBA59",
       focus: "#2762FF",
       brand: "#2762FF",
       black: "#000",
-      text: {
-        light: "#000",
-        dark: "#fff"
-      },
+      white: "#fff",
+      text: props => ({
+        light: props.theme.global.colors.black,
+        dark: props.theme.global.colors.white
+      }),
       alert: "#e6f5ff",
       // Contribute Gitcoin Colors
       open: "#7ED321",
@@ -119,11 +114,17 @@ export const axisThemeConfig = deepMerge(base, {
       "Code Review": "#FFCE9E",
       Other: "#C2DBFF"
     },
+    hover: {
+      color: props => ({
+        light: props.theme.global.colors.brand,
+        dark: props.theme.global.colors.white
+      })
+    }
   },
   icon: {
-    extend: css`
-      fill: #000;
-      stroke: #000;
+    extend: props => css`
+      fill: ${props.theme.global.colors.black};
+      stroke: ${props.theme.global.colors.black};
     `
   },
   heading: {
@@ -162,7 +163,7 @@ export const axisThemeConfig = deepMerge(base, {
         /* Lined Styles */
         ${props.lined &&
           css`
-          border-bottom: 1px solid black;
+          border-bottom: 1px solid ${props.theme.global.colors.black};
 
           /* Lined Header */
           ${isHeader(props) &&
@@ -188,20 +189,20 @@ export const axisThemeConfig = deepMerge(base, {
     border: {
       radius: "40px",
       width: `${borderWidth}px`,
-      color: {
-        dark: "#fff",
-        light: "#000"
-      }
+      color: props => ({
+        dark: props.theme.global.colors.white,
+        light: props.theme.global.colors.black
+      })
     },
-    color: {
-      dark: "#fff",
-      light: "#000"
-    },
+    color: props => ({
+      dark: props.theme.global.colors.white,
+      light: props.theme.global.colors.black
+    }),
     primary: {
-      color: {
-        dark: "#fff",
-        light: "#000"
-      }
+      color: props => ({
+        dark: props.theme.global.colors.white,
+        light: props.theme.global.colors.black
+      })
     },
     extend: props => css`
       font-weight: ${fwMedium};
@@ -239,11 +240,11 @@ export const axisThemeConfig = deepMerge(base, {
       /* Button Hover Styles */
       &:hover {
         box-shadow: none;
-        border-color: #2762FF;
+        border-color: ${props.theme.global.colors.brand};
 
         ${!props.primary &&
           css`
-            color: #2762ff;
+            color: ${props.theme.global.colors.brand};
           `}
       }
 
@@ -251,8 +252,8 @@ export const axisThemeConfig = deepMerge(base, {
       ${props.white &&
         css`
           &:hover {
-            background-color: #fff;
-            border-color: #fff;
+            background-color: ${props.theme.global.colors.white};
+            border-color: ${props.theme.global.colors.white};
           }
 
           &:active {
@@ -264,7 +265,7 @@ export const axisThemeConfig = deepMerge(base, {
       ${props.primary &&
         css`
           &:hover {
-            background-color: #2762ff;
+            background-color: ${props.theme.global.colors.brand};
           }
 
           &:active {
