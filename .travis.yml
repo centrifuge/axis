@@ -15,10 +15,9 @@ jobs:
   - stage: Deploy and publish patch
     if: "(branch = develop)"
     before_deploy:
-      - git config --global user.email ${GH_EMAIL}
-      - git config --global user.name ${GH_NAME}
-      - git remote set-url origin "https://${GH_TOKEN}@github.com/centrifuge/axis.git" > /dev/null 2>&1
-      - git checkout release
+      - git config --global user.name "${GH_NAME}"
+      - git config --global user.email "${GH_EMAIL}"
+      - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
       - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
     deploy:
       provider: script
