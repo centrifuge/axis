@@ -28,6 +28,25 @@ export const breakpoints = {
   large: {}
 };
 
+const brandColor = "#2762FF";
+const brand2Color = "#FCBA59";
+
+const gitcoinColors = {
+  open: "#7ED321",
+  started: brand2Color,
+  Feature: "#FFC2D2",
+  Bug: "#FFB5AE",
+  Improvement: "#9EFFF7",
+  Security: "#95FF94",
+  Documentation: "#94FFED",
+  Design: "#FF85C9",
+  "Code Review": "#FFCE9E",
+  Other: "#C2DBFF"
+};
+
+const black = "#000";
+const white = "#fff";
+
 /*
   HEADINGS
 */
@@ -106,34 +125,24 @@ const textSizes = {
 export const axisThemeConfig = deepMerge(base, {
   global: {
     colors: {
-      "accent-1": "#FCBA59",
-      focus: "#2762FF",
-      brand: "#2762FF",
+      "accent-1": brand2Color,
+      focus: brandColor,
+      brand: brandColor,
       black: "#000",
       white: "#fff",
-      text: props => ({
-        light: props.theme.global.colors.black,
-        dark: props.theme.global.colors.white
-      }),
+      text: {
+        light: black,
+        dark: white
+      },
+      placeholder: black,
       alert: "#e6f5ff",
-      // Contribute Gitcoin Colors
-      open: "#7ED321",
-      started: "#FCBA59",
-      Feature: "#FFC2D2",
-      Bug: "#FFB5AE",
-      Improvement: "#9EFFF7",
-      Security: "#95FF94",
-      Documentation: "#94FFED",
-      Design: "#FF85C9",
-      "Code Review": "#FFCE9E",
-      Other: "#C2DBFF",
-      placeholder: props => props.theme.global.colors.black
+      ...gitcoinColors
     },
     hover: {
-      color: props => ({
-        light: props.theme.global.colors.brand,
-        dark: props.theme.global.colors.white
-      })
+      color: {
+        light: brandColor,
+        dark: white
+      }
     },
     breakpoints: { ...breakpoints },
     deviceBreakpoints: {
@@ -156,9 +165,9 @@ export const axisThemeConfig = deepMerge(base, {
     }
   },
   icon: {
-    extend: props => css`
-      fill: ${props.theme.global.colors.black};
-      stroke: ${props.theme.global.colors.black};
+    extend: css`
+      fill: ${black};
+      stroke: ${black};
     `
   },
   heading: {
@@ -197,7 +206,7 @@ export const axisThemeConfig = deepMerge(base, {
         /* Lined Styles */
         ${props.lined &&
           css`
-          border-bottom: 1px solid ${props.theme.global.colors.black};
+          border-bottom: 1px solid ${black};
 
           /* Lined Header */
           ${isHeader(props) &&
@@ -218,13 +227,13 @@ export const axisThemeConfig = deepMerge(base, {
   anchor: {
     fontWeight: props => (props.bold ? fwDemibold : fwRegular),
     textDecoration: props => props.underline && "underline",
-    color: props => ({
-      dark: props.theme.global.colors.white,
-      light: props.theme.global.colors.black
-    }),
+    color: {
+      dark: white,
+      light: black
+    },
     hover: {
-      extend: props => css`
-        color: ${props.theme.global.colors.brand};
+      extend: css`
+        color: ${brandColor};
       `
     },
     extend: css`
@@ -241,20 +250,20 @@ export const axisThemeConfig = deepMerge(base, {
     border: {
       radius: "40px",
       width: `${borderWidth}px`,
-      color: props => ({
-        dark: props.theme.global.colors.white,
-        light: props.theme.global.colors.black
-      })
+      color: {
+        dark: white,
+        light: black
+      }
     },
-    color: props => ({
-      dark: props.theme.global.colors.white,
-      light: props.theme.global.colors.black
-    }),
+    color: {
+      dark: white,
+      light: black
+    },
     primary: {
-      color: props => ({
-        dark: props.theme.global.colors.white,
-        light: props.theme.global.colors.black
-      })
+      color: {
+        dark: white,
+        light: black
+      }
     },
     extend: props => css`
       font-weight: ${fwMedium};
@@ -292,11 +301,11 @@ export const axisThemeConfig = deepMerge(base, {
       /* Button Hover Styles */
       &:hover {
         box-shadow: none;
-        border-color: ${props.theme.global.colors.brand};
+        border-color: ${brandColor};
 
         ${!props.primary &&
           css`
-            color: ${props.theme.global.colors.brand};
+            color: ${brandColor};
           `}
       }
 
@@ -304,8 +313,8 @@ export const axisThemeConfig = deepMerge(base, {
       ${props.white &&
         css`
           &:hover {
-            background-color: ${props.theme.global.colors.white};
-            border-color: ${props.theme.global.colors.white};
+            background-color: ${white};
+            border-color: ${white};
           }
 
           &:active {
@@ -317,7 +326,7 @@ export const axisThemeConfig = deepMerge(base, {
       ${props.primary &&
         css`
           &:hover {
-            background-color: ${props.theme.global.colors.brand};
+            background-color: ${brandColor};
           }
 
           &:active {
@@ -332,12 +341,10 @@ export const axisThemeConfig = deepMerge(base, {
       css`
         font-weight: ${fwMedium};
         font-family: ${ffStack};
-        color: ${props.theme.global.colors.black};
+        color: ${black};
         border: none;
         border-bottom: ${borderWidth}px solid
-          ${props.newsletter && props.dark
-            ? props.theme.global.colors.black
-            : props.theme.global.colors.white};
+          ${props.newsletter && props.dark ? black : white};
         border-radius: 0;
         padding-bottom: calc(11px - 1px);
       `
