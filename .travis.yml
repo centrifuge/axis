@@ -1,6 +1,3 @@
-dist: trusty
-sudo: required
-group: beta
 language: node_js
 node_js:
 - '10'
@@ -13,5 +10,11 @@ jobs:
     script:
     - npm run test
   - stage: Deploy and publish patch
+    if: "(branch = develop)"
     script:
-    - npm run test
+      - git config --global user.name "${GH_NAME}"
+      - git config --global user.email "${GH_EMAIL}"
+      - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
+      - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
+      - npm run publish-patch
+
