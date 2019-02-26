@@ -92,9 +92,9 @@ const textSizes = {
         text-align: justify;
       `};
 
-    ${!props.noHyphen &&
+    ${props.hyphens &&
       css`
-        hyphens: auto;
+        hyphens: ${hyphens};
       `}
   `
 };
