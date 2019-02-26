@@ -143,6 +143,15 @@ export const axisThemeConfig = deepMerge(base, {
     edgeSize: {
       xxlarge: "144px",
       xxxlarge: "192px"
+    },
+    input: {
+      weight: 500
+    },
+    font: {
+      family: ffStack,
+      weight: fwRegular,
+      size: "14px",
+      height: 1.5
     }
   },
   icon: {
