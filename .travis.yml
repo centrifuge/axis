@@ -13,10 +13,5 @@ jobs:
     script:
     - npm run test
   - stage: Deploy and publish patch
-    if: "(branch = develop)"
-    deploy:
-      provider: script
-      script: "npm run publish-patch"
-      skip_cleanup: true
-       on:
-        repo: centrifuge/axis
+    script:
+    - npm run test
