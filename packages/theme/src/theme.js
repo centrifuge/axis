@@ -139,7 +139,7 @@ export const axisThemeConfig = deepMerge(base, {
     },
     extend: props => css`
       margin-top: 0;
-      font-family: ${ffStacks};
+      font-family: ${ffStack};
 
       /* Header */
       ${isHeader(props) &&
