@@ -90,6 +90,42 @@ const textSizes = {
 */
 
 export const axisThemeConfig = deepMerge(base, {
+  global: {
+    hover: {
+      color: {
+        light: "#2762FF",
+        dark: "#fff"
+      }
+    },
+    colors: {
+      "accent-1": "#FCBA59",
+      focus: "#2762FF",
+      brand: "#2762FF",
+      black: "#000",
+      text: {
+        light: "#000",
+        dark: "#fff"
+      },
+      alert: "#e6f5ff",
+      // Contribute Gitcoin Colors
+      open: "#7ED321",
+      started: "#FCBA59",
+      Feature: "#FFC2D2",
+      Bug: "#FFB5AE",
+      Improvement: "#9EFFF7",
+      Security: "#95FF94",
+      Documentation: "#94FFED",
+      Design: "#FF85C9",
+      "Code Review": "#FFCE9E",
+      Other: "#C2DBFF"
+    },
+  },
+  icon: {
+    extend: css`
+      fill: #000;
+      stroke: #000;
+    `
+  },
   heading: {
     weight: fwDemibold,
     responsiveBreakpoint: null,
