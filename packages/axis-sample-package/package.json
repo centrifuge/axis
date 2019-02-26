@@ -1,6 +1,6 @@
 {
   "name": "@centrifuge/axis-sample-package",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "Sample component",
   "author": "razvan <razvan@centrifuge.io>",
   "homepage": "https://github.com/centrifuge/axis/tree/master/packages/a-sample-component#readme",
