@@ -1,238 +1,352 @@
-import { generate, Grommet, ThemeContext } from "grommet";
+import { css } from "styled-components";
+import { base } from "grommet/themes";
 import { deepMerge } from "grommet/utils/object";
 
-const brandColor = "#FF9F00";
-const accentColors = ["#43C17B", "#46C2B9", "#D3DB5E", "#CC48CE"];
+/*
+  REUSED VARIABLES
+*/
 
-const statusColors = {
-  critical: "#D82242",
-  error: "#D82242",
-  warning: "#B8B043",
-  ok: "#0E8800",
-  unknown: "#0E8800",
-  disabled: "#0E8800"
+export const borderWidth = 1;
+
+export const fwRegular = 400;
+export const fwMedium = 500;
+export const fwDemibold = 600;
+
+export const ffStack = `AvenirNextLTW01, 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'`;
+
+export const breakpoints = {
+  small: {
+    value: 768,
+    edgeSize: {
+      xxlarge: "72px",
+      xxxlarge: "120px"
+    }
+  },
+  medium: {
+    value: 1200
+  },
+  large: {}
 };
 
-const darkColors = [
-  "#212121",
-  "#303030",
-  "#3C3C3C",
-  "#454545",
-  "#666666",
-  "#777777"
-];
+const brandColor = "#2762FF";
+const brand2Color = "#FCBA59";
 
-const lightColors = [
-  "#F1F3F4",
-  "#DDDDDD",
-  "#C8C8C8",
-  "#B8B8B8",
-  "#A8A8A8",
-  "#979797"
-];
-
-const baseTheme = generate();
-
-const colorArray = (array, prefix) => {
-  let colors = {};
-  array.forEach((color, index) => {
-    colors[`${prefix}-${index + 1}`] = color;
-  });
-  return colors;
+const gitcoinColors = {
+  open: "#7ED321",
+  started: brand2Color,
+  Feature: "#FFC2D2",
+  Bug: "#FFB5AE",
+  Improvement: "#9EFFF7",
+  Security: "#95FF94",
+  Documentation: "#94FFED",
+  Design: "#FF85C9",
+  "Code Review": "#FFCE9E",
+  Other: "#C2DBFF"
 };
 
-const colorMap = (map, prefix) => {
-  let colors = {};
-  Object.keys(map).forEach(key => {
-    colors[`${prefix}-${key}`] = map[key];
-  });
-  return colors;
+const black = "#000";
+const white = "#fff";
+
+/*
+  HEADINGS
+*/
+
+const isHeader = props => (props.level <= 2 || !props.level ? true : false);
+
+const isSubheader = props => (props.level >= 3 ? true : false);
+
+const generateHeadingSizes = specs => ({
+  small: specs,
+  medium: specs,
+  large: specs,
+  xlarge: specs,
+  xxlarge: specs
+});
+
+const headerSpecMedium = {
+  size: "20px",
+  height: "32px",
+  maxWidth: ""
 };
 
-export const axisThemeConfig = deepMerge(baseTheme, {
+const subheaderSpecMedium = {
+  size: "16px",
+  height: "24px",
+  maxWidth: ""
+};
+
+const headerSizes = generateHeadingSizes(headerSpecMedium);
+
+const subheaderSizes = generateHeadingSizes(subheaderSpecMedium);
+
+/*
+  TEXT & PARAGRAPHS
+*/
+
+const textSpecMedium = {
+  size: "14px",
+  height: "24px",
+  maxWidth: ""
+};
+
+const textSpecLarge = {
+  size: "16px",
+  height: "32px",
+  maxWidth: ""
+};
+
+const textSpecs = {
+  small: textSpecMedium,
+  medium: textSpecMedium,
+  large: textSpecLarge,
+  xlarge: textSpecLarge,
+  xxlarge: textSpecLarge
+};
+
+const textSizes = {
+  ...textSpecs,
+  extend: props => css`
+    ${!props.textAlign &&
+      css`
+        text-align: justify;
+      `};
+
+    ${props.hyphens &&
+      css`
+        hyphens: ${hyphens};
+      `}
+  `
+};
+
+/*
+  THEME BOI
+*/
+
+export const axisThemeConfig = deepMerge(base, {
   global: {
     colors: {
-      background: darkColors[0],
-      active: brandColor,
-      black: "#000000",
-      border: darkColors[2],
-      control: brandColor,
-      focus: darkColors[2],
-      placeholder: lightColors[2],
-      text: lightColors[0],
-      secondaryText: lightColors[3],
-      white: "#FFFFFF",
+      "accent-1": brand2Color,
+      focus: brandColor,
       brand: brandColor,
-      ...colorArray(darkColors, "dark"),
-      ...colorArray(lightColors, "light"),
-      ...colorArray(accentColors, "accent"),
-      ...colorMap(statusColors, "status")
+      black: "#000",
+      white: "#fff",
+      text: {
+        light: black,
+        dark: white
+      },
+      placeholder: black,
+      alert: "#e6f5ff",
+      ...gitcoinColors
     },
-    elevation: {
-      light: {
-        xsmall: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-        small: "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
-        medium: "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
-        large: "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)",
-        xlarge: "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)"
+    hover: {
+      color: {
+        light: brandColor,
+        dark: white
       }
     },
-    font: {
-      family: "'Roboto', Arial, sans-serif",
-      size: "14px"
+    breakpoints: { ...breakpoints },
+    deviceBreakpoints: {
+      phone: "small",
+      tablet: "large",
+      computer: "large"
     },
-    focus: {},
+    edgeSize: {
+      xxlarge: "144px",
+      xxxlarge: "192px"
+    },
     input: {
       weight: 500
     },
-
-    scrollWidth: "8px"
+    font: {
+      family: ffStack,
+      weight: fwRegular,
+      size: "14px",
+      height: 1.5
+    }
   },
-  anchor: {
-    color: "brand"
+  icon: {
+    extend: css`
+      fill: ${black};
+      stroke: ${black};
+    `
   },
-
   heading: {
+    weight: fwDemibold,
+    responsiveBreakpoint: null,
     level: {
-      1: {
-        large: { size: "50px", height: "56px", maxWidth: "1200px" },
-        medium: { size: "34px", height: "40px", maxWidth: "816px" },
-        small: { size: "26px", height: "32px", maxWidth: "624px" }
-      },
-      2: {
-        large: { size: "34px", height: "40px", maxWidth: "816px" },
-        medium: { size: "26px", height: "32px", maxWidth: "624px" },
-        small: { size: "26px", height: "32px", maxWidth: "624px" }
-      },
-      3: {
-        large: { size: "26px", height: "32px", maxWidth: "624px" },
-        medium: { size: "22px", height: "28px", maxWidth: "528px" },
-        small: { size: "22px", height: "28px", maxWidth: "528px" }
-      },
-      4: {
-        large: { size: "18px", height: "24px", maxWidth: "432px" },
-        medium: { size: "18px", height: "24px", maxWidth: "432px" },
-        small: { size: "18px", height: "24px", maxWidth: "432px" }
-      }
+      1: headerSizes,
+      2: headerSizes,
+      3: subheaderSizes,
+      4: subheaderSizes,
+      5: subheaderSizes,
+      6: subheaderSizes
     },
-    extend: props => {
-      let dynamicStyles = "";
-      if (props.stretch) {
-        dynamicStyles = `
-          max-width: 100%;
-        `;
-      }
+    extend: props => css`
+      margin-top: 0;
+      font-family: ${ffStack};
 
-      return dynamicStyles;
-    }
+      /* Header */
+      ${isHeader(props) &&
+        css`
+          ${!props.margin &&
+            css`
+              margin-bottom: 64px;
+            `}
+        `}
+
+      /* Subheader */
+      ${isSubheader(props) &&
+        css`
+          ${!props.margin &&
+            css`
+              margin-bottom: 40px;
+            `}
+        `}
+
+        /* Lined Styles */
+        ${props.lined &&
+          css`
+          border-bottom: 1px solid ${black};
+
+          /* Lined Header */
+          ${isHeader(props) &&
+            css`
+              padding-bottom: 32px;
+            `}
+
+          /* Lined Subheader */
+          ${isSubheader(props) &&
+            css`
+              padding-bottom: 24px;
+            `}
+        `}
+    `
   },
-  preloader: {
-    color: lightColors[0],
-    size: {
-      small: "24px",
-      medium: "48px",
-      large: "64px"
+  paragraph: textSizes,
+  text: textSizes,
+  anchor: {
+    fontWeight: props => (props.bold ? fwDemibold : fwRegular),
+    textDecoration: props => props.underline && "underline",
+    color: {
+      dark: white,
+      light: black
     },
-    thickness: {
-      small: 1,
-      medium: 2,
-      large: 2
-    }
-  },
-
-  text: {
-    xlarge: { size: "22px", height: "28px", maxWidth: "528px" },
-    large: { size: "18px", height: "24px", maxWidth: "432px" },
-    medium: { size: "14px", height: "20px", maxWidth: "336px" },
-    xxlarge: { size: "26px", height: "32px", maxWidth: "624px" },
-    small: { size: "14px", height: "20px", maxWidth: "336px" },
-    xsmall: { size: "12px", height: "18px", maxWidth: "288px" }
-  },
-  paragraph: {
-    large: { size: "18px", height: "24px", maxWidth: "528px" },
-    medium: { size: "14px", height: "20px", maxWidth: "432px" },
-    small: { size: "12px", height: "18px", maxWidth: "436px" },
-    xlarge: { size: "22px", height: "28px", maxWidth: "624px" }
+    hover: {
+      extend: css`
+        color: ${brandColor};
+      `
+    },
+    extend: css`
+      &:active {
+        opacity: 0.9;
+      }
+    `
   },
   button: {
-    color: "light-3",
-    border: {
-      radius: "3px"
-    },
     padding: {
-      vertical: "4px",
-      horizontal: "12px"
+      horizontal: `${32 - borderWidth}px`,
+      vertical: `${8 - borderWidth}px`
     },
-    extend: props => {
-      let dynamicStyles = "";
-      if (props.secondary) {
-        dynamicStyles = ` 
-          color: ${props.theme.global.colors["brand"]};
-          &:hover {
-            background: ${props.theme.global.colors["brand"]};
-            color:white;
-          }
-        `;
-      } else if (props.primary) {
-        dynamicStyles = `
-          color: white;
-        `;
-      } else if (props.plain) {
-        dynamicStyles = `
-          padding: 0px;
-        `;
-      } else {
-        dynamicStyles = ` 
-          background: ${props.theme.global.colors["dark-4"]};
-          border-color: ${props.theme.global.colors["dark-4"]};
-          &:hover {
-            border-color: ${props.theme.global.colors["dark-4"]};
-          }
-        `;
+    border: {
+      radius: "40px",
+      width: `${borderWidth}px`,
+      color: {
+        dark: white,
+        light: black
       }
-      return `
-        font-size: ${props.theme.text.small.size}; 
-         svg {
-          width:24px;
-          height:24px;
-          display:block
-        }
-        &:hover {
-          
-          box-shadow: none;
-        }  
-        ${dynamicStyles}
-      `;
-    }
-  },
-  textInput: {
-    extend: props => {
-      return `
-      background: ${props.theme.global.colors["dark-4"]};
-      `;
-    }
-  },
-  textArea: {
-    extend: props => {
-      let dynamicStyles = "";
-      if (props.fullHeight) {
-        dynamicStyles = `
-          height:100%;
-          resize: none;
-        `;
+    },
+    color: {
+      dark: white,
+      light: black
+    },
+    primary: {
+      color: {
+        dark: white,
+        light: black
+      }
+    },
+    extend: props => css`
+      font-weight: ${fwMedium};
+      font-family: ${ffStack};
+      text-align: center;
+      font-size: 16px;
+      line-height: 24px;
+
+      ${
+        !props.textAlign
+          ? css`
+              text-align: center;
+            `
+          : css`
+              text-align: ${props.textAlign};
+            `
       }
 
-      return `
-        background: ${props.theme.global.colors["dark-4"]};
-        ${dynamicStyles}
-      `;
-    }
+      /* Add underline for Plain type button */
+      ${props.plain &&
+        !props.link &&
+        css`
+          text-decoration: underline;
+        `}
+
+      ${props.link &&
+        css`
+          font-weight: ${fwDemibold};
+
+          &:hover {
+            text-decoration: underline;
+          }
+        `}
+
+      /* Button Hover Styles */
+      &:hover {
+        box-shadow: none;
+        border-color: ${brandColor};
+
+        ${!props.primary &&
+          css`
+            color: ${brandColor};
+          `}
+      }
+
+      /* White Button Styles */
+      ${props.white &&
+        css`
+          &:hover {
+            background-color: ${white};
+            border-color: ${white};
+          }
+
+          &:active {
+            opacity: 0.9;
+          }
+        `}
+
+      /* Primary Button Styles */
+      ${props.primary &&
+        css`
+          &:hover {
+            background-color: ${brandColor};
+          }
+
+          &:active {
+            opacity: 0.9;
+          }
+        `}
+    `
   },
-  layer: {
-    background: "dark-2"
-  },
-  formField: {
-    border: null,
-    help: { color: "light-4" }
+  textInput: {
+    extend: props =>
+      props.newsletter &&
+      css`
+        font-weight: ${fwMedium};
+        font-family: ${ffStack};
+        color: ${black};
+        border: none;
+        border-bottom: ${borderWidth}px solid
+          ${props.newsletter && props.dark ? black : white};
+        border-radius: 0;
+        padding-bottom: calc(11px - 1px);
+      `
   }
 });
