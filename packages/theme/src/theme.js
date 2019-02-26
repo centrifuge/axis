@@ -181,6 +181,24 @@ export const axisThemeConfig = deepMerge(base, {
   },
   paragraph: textSizes,
   text: textSizes,
+  anchor: {
+    fontWeight: props => (props.bold ? fwDemibold : fwRegular),
+    textDecoration: props => props.underline && "underline",
+    color: props => ({
+      dark: props.theme.global.colors.white,
+      light: props.theme.global.colors.black
+    }),
+    hover: {
+      extend: props => css`
+        color: ${props.theme.global.colors.brand};
+      `
+    },
+    extend: css`
+      &:active {
+        opacity: 0.9;
+      }
+    `
+  },
   button: {
     padding: {
       horizontal: `${32 - borderWidth}px`,
