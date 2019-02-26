@@ -14,6 +14,20 @@ export const fwDemibold = 600;
 
 export const ffStack = `AvenirNextLTW01, 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'`;
 
+export const breakpoints = {
+  small: {
+    value: 768,
+    edgeSize: {
+      xxlarge: "72px",
+      xxxlarge: "120px"
+    }
+  },
+  medium: {
+    value: 1200
+  },
+  large: {}
+};
+
 /*
   HEADINGS
 */
@@ -119,6 +133,16 @@ export const axisThemeConfig = deepMerge(base, {
         light: props.theme.global.colors.brand,
         dark: props.theme.global.colors.white
       })
+    },
+    breakpoints: { ...breakpoints },
+    deviceBreakpoints: {
+      phone: "small",
+      tablet: "large",
+      computer: "large"
+    },
+    edgeSize: {
+      xxlarge: "144px",
+      xxxlarge: "192px"
     }
   },
   icon: {
