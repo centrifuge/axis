@@ -14,11 +14,6 @@ jobs:
     - npm run test
   - stage: Deploy and publish patch
     if: "(branch = develop)"
-    before_deploy:
-      - git config --global user.name "${GH_NAME}"
-      - git config --global user.email "${GH_EMAIL}"
-      - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
-      - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
     deploy:
       provider: script
       script: "npm run publish-patch"
