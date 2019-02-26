@@ -2,7 +2,7 @@
 import React from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { Grommet, ThemeContext } from "grommet";
-import { axisThemeConfig } from "./theme";
+import { axisThemeConfig, fwDemibold, ffStack } from "./theme";
 
 // import AvenirRegular from "./fonts/721263/2cd55546-ec00-4af9-aeca-4a3cd186da53.woff2";
 // import AvenirMedium from "./fonts/721275/627fbb5a-3bae-4cd9-b617-2f923e29d55e.woff2";
@@ -44,19 +44,10 @@ const GlobalsStyles = createGlobalStyle`
       format("woff2");
   } */
 
-  /* Global CSS Variables */
-  :root {
-    --fw-regular: 400;
-    --fw-medium: 500;
-    --fw-demibold: 600;
-
-    --f-stack: AvenirNextLTW01, 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  }
-
   /* HTML Element Overrides */
   b, strong {
-    font-weight: var(--fw-demibold);
-    font-family: var(--f-stack);
+    font-weight: ${fwDemibold};
+    font-family: ${ffStack};
   }
 `;
 

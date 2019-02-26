@@ -2,7 +2,17 @@ import { css } from "styled-components";
 import { base } from "grommet/themes";
 import { deepMerge } from "grommet/utils/object";
 
-const borderWidth = 1;
+/*
+  REUSED VARIABLES
+*/
+
+export const borderWidth = 1;
+
+export const fwRegular = 400;
+export const fwMedium = 500;
+export const fwDemibold = 600;
+
+export const ffStack = `AvenirNextLTW01, 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'`;
 
 /*
   HEADINGS
@@ -81,7 +91,7 @@ const textSizes = {
 
 export const axisThemeConfig = deepMerge(base, {
   heading: {
-    weight: "var(--fw-demibold)",
+    weight: fwDemibold,
     responsiveBreakpoint: null,
     level: {
       1: headerSizes,
@@ -93,7 +103,7 @@ export const axisThemeConfig = deepMerge(base, {
     },
     extend: props => css`
       margin-top: 0;
-      font-family: var(--f-stack);
+      font-family: ${ffStacks};
 
       /* Header */
       ${isHeader(props) &&
@@ -158,8 +168,8 @@ export const axisThemeConfig = deepMerge(base, {
       }
     },
     extend: props => css`
-      font-weight: var(--fw-medium);
-      font-family: var(--f-stack);
+      font-weight: ${fwMedium};
+      font-family: ${ffStack};
       text-align: center;
       font-size: 16px;
       line-height: 24px;
@@ -183,7 +193,7 @@ export const axisThemeConfig = deepMerge(base, {
 
       ${props.link &&
         css`
-          font-weight: var(--fw-demibold);
+          font-weight: ${fwDemibold};
 
           &:hover {
             text-decoration: underline;
