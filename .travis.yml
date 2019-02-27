@@ -10,7 +10,7 @@ jobs:
     script:
     - npm run test
   - stage: Publish patch
-    if: "(NOT type IN (pull_request)) AND (branch = develop)"
+    if: "(NOT type IN (pull_request))"
     script:
       - git config --global user.name "${GH_NAME}"
       - git config --global user.email "${GH_EMAIL}"
