@@ -106,14 +106,15 @@ const textSpecs = {
 const textSizes = {
   ...textSpecs,
   extend: props => css`
-    ${!props.textAlign &&
+    ${props.textAlign &&
+      props.textAlign === "justify" &&
       css`
         text-align: justify;
       `};
 
     ${props.hyphens &&
       css`
-        hyphens: ${hyphens};
+        hyphens: ${props.hyphens === true ? "auto" : "unset"};
       `}
   `
 };
