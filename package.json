@@ -20,9 +20,10 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna exec --stream -- rollup -c",
     "build-storybook": "build-storybook -c .storybook -o storybook-static",
-    "release-all-patch": "npm run build && lerna publish patch --yes",
-    "release-all-minor": "npm run build && lerna publish minor --yes",
-    "release-all-major": "npm run build && lerna publish major --yes",
+    "publish-patch": "npm run build && lerna publish patch --yes",
+    "publish-minor": "npm run build && lerna publish minor --yes",
+    "publish-major": "npm run build && lerna publish major --yes",
+    "publish-develop": "npm run build && lerna publish --canary --preid develop --yes --force-publish",
     "precommit": "npm run format && npm test",
     "postinstall": "npm run bootstrap",
     "format": "prettier --write \"./**/*.js\""
@@ -75,7 +76,7 @@
       "!**/node_modules/**",
       "!**/storybook/**"
     ],
-    "coverageThreshold": {
+    "_coverageThreshold": {
       "global": {
         "branches": 100,
         "functions": 100,
