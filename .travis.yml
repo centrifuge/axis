@@ -12,11 +12,6 @@ jobs:
   - stage: Publish patch
     if: "(NOT type IN (pull_request))"
     script:
-      - git config --global user.name "${GH_NAME}"
-      - git config --global user.email "${GH_EMAIL}"
-      - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
-      - git remote set-url origin "https://${GITHUB_TOKEN}@github.com/centrifuge/axis" > /dev/null 2>&1
-      - git checkout ${TRAVIS_BRANCH}
       - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
-      - npm run publish-patch
+      - npm run publish-develop
 
