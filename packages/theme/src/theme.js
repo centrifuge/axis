@@ -227,10 +227,10 @@ export const axisThemeConfig = deepMerge(base, {
   text: textSizes,
   anchor: {
     fontWeight: props => (props.bold ? fwDemibold : fwRegular),
-    textDecoration: props => props.underline && "underline",
+    textDecoration: "underline",
+    color: {
       dark: "white",
       light: "black"
-      light: black
     },
     hover: {
       extend: css`
@@ -251,19 +251,19 @@ export const axisThemeConfig = deepMerge(base, {
     border: {
       radius: "40px",
       width: `${borderWidth}px`,
+      color: {
         dark: "white",
         light: "black"
-        light: black
       }
     },
+    color: {
       dark: "white",
       light: "black"
-      light: black
     },
     primary: {
+      color: {
         dark: "white",
         light: "black"
-        light: black
       }
     },
     extend: props => css`
@@ -273,33 +273,6 @@ export const axisThemeConfig = deepMerge(base, {
       font-size: 16px;
       line-height: 24px;
 
-      ${
-        !props.textAlign
-          ? css`
-              text-align: center;
-            `
-          : css`
-              text-align: ${props.textAlign};
-            `
-      }
-
-      /* Add underline for Plain type button */
-      ${props.plain &&
-        !props.link &&
-        css`
-          text-decoration: underline;
-        `}
-
-      ${props.link &&
-        css`
-          font-weight: ${fwDemibold};
-
-          &:hover {
-            text-decoration: underline;
-          }
-        `}
-
-      /* Button Hover Styles */
       &:hover {
         box-shadow: none;
         border-color: ${brandColor};
@@ -310,44 +283,69 @@ export const axisThemeConfig = deepMerge(base, {
           `}
       }
 
-      /* White Button Styles */
+      &:active {
+        opacity: 0.9;
+      }
+
+      /* CUSTOMIZED PROP: primary
+       * Changes the hover background color
+       */
+      ${props.primary &&
+        css`
+          &:hover {
+            background-color: ${brandColor};
+          }
+        `}
+
+      /* NEW PROP: textAlign
+       * Sets default text-align to center, and enables changing of it per-button-level
+       */
+      ${
+        !props.textAlign
+          ? css`
+              text-align: center;
+            `
+          : css`
+              text-align: ${props.textAlign};
+            `
+      }
+
+      /* NEW PROP: underline
+       * Adds an underline to buttons, ideally used with 'plain' button type
+       */
+      ${props.underline &&
+        css`
+          text-decoration: underline;
+        `}
+
+      /* NEW PROP: white
+       * Customizes the hover background & border colors 
+       */
       ${props.white &&
         css`
           &:hover {
             background-color: ${white};
             border-color: ${white};
           }
-
-          &:active {
-            opacity: 0.9;
-          }
-        `}
-
-      /* Primary Button Styles */
-      ${props.primary &&
-        css`
-          &:hover {
-            background-color: ${brandColor};
-          }
-
-          &:active {
-            opacity: 0.9;
-          }
         `}
     `
   },
   textInput: {
-    extend: props =>
-      props.newsletter &&
-      css`
-        font-weight: ${fwMedium};
-        font-family: ${ffStack};
-        color: ${black};
-        border: none;
-        border-bottom: ${borderWidth}px solid
-          ${props.newsletter && props.dark ? black : white};
-        border-radius: 0;
-        padding-bottom: calc(11px - 1px);
-      `
+    extend: props => css`
+      /* NEW PROP: newsletter
+       * Creates a custom styled textInput with a nice single bottom border
+       */
+      ${props.newsletter &&
+        css`
+          font-weight: ${fwMedium};
+          font-family: ${ffStack};
+          color: ${black};
+          border: none;
+          border-bottom: ${borderWidth}px solid
+            ${props.newsletter && props.dark ? black : white};
+          border-radius: 0;
+          padding-bottom: calc(11px - 1px);
+        `}
+    `
   }
 });
