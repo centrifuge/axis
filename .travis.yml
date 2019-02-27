@@ -9,8 +9,8 @@ jobs:
   - stage: tests
     script:
     - npm run test
-  - stage: Deploy and publish patch
-    if: "(branch = develop)"
+  - stage: Publish patch
+    if: "(NOT type IN (pull_request)) AND (branch = develop)"
     script:
       - git config --global user.name "${GH_NAME}"
       - git config --global user.email "${GH_EMAIL}"
