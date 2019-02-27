@@ -128,11 +128,12 @@ export const axisThemeConfig = deepMerge(base, {
       "accent-1": brand2Color,
       focus: brandColor,
       brand: brandColor,
-      black: "#000",
-      white: "#fff",
+      // @NOTE: redifining these colors breaks the normalizeColor function
+      // black,
+      // white,
       text: {
-        light: black,
-        dark: white
+        dark: white,
+        light: black
       },
       placeholder: black,
       alert: "#e6f5ff",
@@ -140,8 +141,8 @@ export const axisThemeConfig = deepMerge(base, {
     },
     hover: {
       color: {
-        light: brandColor,
-        dark: white
+        light: "brand",
+        dark: "white"
       }
     },
     breakpoints: { ...breakpoints },
@@ -227,8 +228,8 @@ export const axisThemeConfig = deepMerge(base, {
   anchor: {
     fontWeight: props => (props.bold ? fwDemibold : fwRegular),
     textDecoration: props => props.underline && "underline",
-    color: {
-      dark: white,
+      dark: "white",
+      light: "black"
       light: black
     },
     hover: {
@@ -250,18 +251,18 @@ export const axisThemeConfig = deepMerge(base, {
     border: {
       radius: "40px",
       width: `${borderWidth}px`,
-      color: {
-        dark: white,
+        dark: "white",
+        light: "black"
         light: black
       }
     },
-    color: {
-      dark: white,
+      dark: "white",
+      light: "black"
       light: black
     },
     primary: {
-      color: {
-        dark: white,
+        dark: "white",
+        light: "black"
         light: black
       }
     },
