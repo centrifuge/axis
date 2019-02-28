@@ -136,6 +136,7 @@ export const axisThemeConfig = deepMerge(base, {
         dark: white,
         light: black
       },
+      border: black,
       placeholder: black,
       alert: "#e6f5ff",
       ...gitcoinColors
