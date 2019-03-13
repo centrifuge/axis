@@ -75,6 +75,8 @@ class Components extends Component {
           options={["One", "Two"]}
           onChange={() => {}}
         />
+        <TextInput placeholder="TextInput" />
+        <TextArea placeholder="TextArea" />
         <CheckBox
           name="check"
           checked={checkBox}
@@ -96,8 +98,6 @@ class Components extends Component {
             this.setState({ radioButton: event.target.checked })
           }
         />
-        <TextInput placeholder="TextInput" />
-        <TextArea placeholder="TextArea" />
         <RangeInput value={24} onChange={() => {}} />
         <Stack>
           <Box direction="row" justify="between">
@@ -125,19 +125,6 @@ class Components extends Component {
       <Box key="time" gap="medium">
         <Calendar size="small" />
       </Box>,
-      <Box key="measure" gap="medium">
-        <Chart
-          type="bar"
-          round
-          size="small"
-          values={[
-            { value: [10, 20] },
-            { value: [20, 30] },
-            { value: [30, 15] }
-          ]}
-        />
-      </Box>,
-
       <Box key="dataTable" alignSelf="start">
         <DataTable
           columns={[

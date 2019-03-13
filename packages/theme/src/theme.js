@@ -136,8 +136,9 @@ export const axisThemeConfig = deepMerge(base, {
         dark: white,
         light: black
       },
+      grey: "#BDBDBD",
       border: black,
-      placeholder: black,
+      placeholder: "grey",
       alert: "#e6f5ff",
       ...gitcoinColors
     },
@@ -158,7 +159,17 @@ export const axisThemeConfig = deepMerge(base, {
       xxxlarge: "192px"
     },
     input: {
-      weight: 500
+      weight: fwMedium
+    },
+    control: {
+      border: {
+        // NOTE: two below properties are not passed to the theme
+        side: "bottom",
+        color: "black",
+        // These work
+        radius: "0px",
+        width: "1px"
+      }
     },
     font: {
       family: ffStack,
@@ -336,8 +347,25 @@ export const axisThemeConfig = deepMerge(base, {
         `}
     `
   },
+  textArea: {
+    extend: css`
+      /* HACK
+       * These are hacks to make up for poorly themeable elements
+       * TODO: merge this style with textInput as theyre shared
+       */
+      padding: ${16 - borderWidth}px 0;
+    `
+  },
   textInput: {
     extend: props => css`
+      /* HACK 
+       * These are hacks to make up for poorly themeable elements
+       */
+      ${!props.newsletter &&
+        css`
+          padding: ${16 - borderWidth}px 0;
+        `}
+
       /* NEW PROP: newsletter
        * Creates a custom styled textInput with a nice single bottom border
        */
@@ -352,6 +380,25 @@ export const axisThemeConfig = deepMerge(base, {
           border-radius: 0;
           padding-bottom: calc(11px - 1px);
         `}
+    `
+  },
+  formField: {
+    label: {
+      color: "black",
+      weight: fwRegular,
+      margin: "none"
+    },
+    margin: 0,
+    extend: css`
+      /* HACK: 
+       * These are hacks to make up for poorly themeable elements
+       */
+      & label {
+        line-height: 1;
+      }
+      & input {
+        padding: 16px 0;
+      }
     `
   }
 });
