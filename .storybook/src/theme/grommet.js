@@ -11,13 +11,11 @@ import {
   Calendar,
   Chart,
   CheckBox,
-  Clock,
   DataTable,
   FormField,
   Grid,
   Heading,
   Menu,
-  Meter,
   Paragraph,
   RadioButton,
   RangeInput,
@@ -67,7 +65,9 @@ class Components extends Component {
             { label: "Two" }
           ]}
         />
-        <Button label="Button" onClick={() => {}} />
+        <Button label="Default Button" onClick={() => {}} />
+        <Button primary label="Primary Button" onClick={() => {}} />
+        <Button plain label="Plain Button" onClick={() => {}} />
       </Box>,
       <Box key="input" gap="small">
         <Select
@@ -124,8 +124,6 @@ class Components extends Component {
       </Box>,
       <Box key="time" gap="medium">
         <Calendar size="small" />
-        <Clock type="digital" />
-        <Clock />
       </Box>,
       <Box key="measure" gap="medium">
         <Chart
@@ -137,13 +135,6 @@ class Components extends Component {
             { value: [20, 30] },
             { value: [30, 15] }
           ]}
-        />
-        <Meter
-          type="bar"
-          round
-          size="small"
-          background="light-3"
-          values={[{ value: 30 }]}
         />
       </Box>,
 
@@ -234,6 +225,7 @@ class Components extends Component {
   }
 }
 
-storiesOf("Axis Theme | Grommet Components", module).add("Dark mode", () => (
-  <Components />
-));
+storiesOf("Axis Theme | Grommet Components", module).add(
+  "Themed Defaults",
+  () => <Components />
+);
