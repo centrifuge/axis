@@ -400,5 +400,57 @@ export const axisThemeConfig = deepMerge(base, {
         padding: 16px 0;
       }
     `
+  },
+  table: {
+    /* NOTE:
+     *
+     */
+    extend: css``,
+    header: {
+      pad: {
+        left: "none"
+      },
+      background: {},
+      border: {
+        side: "bottom",
+        color: black
+      },
+      extend: css`
+        /* HACK: 
+         * These are hacks to make up for poorly themeable elements
+         */
+        & button {
+          font-weight: ${fwRegular} !important;
+          
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      `
+    },
+    body: {
+      pad: {
+        left: "none"
+      },
+      border: {
+        side: "bottom",
+        color: "grey"
+      },
+      extend: css`
+        /* HACK: 
+         * These are hacks to make up for poorly themeable elements
+         * I have 0 clue where the fuck the bold is coming from on row elements
+         */
+        & * {
+          font-weight: ${fwRegular} !important;
+        }
+      `
+    },
+    footer: {
+      border: {
+        side: "none"
+      },
+      extend: css``
+    }
   }
 });
