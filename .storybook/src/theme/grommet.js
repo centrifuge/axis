@@ -136,7 +136,6 @@ class Components extends Component {
             { name: "Chris", color: "purple" },
             { name: "Eric", color: "orange" }
           ]}
-          sortable
         />
       </Box>,
       <Box key="accordion">
