@@ -421,7 +421,7 @@ export const axisThemeConfig = deepMerge(base, {
          */
         & button {
           font-weight: ${fwRegular} !important;
-          
+
           &:hover {
             background-color: transparent;
           }
@@ -452,5 +452,51 @@ export const axisThemeConfig = deepMerge(base, {
       },
       extend: css``
     }
+  },
+  tab: {
+    color: "black",
+    margin: "none",
+    pad: {
+      horizontal: "medium"
+    },
+    border: {
+      side: "bottom",
+      size: "1px",
+      color: {
+        dark: "grey",
+        light: "grey"
+      },
+      active: {
+        color: {
+          dark: "white",
+          light: "brand"
+        }
+      },
+      hover: {
+        color: {
+          dark: "white",
+          light: "black"
+        }
+      }
+    },
+    active: { color: "text", background: undefined },
+    hover: {
+      color: {
+        light: "black",
+        dark: "brand"
+      }
+    }
+  },
+  tabs: {
+    gap: "none",
+    header: {
+      extend: css`
+        justify-content: flex-start;
+      `
+    },
+    panel: {
+      extend: css``
+    },
+    extend: css``
   }
 });
