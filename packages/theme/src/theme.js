@@ -375,7 +375,7 @@ export const axisThemeConfig = deepMerge(base, {
       margin: {
         top: "none",
         vertical: "2px",
-        horizontal: undefined,
+        horizontal: undefined
       }
     },
     margin: 0,
@@ -404,19 +404,7 @@ export const axisThemeConfig = deepMerge(base, {
       border: {
         side: "bottom",
         color: black
-      },
-      extend: css`
-        /* HACK: 
-         * These are hacks to make up for poorly themeable elements
-         */
-        & button {
-          font-weight: ${fwRegular} !important;
-
-          &:hover {
-            background-color: transparent;
-          }
-        }
-      `
+      }
     },
     body: {
       pad: {
@@ -438,6 +426,20 @@ export const axisThemeConfig = deepMerge(base, {
   dataTable: {
     primary: {
       weight: fwRegular
+    },
+    header: {
+      extend: css`
+        /* HACK: 
+       * These are hacks to make up for poorly themeable elements
+       */
+        & button {
+          font-weight: ${fwRegular} !important;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      `
     }
   },
   tab: {
