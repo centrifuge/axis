@@ -423,6 +423,14 @@ export const axisThemeConfig = deepMerge(base, {
       extend: css``
     }
   },
+  layer: {
+    background: undefined,
+    overlay: {
+      background: "rgba(0, 0, 0, 0.2)"
+    },
+    extend: css`
+    `
+  },
   dataTable: {
     primary: {
       weight: fwRegular
