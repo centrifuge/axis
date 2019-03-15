@@ -348,24 +348,10 @@ export const axisThemeConfig = deepMerge(base, {
     `
   },
   textArea: {
-    extend: css`
-      /* HACK
-       * These are hacks to make up for poorly themeable elements
-       * TODO: merge this style with textInput as theyre shared
-       */
-      padding: ${16 - borderWidth}px 0;
-    `
+    extend: css``
   },
   textInput: {
     extend: props => css`
-      /* HACK 
-       * These are hacks to make up for poorly themeable elements
-       */
-      ${!props.newsletter &&
-        css`
-          padding: ${16 - borderWidth}px 0;
-        `}
-
       /* NEW PROP: newsletter
        * Creates a custom styled textInput with a nice single bottom border
        */
@@ -386,18 +372,22 @@ export const axisThemeConfig = deepMerge(base, {
     label: {
       color: "black",
       weight: fwRegular,
-      margin: "none"
+      margin: {
+        top: "none",
+        vertical: "2px",
+        horizontal: undefined,
+      }
     },
     margin: 0,
     extend: css`
       /* HACK: 
        * These are hacks to make up for poorly themeable elements
        */
-      & label {
+      label {
         line-height: 1;
       }
-      & input {
-        padding: 16px 0;
+      input {
+        padding: 16px 0 15px 0;
       }
     `
   },
@@ -436,21 +426,18 @@ export const axisThemeConfig = deepMerge(base, {
         side: "bottom",
         color: "grey"
       },
-      extend: css`
-        /* HACK: 
-         * These are hacks to make up for poorly themeable elements
-         * I have 0 clue where the fuck the bold is coming from on row elements
-         */
-        & * {
-          font-weight: ${fwRegular} !important;
-        }
-      `
+      extend: css``
     },
     footer: {
       border: {
         side: "none"
       },
       extend: css``
+    }
+  },
+  dataTable: {
+    primary: {
+      weight: fwRegular
     }
   },
   tab: {
