@@ -1,5 +1,6 @@
 import { css } from "styled-components";
 import { base } from "grommet/themes";
+import { Button } from "grommet";
 import { deepMerge } from "grommet/utils/object";
 
 /*
@@ -136,8 +137,9 @@ export const axisThemeConfig = deepMerge(base, {
         dark: white,
         light: black
       },
+      grey: "#BDBDBD",
       border: black,
-      placeholder: black,
+      placeholder: "grey",
       alert: "#e6f5ff",
       ...gitcoinColors
     },
@@ -158,7 +160,17 @@ export const axisThemeConfig = deepMerge(base, {
       xxxlarge: "192px"
     },
     input: {
-      weight: 500
+      weight: fwMedium
+    },
+    control: {
+      border: {
+        // NOTE: two below properties are not passed to the theme
+        side: "bottom",
+        color: "black",
+        // These work
+        radius: "0px",
+        width: "1px"
+      }
     },
     font: {
       family: ffStack,
@@ -336,6 +348,9 @@ export const axisThemeConfig = deepMerge(base, {
         `}
     `
   },
+  textArea: {
+    extend: css``
+  },
   textInput: {
     extend: props => css`
       /* NEW PROP: newsletter
@@ -353,5 +368,118 @@ export const axisThemeConfig = deepMerge(base, {
           padding-bottom: calc(11px - 1px);
         `}
     `
+  },
+  formField: {
+    label: {
+      color: "black",
+      weight: fwRegular,
+      margin: {
+        top: "none",
+        vertical: "2px",
+        horizontal: undefined
+      }
+    },
+    margin: 0,
+    extend: css`
+      /* HACK: 
+       * These are hacks to make up for poorly themeable elements
+       */
+      label {
+        line-height: 1;
+      }
+      input {
+        padding: 16px 0 15px 0;
+      }
+    `
+  },
+  table: {
+    /* NOTE:
+     *
+     */
+    extend: css``,
+    header: {
+      pad: {
+        left: "none"
+      },
+      background: {},
+      border: {
+        side: "bottom",
+        color: black
+      },
+    },
+    body: {
+      pad: {
+        left: "none"
+      },
+      border: {
+        side: "bottom",
+        color: "grey"
+      },
+      extend: css``
+    },
+    footer: {
+      border: {
+        side: "none"
+      },
+      extend: css``
+    }
+  },
+  layer: {
+    overlay: {
+      background: "rgba(0, 0, 0, 0.2)"
+    },
+    extend: css`
+    `
+  },
+  dataTable: {
+    primary: {
+      weight: fwRegular
+    }
+  },
+  tab: {
+    color: "black",
+    margin: "none",
+    pad: {
+      horizontal: "medium"
+    },
+    border: {
+      side: "bottom",
+      size: "1px",
+      color: {
+        dark: "grey",
+        light: "grey"
+      },
+      active: {
+        color: {
+          dark: "white",
+          light: "brand"
+        }
+      },
+      hover: {
+        color: {
+          dark: "white",
+          light: "black"
+        }
+      }
+    },
+    active: { color: "text", background: undefined },
+    hover: {
+      color: {
+        light: "black",
+        dark: "brand"
+      }
+    }
+  },
+  tabs: {
+    gap: "none",
+    header: {
+      extend: css`
+        justify-content: flex-start;
+      `
+    },
+    panel: {
+      extend: css``
+    },
+    extend: css``
   }
 });

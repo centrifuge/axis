@@ -11,13 +11,11 @@ import {
   Calendar,
   Chart,
   CheckBox,
-  Clock,
   DataTable,
   FormField,
   Grid,
   Heading,
   Menu,
-  Meter,
   Paragraph,
   RadioButton,
   RangeInput,
@@ -67,7 +65,9 @@ class Components extends Component {
             { label: "Two" }
           ]}
         />
-        <Button label="Button" onClick={() => {}} />
+        <Button label="Default Button" onClick={() => {}} />
+        <Button primary label="Primary Button" onClick={() => {}} />
+        <Button plain label="Plain Button" onClick={() => {}} />
       </Box>,
       <Box key="input" gap="small">
         <Select
@@ -75,6 +75,8 @@ class Components extends Component {
           options={["One", "Two"]}
           onChange={() => {}}
         />
+        <TextInput placeholder="TextInput" />
+        <TextArea placeholder="TextArea" />
         <CheckBox
           name="check"
           checked={checkBox}
@@ -96,8 +98,6 @@ class Components extends Component {
             this.setState({ radioButton: event.target.checked })
           }
         />
-        <TextInput placeholder="TextInput" />
-        <TextArea placeholder="TextArea" />
         <RangeInput value={24} onChange={() => {}} />
         <Stack>
           <Box direction="row" justify="between">
@@ -124,29 +124,7 @@ class Components extends Component {
       </Box>,
       <Box key="time" gap="medium">
         <Calendar size="small" />
-        <Clock type="digital" />
-        <Clock />
       </Box>,
-      <Box key="measure" gap="medium">
-        <Chart
-          type="bar"
-          round
-          size="small"
-          values={[
-            { value: [10, 20] },
-            { value: [20, 30] },
-            { value: [30, 15] }
-          ]}
-        />
-        <Meter
-          type="bar"
-          round
-          size="small"
-          background="light-3"
-          values={[{ value: 30 }]}
-        />
-      </Box>,
-
       <Box key="dataTable" alignSelf="start">
         <DataTable
           columns={[
@@ -158,7 +136,6 @@ class Components extends Component {
             { name: "Chris", color: "purple" },
             { name: "Eric", color: "orange" }
           ]}
-          sortable
         />
       </Box>,
       <Box key="accordion">
@@ -234,6 +211,7 @@ class Components extends Component {
   }
 }
 
-storiesOf("Axis Theme | Grommet Components", module).add("Dark mode", () => (
-  <Components />
-));
+storiesOf("Axis Theme | Grommet Components", module).add(
+  "Themed Defaults",
+  () => <Components />
+);

@@ -10,7 +10,14 @@ export const Modal = props => {
       onClickOutside={props.onClose}
       onEsc={props.onClose}
     >
-      <Box fill="vertical" width={props.size} pad="medium">
+      <Box
+        round="small"
+        background="white"
+        elevation="medium"
+        fill="vertical"
+        width={props.size}
+        pad="medium"
+      >
         <Box
           flex={false}
           direction="row"
@@ -21,7 +28,13 @@ export const Modal = props => {
               {props.title}
             </Heading>
           )}
-          {props.onClose && <Button icon={<Close />} onClick={props.onClose} />}
+          {props.onClose && (
+            <Button
+              plain
+              label={<Close height={24} />}
+              onClick={props.onClose}
+            />
+          )}
         </Box>
 
         {props.children}
