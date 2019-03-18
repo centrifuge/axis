@@ -1,5 +1,6 @@
 import { css } from "styled-components";
 import { base } from "grommet/themes";
+import { Button } from "grommet";
 import { deepMerge } from "grommet/utils/object";
 
 /*
@@ -404,7 +405,7 @@ export const axisThemeConfig = deepMerge(base, {
       border: {
         side: "bottom",
         color: black
-      }
+      },
     },
     body: {
       pad: {
@@ -424,7 +425,6 @@ export const axisThemeConfig = deepMerge(base, {
     }
   },
   layer: {
-    background: undefined,
     overlay: {
       background: "rgba(0, 0, 0, 0.2)"
     },
@@ -434,20 +434,6 @@ export const axisThemeConfig = deepMerge(base, {
   dataTable: {
     primary: {
       weight: fwRegular
-    },
-    header: {
-      extend: css`
-        /* HACK: 
-       * These are hacks to make up for poorly themeable elements
-       */
-        & button {
-          font-weight: ${fwRegular} !important;
-
-          &:hover {
-            background-color: transparent;
-          }
-        }
-      `
     }
   },
   tab: {
