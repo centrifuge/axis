@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-
 import { storiesOf } from "@storybook/react";
 
-import { AxisTheme } from "../../../packages/theme/src";
+import { AxisTheme } from "../../../packages/theme/src/";
 import { Box, Button, Paragraph } from "grommet";
-import { Modal } from "@centrifuge/axis-modal";
+import { Modal } from "../../../packages/modal/src/";
 
-storiesOf("Axis components | Modal", module).add("Centered modal", () => {
+storiesOf("3.Components | Modal", module).add("default", () => {
   class ModalContainer extends Component {
     state = { opened: false };
 
@@ -15,7 +14,6 @@ storiesOf("Axis components | Modal", module).add("Centered modal", () => {
         <AxisTheme>
           <Box fill align="center" justify="center">
             <Button
-              primary
               label={"Open Modal"}
               onClick={() => {
                 this.setState({ opened: true });

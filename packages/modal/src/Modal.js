@@ -1,8 +1,10 @@
 import React from "react";
 import { Box, Button, Heading, Layer } from "grommet";
-import { Close } from "styled-icons/material/Close";
+import { withTheme } from "styled-components";
 
-export const Modal = props => {
+export const Modal = withTheme(props => {
+  const Close = props.theme.modal.icons.close;
+
   return (
     <Layer
       position="center"
@@ -29,11 +31,7 @@ export const Modal = props => {
             </Heading>
           )}
           {props.onClose && (
-            <Button
-              plain
-              label={<Close height={24} />}
-              onClick={props.onClose}
-            />
+            <Button plain label={<Close />} onClick={props.onClose} />
           )}
         </Box>
 
@@ -41,4 +39,4 @@ export const Modal = props => {
       </Box>
     </Layer>
   );
-};
+});

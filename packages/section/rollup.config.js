@@ -3,7 +3,24 @@ import filesize from "rollup-plugin-filesize";
 import nodeResolve from "rollup-plugin-node-resolve";
 import progress from "rollup-plugin-progress";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import url from "rollup-plugin-url";
+
+import pkg from "./package.json";
+
+const external = [
+  ...Object.keys(pkg.peerDependencies || {}),
+  ...Object.keys(pkg.dependencies || {})
+];
+
+const makeExternalPredicate = externalArr => {
+  if (externalArr.length === 0) {
+    return () => false;
+  }
+  const pattern = new RegExp(`^(${externalArr.join("|")})($|/)`);
+  return id => pattern.test(id);
+};
+
+process.env.BABEL_ENV = "production";
+process.env.NODE_ENV = "production";
 
 export default {
   input: "src/index.js",
@@ -25,15 +42,10 @@ export default {
     peerDepsExternal(),
     progress(),
     nodeResolve(),
-    url({
-      include: ["**/*.woff", "**/*.woff2"],
-      // setting infinite limit will ensure that the files
-      // are always bundled with the code, not copied to /dist
-      limit: Infinity
-    }),
 
     babel({
-      babelrc: true
+      babelrc: true,
+      runtimeHelpers: true
     }),
 
     filesize()
