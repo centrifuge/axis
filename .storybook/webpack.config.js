@@ -11,8 +11,8 @@ module.exports = {
       // TODO fix this bit and make storysource plugin work
       {
         test: /\.\/src\/\.(js|jsx)$/,
-        loaders: [require.resolve('@storybook/addon-storysource/loader')],
-        enforce: 'pre',
+        loaders: [require.resolve("@storybook/addon-storysource/loader")],
+        enforce: "pre"
       }
     ]
   },

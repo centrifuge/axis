@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { AxisTheme } from "../../../packages/theme/src/AxisTheme";
+import { AxisTheme } from "../../../packages/theme/src/";
 import { Box, Heading, Paragraph } from "grommet";
 
 const headingSizes = ["xlarge", "large", "medium", "small"];
@@ -24,7 +24,7 @@ const Headings = () => (
   </AxisTheme>
 );
 
-storiesOf("Axis Theme | Typography /", module).add("Documentation", () => (
+storiesOf("1.Theme | Typography /", module).add("Documentation", () => (
   <>
     <Paragraph>Headings Components</Paragraph>
     <Headings />
@@ -32,7 +32,7 @@ storiesOf("Axis Theme | Typography /", module).add("Documentation", () => (
   </>
 ));
 
-storiesOf("Axis Theme | Typography / Headings", module)
+storiesOf("1.Theme | Typography / Headings", module)
   .add("Default", Headings)
   .add("Sizes", () => (
     <AxisTheme>
@@ -65,7 +65,7 @@ storiesOf("Axis Theme | Typography / Headings", module)
     </AxisTheme>
   ));
 
-storiesOf("Axis Theme | Typography / Paragraph", module)
+storiesOf("1.Theme | Typography / Paragraph", module)
   .add("Default", () => (
     <AxisTheme>
       <>

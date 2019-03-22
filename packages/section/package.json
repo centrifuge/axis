@@ -1,9 +1,9 @@
 {
-  "name": "@centrifuge/axis-modal",
+  "name": "@centrifuge/axis-section",
   "version": "0.1.0",
-  "description": "Modal component",
+  "description": "Sample component",
   "author": "razvan <razvan@centrifuge.io>",
-  "homepage": "https://github.com/centrifuge/axis/tree/master/packages/modal#readme",
+  "homepage": "https://github.com/centrifuge/axis/tree/master/packages/a-sample-component#readme",
   "license": "ISC",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

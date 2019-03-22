@@ -2,6 +2,7 @@ import { css } from "styled-components";
 import { base } from "grommet/themes";
 import { Button } from "grommet";
 import { deepMerge } from "grommet/utils/object";
+import { Close } from "grommet-icons";
 
 /*
   REUSED VARIABLES
@@ -188,57 +189,8 @@ export const axisThemeConfig = deepMerge(base, {
   heading: {
     weight: fwDemibold,
     responsiveBreakpoint: null,
-    level: {
-      1: headerSizes,
-      2: headerSizes,
-      3: subheaderSizes,
-      4: subheaderSizes,
-      5: subheaderSizes,
-      6: subheaderSizes
-    },
     extend: props => css`
       font-family: ${ffStack};
-
-      ${!props.margin &&
-        css`
-          margin-top: 0;
-        `}
-
-      /* Header */
-      ${isHeader(props) &&
-        css`
-          ${!props.margin &&
-            css`
-              margin-bottom: 64px;
-            `}
-        `}
-
-      /* Subheader */
-      ${isSubheader(props) &&
-        css`
-          ${!props.margin &&
-            css`
-              margin-bottom: 40px;
-            `}
-        `}
-
-        /* Lined Styles */
-        ${props.lined &&
-          css`
-          border-bottom: 1px solid ${black};
-
-          /* Lined Header */
-          ${isHeader(props) &&
-            css`
-              padding-bottom: 32px;
-            `}
-
-          /* Lined Subheader */
-          ${isSubheader(props) &&
-            css`
-              padding-bottom: 24px;
-            `}
-        `}
     `
   },
   paragraph: textSizes,
@@ -405,12 +357,13 @@ export const axisThemeConfig = deepMerge(base, {
       border: {
         side: "bottom",
         color: black
-      },
+      }
     },
     body: {
       pad: {
         left: "none"
       },
+      fill: "vertical",
       border: {
         side: "bottom",
         color: "grey"
@@ -428,8 +381,7 @@ export const axisThemeConfig = deepMerge(base, {
     overlay: {
       background: "rgba(0, 0, 0, 0.2)"
     },
-    extend: css`
-    `
+    extend: css``
   },
   dataTable: {
     primary: {
@@ -481,5 +433,24 @@ export const axisThemeConfig = deepMerge(base, {
       extend: css``
     },
     extend: css``
+  },
+
+  // Axis custom components
+  modal: {
+    icons: {
+      close: Close
+    }
+  },
+
+  section: {
+    heading: {
+      level: 3,
+      gap: "medium"
+    },
+    border: {
+      side: "bottom",
+      size: "xsmall",
+      color: "gray"
+    }
   }
 });

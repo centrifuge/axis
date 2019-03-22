@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { storiesOf } from "@storybook/react";
-import { AxisTheme } from "../../../packages/theme/src/AxisTheme";
+import { AxisTheme } from "../../../packages/theme/src";
 
 import {
   Accordion,
@@ -211,7 +211,6 @@ class Components extends Component {
   }
 }
 
-storiesOf("Axis Theme | Grommet Components", module).add(
-  "Themed Defaults",
-  () => <Components />
-);
+storiesOf("1.Theme | All Components", module).add("Light Mode", () => (
+  <Components />
+));
