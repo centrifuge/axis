@@ -1,6 +1,6 @@
 import { css } from "styled-components";
 import { base } from "grommet/themes";
-import { Button } from "grommet";
+import {Button, Select} from "grommet";
 import { deepMerge } from "grommet/utils/object";
 import { Close } from "grommet-icons";
 
@@ -109,13 +109,13 @@ const textSizes = {
   ...textSpecs,
   extend: props => css`
     ${props.textAlign &&
-      props.textAlign === "justify" &&
-      css`
+  props.textAlign === "justify" &&
+  css`
         text-align: justify;
       `};
 
     ${props.hyphens &&
-      css`
+  css`
         hyphens: ${props.hyphens === true ? "auto" : "unset"};
       `}
   `
@@ -213,6 +213,17 @@ export const axisThemeConfig = deepMerge(base, {
       }
     `
   },
+  box: {
+    extend: props => css`
+      // 
+      ${props.responsiveChildren && css`
+        > * {
+          flex: 1;
+        }
+      `}
+       
+    `
+  },
   button: {
     padding: {
       horizontal: `${32 - borderWidth}px`,
@@ -248,7 +259,7 @@ export const axisThemeConfig = deepMerge(base, {
         border-color: ${brandColor};
 
         ${!props.primary &&
-          css`
+    css`
             color: ${brandColor};
           `}
       }
@@ -261,7 +272,7 @@ export const axisThemeConfig = deepMerge(base, {
        * Changes the hover background color
        */
       ${props.primary &&
-        css`
+    css`
           &:hover {
             background-color: ${brandColor};
           }
@@ -272,19 +283,19 @@ export const axisThemeConfig = deepMerge(base, {
        */
       ${
         !props.textAlign
-          ? css`
+            ? css`
               text-align: center;
             `
-          : css`
+            : css`
               text-align: ${props.textAlign};
             `
-      }
+        }
 
       /* NEW PROP: underline
        * Adds an underline to buttons, ideally used with 'plain' button type
        */
       ${props.underline &&
-        css`
+    css`
           text-decoration: underline;
         `}
 
@@ -292,7 +303,7 @@ export const axisThemeConfig = deepMerge(base, {
        * Customizes the hover background & border colors 
        */
       ${props.white &&
-        css`
+    css`
           &:hover {
             background-color: ${white};
             border-color: ${white};
@@ -309,7 +320,7 @@ export const axisThemeConfig = deepMerge(base, {
        * Creates a custom styled textInput with a nice single bottom border
        */
       ${props.newsletter &&
-        css`
+    css`
           font-weight: ${fwMedium};
           font-family: ${ffStack};
           color: ${black};
@@ -333,9 +344,7 @@ export const axisThemeConfig = deepMerge(base, {
     },
     margin: 0,
     extend: css`
-      /* HACK: 
-       * These are hacks to make up for poorly themeable elements
-       */
+      
       label {
         line-height: 1;
       }

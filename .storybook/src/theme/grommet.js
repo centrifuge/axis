@@ -121,6 +121,13 @@ class Components extends Component {
         <FormField label="FormField">
           <TextInput placeholder="TextInput" />
         </FormField>
+        <FormField label="Form field Select">
+          <Select
+              placeholder="Select"
+              options={["One", "Two"]}
+              onChange={() => {}}
+          />
+        </FormField>
       </Box>,
       <Box key="time" gap="medium">
         <Calendar size="small" />
