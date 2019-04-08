@@ -47,10 +47,11 @@
     "babel-plugin-styled-components": "^1.10.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-react-app": "^7.0.2",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.9.1",
     "glob-loader": "^0.3.0",
-    "grommet": "^2.5.5",
+    "grommet": "^2.6.5",
     "jest": "^24.1.0",
     "lerna": "^3.13.1",
     "react": "^16.8.3",
@@ -107,6 +108,7 @@
   },
   "dependencies": {
     "@centrifuge/axis-modal": "file:packages/modal",
-    "@centrifuge/axis-theme": "file:packages/theme"
+    "@centrifuge/axis-theme": "file:packages/theme",
+    "@centrifuge/axis-section": "file:packages/section"
   }
 }

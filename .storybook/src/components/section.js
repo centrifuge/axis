@@ -12,7 +12,10 @@ storiesOf("3.Components | Section", module).add("default", () => {
     render() {
       return (
         <AxisTheme>
-          <Section title="Testing Section title" optional={{text:"toggle section"}}>
+          <Section
+            title="Testing Section title"
+            optional={{ text: "toggle section" }}
+          >
             <Paragraph>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
               pellentesque, arcu vitae maximus pharetra, diam nulla porttitor
