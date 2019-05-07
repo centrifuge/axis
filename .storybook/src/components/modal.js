@@ -19,11 +19,12 @@ storiesOf("3.Components | Modal", module).add("default", () => {
                 this.setState({ opened: true });
               }}
             />
-            {this.state.opened && (
+
               <Modal
-                i
+                opened={this.state.opened}
                 width={"medium"}
                 title={"My First Modal Title"}
+                headingLevel={3}
                 onClose={() => {
                   this.setState({ opened: false });
                 }}
@@ -42,7 +43,7 @@ storiesOf("3.Components | Modal", module).add("default", () => {
                   posuere. Mauris eget diam eu velit tristique blandit.
                 </Paragraph>
               </Modal>
-            )}
+
           </Box>
         </AxisTheme>
       );
