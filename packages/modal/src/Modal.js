@@ -4,6 +4,7 @@ import { withTheme } from "styled-components";
 
 export const Modal = withTheme(props => {
   const Close = props.theme.modal.icons.close;
+  const {headingProps} = props;
   if (props.opened)
       return (
             <Layer
@@ -23,10 +24,11 @@ export const Modal = withTheme(props => {
                 <Box
                   flex={false}
                   direction="row"
+                  alignContent="center"
                   justify={props.title ? "between" : "end"}
                 >
                   {props.title && (
-                    <Heading level={props.headingLevel || 2} margin="none">
+                    <Heading level={2} margin={{top:'none',bottom:'none',left:"none",right:'medium'}} {...headingProps}>
                       {props.title}
                     </Heading>
                   )}
