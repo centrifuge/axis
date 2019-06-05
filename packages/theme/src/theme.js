@@ -350,6 +350,10 @@ export const axisThemeConfig = deepMerge(base, {
       }
       input {
         padding: 16px 0 15px 0;
+        line-height: 1;
+      }
+      button {
+        box-shadow: none;
       }
     `
   },
