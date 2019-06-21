@@ -2,8 +2,10 @@ import React from "react";
 import {storiesOf} from "@storybook/react";
 
 import {AxisTheme} from "../../../packages/theme/src/";
-import {NumberInput} from "@centrifuge/axis-number-input/src/NumberInput";
-import {FormField} from "grommet";
+import {NumberInput} from "@centrifuge/axis-number-input";
+import {FormField, TextInput} from "grommet";
+
+
 
 storiesOf("3.Components | Number Input", module)
     .add("Default", () => {
