@@ -14,8 +14,6 @@ export const Section = withTheme(props => {
     border,
     ...rest
   };
-
-  console.log(containerProps);
   return (
     <Box {...containerProps}>
       <Box direction="row" gap={heading.gap}>
