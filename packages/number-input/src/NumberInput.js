@@ -1,7 +1,7 @@
 import React from "react";
 import styled, {css, withTheme} from "styled-components";
 import CurrencyInput from 'react-currency-input';
-import {disabledStyle, inputStyle, placeholderStyle} from "grommet/es6/utils";
+import {disabledStyle, inputStyle, placeholderStyle} from "grommet/utils";
 
 // TODO Fork react-currency-input and use pure grommet components
 export const NumberInput = withTheme((props) => {
