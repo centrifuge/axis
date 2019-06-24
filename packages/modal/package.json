@@ -1,6 +1,6 @@
 {
   "name": "@centrifuge/axis-modal",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "description": "Modal component",
   "author": "razvan <razvan@centrifuge.io>",
   "homepage": "https://github.com/centrifuge/axis/tree/master/packages/modal#readme",
@@ -53,8 +53,5 @@
     "rollup-plugin-progress": "^1.0.0",
     "rollup-plugin-url": "^2.2.0"
   },
-  "gitHead": "ef53db97aa8cc0b402b3544a731dc10c9ff12641",
-  "dependencies": {
-    "react-currency-input": "^1.3.6"
-  }
+  "gitHead": "ef53db97aa8cc0b402b3544a731dc10c9ff12641"
 }
