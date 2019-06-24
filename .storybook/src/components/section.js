@@ -5,6 +5,7 @@ import { AxisTheme } from "../../../packages/theme/src/";
 import { Box, Button, Paragraph } from "grommet";
 import { Section } from "../../../packages/section/src/";
 
+/*
 storiesOf("3.Components | Section", module).add("default", () => {
   class ModalContainer extends Component {
     state = { opened: false };
@@ -37,3 +38,4 @@ storiesOf("3.Components | Section", module).add("default", () => {
 
   return <ModalContainer />;
 });
+*/
