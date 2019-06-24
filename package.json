@@ -23,7 +23,7 @@
     "publish-patch": "npm run build && lerna publish patch --yes",
     "publish-minor": "npm run build && lerna publish minor --yes",
     "publish-major": "npm run build && lerna publish major --yes",
-    "publish-develop": "npm run build && lerna publish --canary --preid develop --yes  --force-publish",
+    "publish-develop": "npm run build && lerna publish --canary --preid develop --yes --force-publish --from-package",
     "precommit": "npm run format && npm test",
     "postinstall": "npm run bootstrap",
     "format": "prettier --write \"./**/*.js\""
