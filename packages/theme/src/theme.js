@@ -311,6 +311,9 @@ export const axisThemeConfig = deepMerge(base, {
         `}
     `
   },
+  dateInput:{
+
+  },
   textArea: {
     extend: css``
   },
@@ -435,6 +438,7 @@ export const axisThemeConfig = deepMerge(base, {
       }
     }
   },
+
   tabs: {
     gap: "none",
     header: {
@@ -464,6 +468,13 @@ export const axisThemeConfig = deepMerge(base, {
       side: "bottom",
       size: "xsmall",
       color: "gray"
+    }
+  },
+  select: {
+    control: {
+      extend: css`
+        font-size: inherit;
+      `
     }
   }
 });

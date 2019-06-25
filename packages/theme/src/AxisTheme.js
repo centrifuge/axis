@@ -41,6 +41,8 @@ const GlobalsStyles = createGlobalStyle`
   }
 `;
 
+
+console.log(axisThemeConfig);
 export const AxisTheme = ({ theme, children, ...rest }) => {
   return (
     <Grommet theme={theme || axisThemeConfig} {...rest}>
