@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { base } from "grommet/themes";
+import { generate } from "grommet/themes";
 import {Button, Select} from "grommet";
 import { deepMerge } from "grommet/utils/object";
 import { Close } from "grommet-icons";
@@ -7,6 +7,15 @@ import { Close } from "grommet-icons";
 /*
   REUSED VARIABLES
 */
+
+
+export const baseSpacing = 24;
+export const scale = 6;
+
+const baseFontSize = baseSpacing * 0.75; // 18
+const fontScale = baseSpacing / scale; // 4
+
+const base = generate(baseSpacing, scale);
 
 export const borderWidth = 1;
 
@@ -310,6 +319,15 @@ export const axisThemeConfig = deepMerge(base, {
           }
         `}
     `
+  },
+  calendar: {
+    // daySize must align with global.size
+    small: {
+      fontSize: `${baseFontSize - fontScale}px`,
+      lineHeight: 1.375,
+      daySize: `${(baseSpacing * 12) / 7}px`,
+      slideDuration: '0.2s',
+    },
   },
   dateInput:{
 

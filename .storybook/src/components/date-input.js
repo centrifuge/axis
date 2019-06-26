@@ -31,18 +31,21 @@ storiesOf("3.Components | Date Input", module)
     })
     .add("inside a form field", () => {
         const Comp = (props) => {
-
+            const [date,setDate] = useState(undefined);
 
             return (
                 <AxisTheme>
                     <Box align="center" pad="large">
-                        <FormField label="Due Date">
-                            <DateInput  placeholder={'Select Date'}/>
-                        </FormField>
+                        <Box width={'300px'}>
+                            <FormField label="Due Date">
+                                <DateInput
+                                    value={date}
+                                    placeholder={'Select Date'}
+                                    onChange={setDate}
+                                />
+                            </FormField>
+                        </Box>
 
-                        <FormField label="Due Date">
-                            <TextInput/>
-                        </FormField>
                     </Box>
                 </AxisTheme>
             );
