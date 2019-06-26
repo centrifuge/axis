@@ -159,6 +159,9 @@ export const axisThemeConfig = deepMerge(base, {
         dark: "white"
       }
     },
+    size: {
+        small:'302px',
+    },
     breakpoints: { ...breakpoints },
     deviceBreakpoints: {
       phone: "small",
@@ -262,30 +265,30 @@ export const axisThemeConfig = deepMerge(base, {
       text-align: center;
       font-size: 16px;
       line-height: 24px;
+      
+       ${!props.disabled && css`
 
-      &:hover {
-        box-shadow: none;
-        border-color: ${brandColor};
-
-        ${!props.primary &&
-    css`
-            color: ${brandColor};
-          `}
-      }
-
-      &:active {
-        opacity: 0.9;
-      }
-
-      /* CUSTOMIZED PROP: primary
-       * Changes the hover background color
-       */
-      ${props.primary &&
-    css`
           &:hover {
-            background-color: ${brandColor};
+            
+            box-shadow: none;
+            border-color: ${brandColor};
+        
+            ${!props.primary &&
+            css`
+                color: ${brandColor};
+            ` || 
+            css`
+              background-color: ${brandColor};
+            `
+            }   
           }
-        `}
+          &:active {
+            opacity: 0.9;
+          }      
+       `}
+
+      
+
 
       /* NEW PROP: textAlign
        * Sets default text-align to center, and enables changing of it per-button-level

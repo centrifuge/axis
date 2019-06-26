@@ -14,12 +14,21 @@ storiesOf("3.Components | Date Input", module)
 
             return (
                 <AxisTheme>
-                    <Box>
+                    <Box gap={'medium'}>
                         <DateInput
                             value={date}
                             onChange={setDate}
                             placeholder={'Select Date'}
                         />
+
+
+                        <DateInput
+                            disabled
+                            value={date}
+                            onChange={setDate}
+                            placeholder={'Select Date'}
+                        />
+
 
                     </Box>
 
@@ -36,7 +45,7 @@ storiesOf("3.Components | Date Input", module)
             return (
                 <AxisTheme>
                     <Box align="center" pad="large">
-                        <Box width={'300px'}>
+                        <Box width={'300px'} gap={'medium'}>
                             <FormField label="Due Date">
                                 <DateInput
                                     value={date}
@@ -44,6 +53,16 @@ storiesOf("3.Components | Date Input", module)
                                     onChange={setDate}
                                 />
                             </FormField>
+
+                            <FormField label="Disabled Due Date">
+                                <DateInput
+                                    disabled
+                                    value={date}
+                                    placeholder={'Select Date'}
+                                    onChange={setDate}
+                                />
+                            </FormField>
+
                         </Box>
 
                     </Box>

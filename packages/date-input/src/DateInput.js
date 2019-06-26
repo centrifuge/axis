@@ -4,8 +4,17 @@ import {controlBorderStyle} from "grommet/utils";
 import styled, {withTheme} from "styled-components";
 import {Close} from "grommet-icons";
 
+const DateTimeTextInput = styled(TextInput)`
+  cursor: pointer;
+`;
+
+
 const StyledDateInputDropButton = styled(DropButton)`
   font-size: inherit;
+  ${DateTimeTextInput} {
+    ${props => props.disabled && 'cursor:default'}
+  }
+  
   ${props => !props.plain && controlBorderStyle};
   ${props =>
     props.theme.dateInput &&
@@ -14,14 +23,10 @@ const StyledDateInputDropButton = styled(DropButton)`
 `;
 
 
-const DateTimeTextInput = styled(TextInput)`
-  cursor: pointer;
-`;
 
 
 const StyledCalendar = styled(Calendar)`
   // Handle multiple sizes
-  width: 302px;
   ${props =>
     props.theme.dateInput &&
     props.theme.dateInput.calendar &&
@@ -35,7 +40,7 @@ const DropContent = props => {
         onClose(date);
     }
     return (
-        <Box align="left" pad={'medium'} justify="center">
+        <Box align="start" pad={'medium'} justify="center">
             <StyledCalendar
                 locale={locale}
                 daysOfWeek
@@ -54,7 +59,7 @@ export const DateInput = withTheme((props) => {
     const defaultProps = {locale: 'en-US', size: 'small'}
 
     const [open, setOpen] = useState();
-    const {value, onChange, locale, plain, placeholder, size} = {...props, ...defaultProps};
+    const {value, onChange, locale, plain, placeholder, size, disabled} = {...props, ...defaultProps};
 
     // if plain is set it is inside a form field most likely and has no border
     let padding = {}
@@ -69,6 +74,7 @@ export const DateInput = withTheme((props) => {
 
     return (
         <StyledDateInputDropButton
+            disabled={disabled}
             plain={plain}
             open={open}
             size={size}
@@ -92,7 +98,7 @@ export const DateInput = withTheme((props) => {
                 <Box gap={size} direction={'row'}>
 
                     {
-                        value && <Close
+                        value && !disabled && <Close
                             size={size}
                             onClick={(ev) => {
                                 ev.stopPropagation();
