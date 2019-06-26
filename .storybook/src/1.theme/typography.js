@@ -24,7 +24,7 @@ const Headings = () => (
   </AxisTheme>
 );
 
-storiesOf("1.Theme | Typography /", module).add("Documentation", () => (
+storiesOf("Theme | Typography /", module).add("Documentation", () => (
   <>
     <Paragraph>Headings Components</Paragraph>
     <Headings />
@@ -32,7 +32,7 @@ storiesOf("1.Theme | Typography /", module).add("Documentation", () => (
   </>
 ));
 
-storiesOf("1.Theme | Typography / Headings", module)
+storiesOf("Theme | Typography / Headings", module)
   .add("Default", Headings)
   .add("Sizes", () => (
     <AxisTheme>
@@ -65,7 +65,7 @@ storiesOf("1.Theme | Typography / Headings", module)
     </AxisTheme>
   ));
 
-storiesOf("1.Theme | Typography / Paragraph", module)
+storiesOf("Theme | Typography / Paragraph", module)
   .add("Default", () => (
     <AxisTheme>
       <>

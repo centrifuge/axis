@@ -66,8 +66,11 @@ class Components extends Component {
           ]}
         />
         <Button label="Default Button" onClick={() => {}} />
+        <Button disabled label="Default Button" onClick={() => {}} />
         <Button primary label="Primary Button" onClick={() => {}} />
+        <Button disabled primary label="Primary Button" onClick={() => {}} />
         <Button plain label="Plain Button" onClick={() => {}} />
+        <Button disabled plain label="Plain Button" onClick={() => {}} />
       </Box>,
       <Box key="input" gap="small">
         <Select
@@ -218,6 +221,6 @@ class Components extends Component {
   }
 }
 
-storiesOf("1.Theme | All Components", module).add("Light Mode", () => (
+storiesOf("Theme | All Components", module).add("Light Mode", () => (
   <Components />
 ));
