@@ -221,6 +221,6 @@ class Components extends Component {
   }
 }
 
-storiesOf("1.Theme | All Components", module).add("Light Mode", () => (
+storiesOf("Theme | All Components", module).add("Light Mode", () => (
   <Components />
 ));

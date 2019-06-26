@@ -6,7 +6,7 @@ import { Box, Button, Paragraph } from "grommet";
 import { Section } from "../../../packages/section/src/";
 
 /*
-storiesOf("3.Components | Section", module).add("default", () => {
+storiesOf("Components | Section", module).add("default", () => {
   class ModalContainer extends Component {
     state = { opened: false };
 

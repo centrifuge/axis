@@ -7,7 +7,7 @@ import {FormField, TextInput} from "grommet";
 
 
 
-storiesOf("3.Components | Number Input", module)
+storiesOf("Components | Number Input", module)
     .add("Default", () => {
         const Comp = (props) => {
 

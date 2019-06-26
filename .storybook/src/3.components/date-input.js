@@ -7,7 +7,7 @@ import {Box, FormField} from "grommet/es6";
 import {Select, TextInput} from "grommet";
 
 
-storiesOf("3.Components | Date Input", module)
+storiesOf("Components | Date Input", module)
     .add("Default", () => {
         const Comp = (props) => {
             const [date,setDate] = useState(undefined);

@@ -5,7 +5,7 @@ import {AxisTheme} from "../../../packages/theme/src/";
 import {Box, Button, Paragraph} from "grommet";
 import {Modal} from "../../../packages/modal/src/";
 
-storiesOf("3.Components | Modal", module)
+storiesOf("Components | Modal", module)
     .add("default", () => {
         class ModalContainer extends Component {
             state = {opened: false};

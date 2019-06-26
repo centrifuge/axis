@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { AxisTheme } from "../../../packages/theme/src/";
 import {Box, Heading} from "grommet";
 
-storiesOf("2.Superset | Box", module).add("responsiveChildren", () => (
+storiesOf("Superset | Box", module).add("responsiveChildren", () => (
   <AxisTheme>
       <>
           <Heading level="4"> responsiveChildren = false </Heading>
