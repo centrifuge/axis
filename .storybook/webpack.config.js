@@ -1,39 +1,23 @@
-module.exports = (baseConfig, env, config) => {
-  // Find Babel Loader
-  const babelRules = config.module.rules.filter(rule => {
-    let isBabelLoader = false;
+const resolve = require("path").resolve;
 
-    if (rule.loader && rule.loader.includes("babel-loader")) {
-      isBabelLoader = true;
-    }
-
-    if (rule.use) {
-      rule.use.forEach(use => {
-        if (typeof use === "string" && use.includes("babel-loader")) {
-          isBabelLoader = true;
-        } else if (
-          typeof use === "object" &&
-          use.loader &&
-          use.loader.includes("babel-loader")
-        ) {
-          isBabelLoader = true;
-        }
-      });
-    }
-
-    return isBabelLoader;
-  });
-
-  babelRules.forEach(rule => {
-    rule.include = /../;
-    rule.exclude = /node_modules/;
-  });
-
-  config.module.rules.push({
-    test: /\.stories\.js?$/,
-    loaders: [require.resolve("@storybook/addon-storysource/loader")],
-    enforce: "pre"
-  });
-
-  return config;
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loaders: ["file-loader"],
+        include: resolve(__dirname, "../")
+      },
+      // TODO fix this bit and make storysource plugin work
+      {
+        test: /\.\/src\/\.(js|jsx)$/,
+        loaders: [require.resolve("@storybook/addon-storysource/loader")],
+        enforce: "pre"
+      }
+    ]
+  },
+  // TODO load custom loader/resolver in order to target src instead of dist and remove source prop from package.json
+  resolve: {
+    mainFields: ["browser", "module", "main", "source"]
+  }
 };

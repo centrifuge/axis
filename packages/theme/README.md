@@ -1,4 +1,4 @@
-# `theme`
+# `AxisTheme`
 
 > TODO: description
 

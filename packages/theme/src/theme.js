@@ -1,239 +1,501 @@
-import { generate } from "grommet";
+import { css } from "styled-components";
+import { generate } from "grommet/themes";
+import {Button, Select} from "grommet";
 import { deepMerge } from "grommet/utils/object";
-import { createGlobalStyle, ThemeProvider } from "styled-components/macro";
+import { Close } from "grommet-icons";
 
-const brandColor = "#FF9F00";
-const accentColors = ["#43C17B", "#46C2B9", "#D3DB5E", "#CC48CE"];
+/*
+  REUSED VARIABLES
+*/
 
-const statusColors = {
-  critical: "#D82242",
-  error: "#D82242",
-  warning: "#B8B043",
-  ok: "#0E8800",
-  unknown: "#0E8800",
-  disabled: "#0E8800"
+
+export const baseSpacing = 24;
+export const scale = 6;
+
+const baseFontSize = baseSpacing * 0.75; // 18
+const fontScale = baseSpacing / scale; // 4
+
+const base = generate(baseSpacing, scale);
+
+export const borderWidth = 1;
+
+export const fwRegular = 400;
+export const fwMedium = 500;
+export const fwDemibold = 600;
+
+export const ffStack = `AvenirNextLTW01, 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'`;
+
+export const breakpoints = {
+  small: {
+    value: 768,
+    edgeSize: {
+      xxlarge: "72px",
+      xxxlarge: "120px"
+    }
+  },
+  medium: {
+    value: 1200
+  },
+  large: {}
 };
 
-const darkColors = [
-  "#212121",
-  "#303030",
-  "#3C3C3C",
-  "#454545",
-  "#666666",
-  "#777777"
-];
+const brandColor = "#2762FF";
+const brand2Color = "#FCBA59";
 
-const lightColors = [
-  "#F1F3F4",
-  "#DDDDDD",
-  "#C8C8C8",
-  "#B8B8B8",
-  "#A8A8A8",
-  "#979797"
-];
-
-const baseTheme = generate();
-
-const colorArray = (array, prefix) => {
-  let colors = {};
-  array.forEach((color, index) => {
-    colors[`${prefix}-${index + 1}`] = color;
-  });
-  return colors;
+const gitcoinColors = {
+  open: "#7ED321",
+  started: brand2Color,
+  Feature: "#FFC2D2",
+  Bug: "#FFB5AE",
+  Improvement: "#9EFFF7",
+  Security: "#95FF94",
+  Documentation: "#94FFED",
+  Design: "#FF85C9",
+  "Code Review": "#FFCE9E",
+  Other: "#C2DBFF"
 };
 
-const colorMap = (map, prefix) => {
-  let colors = {};
-  Object.keys(map).forEach(key => {
-    colors[`${prefix}-${key}`] = map[key];
-  });
-  return colors;
+const black = "#000";
+const white = "#fff";
+
+/*
+  HEADINGS
+*/
+
+const isHeader = props => (props.level <= 2 || !props.level ? true : false);
+
+const isSubheader = props => (props.level >= 3 ? true : false);
+
+const generateHeadingSizes = specs => ({
+  small: specs,
+  medium: specs,
+  large: specs,
+  xlarge: specs,
+  xxlarge: specs
+});
+
+const headerSpecMedium = {
+  size: "20px",
+  height: "32px",
+  maxWidth: ""
 };
 
-export const axisTheme = deepMerge(baseTheme, {
+const subheaderSpecMedium = {
+  size: "16px",
+  height: "24px",
+  maxWidth: ""
+};
+
+const headerSizes = generateHeadingSizes(headerSpecMedium);
+
+const subheaderSizes = generateHeadingSizes(subheaderSpecMedium);
+
+/*
+  TEXT & PARAGRAPHS
+*/
+
+const textSpecMedium = {
+  size: "14px",
+  height: "24px",
+  maxWidth: ""
+};
+
+const textSpecLarge = {
+  size: "16px",
+  height: "32px",
+  maxWidth: ""
+};
+
+const textSpecs = {
+  small: textSpecMedium,
+  medium: textSpecMedium,
+  large: textSpecLarge,
+  xlarge: textSpecLarge,
+  xxlarge: textSpecLarge
+};
+
+const textSizes = {
+  ...textSpecs,
+  extend: props => css`
+    ${props.textAlign &&
+  props.textAlign === "justify" &&
+  css`
+        text-align: justify;
+      `};
+
+    ${props.hyphens &&
+  css`
+        hyphens: ${props.hyphens === true ? "auto" : "unset"};
+      `}
+  `
+};
+
+/*
+  THEME BOI
+*/
+
+export const axisThemeConfig = deepMerge(base, {
   global: {
     colors: {
-      background: darkColors[0],
-      active: brandColor,
-      black: "#000000",
-      border: darkColors[2],
-      control: brandColor,
-      focus: darkColors[2],
-      placeholder: lightColors[2],
-      text: lightColors[0],
-      secondaryText: lightColors[3],
-      white: "#FFFFFF",
+      "accent-1": brand2Color,
+      focus: brandColor,
       brand: brandColor,
-      ...colorArray(darkColors, "dark"),
-      ...colorArray(lightColors, "light"),
-      ...colorArray(accentColors, "accent"),
-      ...colorMap(statusColors, "status")
+      // @NOTE: redifining these colors breaks the normalizeColor function
+      // black,
+      // white,
+      text: {
+        dark: white,
+        light: black
+      },
+      grey: "#BDBDBD",
+      border: black,
+      placeholder: "grey",
+      alert: "#e6f5ff",
+      ...gitcoinColors
     },
-    elevation: {
-      light: {
-        xsmall: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-        small: "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
-        medium: "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
-        large: "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)",
-        xlarge: "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)"
+    hover: {
+      color: {
+        light: "brand",
+        dark: "white"
+      }
+    },
+    size: {
+        small:'302px',
+    },
+    breakpoints: { ...breakpoints },
+    deviceBreakpoints: {
+      phone: "small",
+      tablet: "large",
+      computer: "large"
+    },
+    edgeSize: {
+      xxlarge: "144px",
+      xxxlarge: "192px"
+    },
+    input: {
+      weight: fwMedium
+    },
+    control: {
+      border: {
+        // NOTE: two below properties are not passed to the theme
+        side: "bottom",
+        color: "black",
+        // These work
+        radius: "0px",
+        width: "1px"
       }
     },
     font: {
-      family: "'Roboto', Arial, sans-serif",
-      size: "14px"
-    },
-    focus: {},
-    input: {
-      weight: 500
-    },
-
-    scrollWidth: "8px"
+      family: ffStack,
+      weight: fwRegular,
+      size: "14px",
+      height: 1.5
+    }
   },
-  anchor: {
-    color: "brand"
+  icon: {
+    extend: css`
+      fill: ${black};
+      stroke: ${black};
+    `
   },
-
   heading: {
-    level: {
-      1: {
-        large: { size: "50px", height: "56px", maxWidth: "1200px" },
-        medium: { size: "34px", height: "40px", maxWidth: "816px" },
-        small: { size: "26px", height: "32px", maxWidth: "624px" }
-      },
-      2: {
-        large: { size: "34px", height: "40px", maxWidth: "816px" },
-        medium: { size: "26px", height: "32px", maxWidth: "624px" },
-        small: { size: "26px", height: "32px", maxWidth: "624px" }
-      },
-      3: {
-        large: { size: "26px", height: "32px", maxWidth: "624px" },
-        medium: { size: "22px", height: "28px", maxWidth: "528px" },
-        small: { size: "22px", height: "28px", maxWidth: "528px" }
-      },
-      4: {
-        large: { size: "18px", height: "24px", maxWidth: "432px" },
-        medium: { size: "18px", height: "24px", maxWidth: "432px" },
-        small: { size: "18px", height: "24px", maxWidth: "432px" }
-      }
+    weight: fwDemibold,
+    responsiveBreakpoint: null,
+    extend: props => css`
+      font-family: ${ffStack};
+    `
+  },
+  paragraph: textSizes,
+  text: textSizes,
+  anchor: {
+    fontWeight: props => (props.bold ? fwDemibold : fwRegular),
+    textDecoration: "underline",
+    color: {
+      dark: "white",
+      light: "black"
     },
-    extend: props => {
-      let dynamicStyles = "";
-      if (props.stretch) {
-        dynamicStyles = `
-          max-width: 100%;
-        `;
-      }
-
-      return dynamicStyles;
-    }
-  },
-  preloader: {
-    color: lightColors[0],
-    size: {
-      small: "24px",
-      medium: "48px",
-      large: "64px"
+    hover: {
+      extend: css`
+        color: ${brandColor};
+      `
     },
-    thickness: {
-      small: 1,
-      medium: 2,
-      large: 2
-    }
+    extend: css`
+      &:active {
+        opacity: 0.9;
+      }
+    `
   },
-
-  text: {
-    xlarge: { size: "22px", height: "28px", maxWidth: "528px" },
-    large: { size: "18px", height: "24px", maxWidth: "432px" },
-    medium: { size: "14px", height: "20px", maxWidth: "336px" },
-    xxlarge: { size: "26px", height: "32px", maxWidth: "624px" },
-    small: { size: "14px", height: "20px", maxWidth: "336px" },
-    xsmall: { size: "12px", height: "18px", maxWidth: "288px" }
-  },
-  paragraph: {
-    large: { size: "18px", height: "24px", maxWidth: "528px" },
-    medium: { size: "14px", height: "20px", maxWidth: "432px" },
-    small: { size: "12px", height: "18px", maxWidth: "436px" },
-    xlarge: { size: "22px", height: "28px", maxWidth: "624px" }
+  box: {
+    extend: props => css`
+      // 
+      ${props.responsiveChildren && css`
+        > * {
+          flex: 1;
+        }
+      `}
+       
+    `
   },
   button: {
-    color: "light-3",
-    border: {
-      radius: "3px"
-    },
     padding: {
-      vertical: "4px",
-      horizontal: "12px"
+      horizontal: `${32 - borderWidth}px`,
+      vertical: `${8 - borderWidth}px`
     },
-    extend: props => {
-      let dynamicStyles = "";
-      if (props.secondary) {
-        dynamicStyles = ` 
-          color: ${props.theme.global.colors["brand"]};
-          &:hover {
-            background: ${props.theme.global.colors["brand"]};
-            color:white;
-          }
-        `;
-      } else if (props.primary) {
-        dynamicStyles = `
-          color: white;
-        `;
-      } else if (props.plain) {
-        dynamicStyles = `
-          padding: 0px;
-        `;
-      } else {
-        dynamicStyles = ` 
-          background: ${props.theme.global.colors["dark-4"]};
-          border-color: ${props.theme.global.colors["dark-4"]};
-          &:hover {
-            border-color: ${props.theme.global.colors["dark-4"]};
-          }
-        `;
+    border: {
+      radius: "40px",
+      width: `${borderWidth}px`,
+      color: {
+        dark: "white",
+        light: "black"
       }
-      return `
-        font-size: ${props.theme.text.small.size}; 
-         svg {
-          width:24px;
-          height:24px;
-          display:block
+    },
+    color: {
+      dark: "white",
+      light: "black"
+    },
+    primary: {
+      color: {
+        dark: "white",
+        light: "black"
+      }
+    },
+    extend: props => css`
+      font-weight: ${fwMedium};
+      font-family: ${ffStack};
+      text-align: center;
+      font-size: 16px;
+      line-height: 24px;
+      
+       ${!props.disabled && css`
+
+          &:hover {
+            
+            box-shadow: none;
+            border-color: ${brandColor};
+        
+            ${!props.primary &&
+            css`
+                color: ${brandColor};
+            ` || 
+            css`
+              background-color: ${brandColor};
+            `
+            }   
+          }
+          &:active {
+            opacity: 0.9;
+          }      
+       `}
+
+      
+
+
+      /* NEW PROP: textAlign
+       * Sets default text-align to center, and enables changing of it per-button-level
+       */
+      ${
+        !props.textAlign
+            ? css`
+              text-align: center;
+            `
+            : css`
+              text-align: ${props.textAlign};
+            `
         }
-        &:hover {
-          
-          box-shadow: none;
-        }  
-        ${dynamicStyles}
-      `;
-    }
+
+      /* NEW PROP: underline
+       * Adds an underline to buttons, ideally used with 'plain' button type
+       */
+      ${props.underline &&
+    css`
+          text-decoration: underline;
+        `}
+
+      /* NEW PROP: white
+       * Customizes the hover background & border colors 
+       */
+      ${props.white &&
+    css`
+          &:hover {
+            background-color: ${white};
+            border-color: ${white};
+          }
+        `}
+    `
   },
-  textInput: {
-    extend: props => {
-      return `
-      background: ${props.theme.global.colors["dark-4"]};
-      `;
-    }
+  calendar: {
+    // daySize must align with global.size
+    small: {
+      fontSize: `${baseFontSize - fontScale}px`,
+      lineHeight: 1.375,
+      daySize: `${(baseSpacing * 12) / 7}px`,
+      slideDuration: '0.2s',
+    },
+  },
+  dateInput:{
+
   },
   textArea: {
-    extend: props => {
-      let dynamicStyles = "";
-      if (props.fullHeight) {
-        dynamicStyles = `
-          height:100%;
-          resize: none;
-        `;
+    extend: css``
+  },
+  textInput: {
+    extend: props => css`
+      /* NEW PROP: newsletter
+       * Creates a custom styled textInput with a nice single bottom border
+       */
+      ${props.newsletter &&
+    css`
+          font-weight: ${fwMedium};
+          font-family: ${ffStack};
+          color: ${black};
+          border: none;
+          border-bottom: ${borderWidth}px solid
+            ${props.newsletter && props.dark ? black : white};
+          border-radius: 0;
+          padding-bottom: calc(11px - 1px);
+        `}
+    `
+  },
+  formField: {
+    label: {
+      color: "black",
+      weight: fwRegular,
+      margin: {
+        top: "none",
+        vertical: "2px",
+        horizontal: undefined
       }
-
-      return `
-        background: ${props.theme.global.colors["dark-4"]};
-        ${dynamicStyles}
-      `;
+    },
+    margin: 0,
+    extend: css`
+      
+      label {
+        line-height: 1;
+      }
+      input {
+        padding: 16px 0 15px 0;
+        line-height: 1;
+      }
+      button {
+        box-shadow: none;
+      }
+    `
+  },
+  table: {
+    /* NOTE:
+     *
+     */
+    extend: css``,
+    header: {
+      pad: {
+        left: "none"
+      },
+      background: {},
+      border: {
+        side: "bottom",
+        color: black
+      }
+    },
+    body: {
+      pad: {
+        left: "none"
+      },
+      fill: "vertical",
+      border: {
+        side: "bottom",
+        color: "grey"
+      },
+      extend: css``
+    },
+    footer: {
+      border: {
+        side: "none"
+      },
+      extend: css``
     }
   },
   layer: {
-    background: "dark-2"
+    overlay: {
+      background: "rgba(0, 0, 0, 0.2)"
+    },
+    extend: css``
   },
-  formField: {
-    border: null,
-    help: { color: "light-4" }
+  dataTable: {
+    primary: {
+      weight: fwRegular
+    }
+  },
+  tab: {
+    color: "black",
+    margin: "none",
+    pad: {
+      horizontal: "medium"
+    },
+    border: {
+      side: "bottom",
+      size: "1px",
+      color: {
+        dark: "grey",
+        light: "grey"
+      },
+      active: {
+        color: {
+          dark: "white",
+          light: "brand"
+        }
+      },
+      hover: {
+        color: {
+          dark: "white",
+          light: "black"
+        }
+      }
+    },
+    active: { color: "text", background: undefined },
+    hover: {
+      color: {
+        light: "black",
+        dark: "brand"
+      }
+    }
+  },
+
+  tabs: {
+    gap: "none",
+    header: {
+      extend: css`
+        justify-content: flex-start;
+      `
+    },
+    panel: {
+      extend: css``
+    },
+    extend: css``
+  },
+
+  // Axis custom components
+  modal: {
+    icons: {
+      close: Close
+    }
+  },
+
+  section: {
+    heading: {
+      level: 3,
+      gap: "medium"
+    },
+    border: {
+      side: "bottom",
+      size: "xsmall",
+      color: "gray"
+    }
+  },
+  select: {
+    control: {
+      extend: css`
+        font-size: inherit;
+      `
+    }
   }
 });
