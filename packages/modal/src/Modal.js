@@ -4,40 +4,46 @@ import { withTheme } from "styled-components";
 
 export const Modal = withTheme(props => {
   const Close = props.theme.modal.icons.close;
-  const {headingProps} = props;
-  if (props.opened)
+  const {
+      headingProps,
+      onClose,
+      opened,
+      children,
+      title,
+      ...rest
+  } = props;
+
+  if (opened)
       return (
             <Layer
               position="center"
               modal
-              onClickOutside={props.onClose}
-              onEsc={props.onClose}
+              onClickOutside={onClose}
+              onEsc={onClose}
             >
               <Box
                 round="small"
                 background="white"
-                elevation="medium"
-                fill="vertical"
-                width={props.size}
                 pad="medium"
+                {...rest}
               >
                 <Box
                   flex={false}
                   direction="row"
                   alignContent="center"
-                  justify={props.title ? "between" : "end"}
+                  justify={title ? "between" : "end"}
                 >
-                  {props.title && (
+                  {title && (
                     <Heading level={2} margin={{top:'none',bottom:'none',left:"none",right:'medium'}} {...headingProps}>
-                      {props.title}
+                      {title}
                     </Heading>
                   )}
-                  {props.onClose && (
-                    <Button plain label={<Close />} onClick={props.onClose} />
+                  {onClose && (
+                    <Button plain label={<Close />} onClick={onClose} />
                   )}
                 </Box>
 
-                {props.children}
+                {children}
               </Box>
             </Layer>
 
