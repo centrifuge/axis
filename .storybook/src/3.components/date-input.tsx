@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import {storiesOf} from "@storybook/react";
 
-import {AxisTheme} from "../../../packages/theme/src/";
+import {AxisTheme} from "../../../packages/theme";
 import {DateInput} from "../../../packages/date-input/src";
 import {Box, FormField} from "grommet/es6";
 import {Select, TextInput} from "grommet";

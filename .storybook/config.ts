@@ -1,6 +1,6 @@
 import { addParameters, configure } from "@storybook/react";
 
-const req = require.context("./src", true, /.js$/);
+const req = require.context("./src", true, /.tsx$/);
 
 function loadStories() {
   console.log("Load Stories", req.keys());
