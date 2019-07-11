@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {storiesOf} from "@storybook/react";
 
-import {AxisTheme} from "../../../packages/theme/src/";
+import {AxisTheme} from "../../../packages/theme";
 import {Box, Button, Paragraph} from "grommet";
 import {Modal} from "../../../packages/modal/src/";
 

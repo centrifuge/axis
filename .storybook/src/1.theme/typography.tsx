@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { AxisTheme } from "../../../packages/theme/src/";
+import { AxisTheme } from "../../../packages/theme";
 import { Box, Heading, Paragraph } from "grommet";
 
 const headingSizes = ["xlarge", "large", "medium", "small"];
