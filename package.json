@@ -36,12 +36,17 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "@storybook/addon-actions": "^5.0.3",
+    "@storybook/addon-info": "^5.1.9",
     "@storybook/addon-links": "^5.0.3",
     "@storybook/addon-options": "^5.0.3",
     "@storybook/addon-storysource": "^5.0.3",
     "@storybook/addon-viewport": "^5.0.3",
     "@storybook/addons": "^5.0.3",
     "@storybook/react": "^5.0.3",
+    "@types/jest": "^24.0.15",
+    "@types/react": "^16.8.23",
+    "@types/storybook__react": "^4.0.2",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-jest": "^24.1.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-styled-components": "^1.10.0",
@@ -55,6 +60,7 @@
     "jest": "^24.1.0",
     "lerna": "^3.13.1",
     "react": "^16.8.3",
+    "react-docgen-typescript-loader": "^3.1.0",
     "react-dom": "^16.8.3",
     "react-test-renderer": "^16.7.0",
     "rollup": "^1.1.2",
@@ -64,7 +70,9 @@
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-progress": "^1.0.0",
     "rollup-plugin-url": "^2.2.0",
-    "styled-components": "4.2.1"
+    "styled-components": "4.2.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.2"
   },
   "jest": {
     "setupFilesAfterEnv": [
@@ -110,6 +118,8 @@
     "@centrifuge/axis-modal": "file:packages/modal",
     "@centrifuge/axis-theme": "file:packages/theme",
     "@centrifuge/axis-section": "file:packages/section",
-    "@centrifuge/axis-number-input": "file:packages/number-input"
+    "@centrifuge/axis-date-input": "file:packages/date-input",
+    "@centrifuge/axis-number-input": "file:packages/number-input",
+    "@centrifuge/axis-spinner": "file:packages/spinner"
   }
 }

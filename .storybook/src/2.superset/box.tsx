@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { AxisTheme } from "../../../packages/theme/src/";
+import { AxisTheme } from "../../../packages/theme/";
 import {Box, Heading} from "grommet";
 
 storiesOf("Superset | Box", module).add("responsiveChildren", () => (

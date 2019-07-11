@@ -1,12 +1,15 @@
 // Global Styles
 import React from "react";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { Grommet, ThemeContext } from "grommet";
+import {createGlobalStyle, ThemeProvider} from "styled-components";
+import {Grommet, ThemeContext} from "grommet";
 
-import { axisThemeConfig, fwDemibold, ffStack } from "./theme";
+import {axisThemeConfig, ffStack, fwDemibold} from "./theme";
 
+// @ts-ignore
 import AvenirNextLTW01 from "../fonts/721263/2cd55546-ec00-4af9-aeca-4a3cd186da53.woff2";
+// @ts-ignore
 import AvenirNextLTW01_500 from "../fonts/721275/627fbb5a-3bae-4cd9-b617-2f923e29d55e.woff2";
+// @ts-ignore
 import AvenirNextLTW01_600 from "../fonts/721269/aad99a1f-7917-4dd6-bbb5-b07cedbff64f.woff2";
 
 const GlobalsStyles = createGlobalStyle`
@@ -41,15 +44,13 @@ const GlobalsStyles = createGlobalStyle`
   }
 `;
 
-
-console.log(axisThemeConfig);
-export const AxisTheme = ({ theme, children, ...rest }) => {
-  return (
-    <Grommet theme={theme || axisThemeConfig} {...rest}>
-      <GlobalsStyles />
-      <ThemeContext.Consumer>
-        {theme => <ThemeProvider theme={theme}>{children}</ThemeProvider>}
-      </ThemeContext.Consumer>
-    </Grommet>
-  );
+export const AxisTheme = ({theme, children, ...rest}) => {
+    return (
+        <Grommet theme={theme || axisThemeConfig} {...rest}>
+            <GlobalsStyles/>
+            <ThemeContext.Consumer>
+                {theme => <ThemeProvider theme={theme}>{children}</ThemeProvider>}
+            </ThemeContext.Consumer>
+        </Grommet>
+    );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import {storiesOf} from "@storybook/react";
 
-import {AxisTheme} from "../../../packages/theme/src/";
+import {AxisTheme} from "../../../packages/theme";
 import {NumberInput} from "@centrifuge/axis-number-input";
 import {FormField, TextInput} from "grommet";
 

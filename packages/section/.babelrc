@@ -6,9 +6,12 @@
         "modules": false
       }
     ],
-    "@babel/preset-react"
+    "@babel/preset-react",
+    "@babel/preset-typescript",
+
   ],
   "plugins": [
+    "transform-class-properties",
     "babel-plugin-styled-components"
   ],
   "env": {
@@ -20,7 +23,8 @@
             "useBuiltIns": "entry"
           }
         ],
-        "@babel/preset-react"
+        "@babel/preset-typescript",
+        "@babel/preset-react",
       ],
       "plugins": [
         "transform-class-properties",
