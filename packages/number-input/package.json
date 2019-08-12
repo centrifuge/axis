@@ -27,11 +27,10 @@
     "url": "https://github.com/centrifuge/axis/issues"
   },
   "peerDependencies": {
-    "grommet": "2.7.1",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "styled-components": "4.2.1"
+    "grommet": "2.7.x",
+    "react": ">= 16.6.1",
+    "react-dom": ">= 16.6.1",
+    "styled-components": ">= 4.x"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -60,5 +59,8 @@
     "rollup-plugin-url": "^2.2.0",
     "typescript": "^3.5.2"
   },
-  "gitHead": "ef53db97aa8cc0b402b3544a731dc10c9ff12641"
+  "gitHead": "ef53db97aa8cc0b402b3544a731dc10c9ff12641",
+  "dependencies": {
+    "react-number-format": "^4.2.0"
+  }
 }
