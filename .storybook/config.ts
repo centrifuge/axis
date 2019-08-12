@@ -12,6 +12,7 @@ addParameters({
     theme: {
       brandTitle: "Centrifuge Axis",
       brandUrl: "https://axis.centrifuge.io",
+      storybookPreviewBackground:'red',
       brandImage:
         "https://centrifuge.io/static/centrifuge-wordmark-dc6013383eb23cacc311a28aa17419fb.svg"
     }
