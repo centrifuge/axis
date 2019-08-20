@@ -29,4 +29,3 @@ export const Section = withTheme(props => {
       <Collapsible open={opened}>{props.children}</Collapsible>
     </Box>
   );
-});

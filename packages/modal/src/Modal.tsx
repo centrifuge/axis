@@ -1,17 +1,37 @@
-import React from "react";
-import { Box, Button, Heading, Layer } from "grommet";
-import { withTheme } from "styled-components";
+import React, {FunctionComponent} from "react";
+import {Box, BoxProps, Button, Heading, HeadingProps, Layer} from "grommet";
+import {withTheme, ThemeProps as StyledThemeProps} from "styled-components";
+import {Close, Icon} from "grommet-icons";
+import {defaultProps, extendDefaultTheme} from "grommet/default-props";
 
-export const Modal = withTheme(props => {
-  const Close = props.theme.modal.icons.close;
-  const {
-      headingProps,
-      onClose,
-      opened,
-      children,
-      title,
-      ...rest
-  } = props;
+
+interface ThemeProps {
+  modal: {
+    icons: {
+      close: Icon,
+    }
+  }
+}
+
+interface Props extends BoxProps, StyledThemeProps<ThemeProps>{
+  headingProps?: HeadingProps;
+  title?: string;
+  opened? : boolean,
+  onClose?: ()=>{}
+}
+
+export const Modal: FunctionComponent<Props> = (
+  {
+    headingProps,
+    onClose,
+    opened,
+    children,
+    title,
+    theme,
+    ...rest
+  }
+) => {
+  const CloseIcon = theme.modal.icons.close;
 
   if (opened)
       return (
@@ -23,7 +43,7 @@ export const Modal = withTheme(props => {
             >
               <Box
                 round="small"
-                background="white"
+                background={"white"}
                 pad="medium"
                 {...rest}
               >
@@ -39,7 +59,7 @@ export const Modal = withTheme(props => {
                     </Heading>
                   )}
                   {onClose && (
-                    <Button plain label={<Close />} onClick={onClose} />
+                    <Button plain label={<CloseIcon />} onClick={onClose} />
                   )}
                 </Box>
 
@@ -50,4 +70,22 @@ export const Modal = withTheme(props => {
       );
 
   return null;
-});
+};
+
+const defaultThemeProps: ThemeProps = {
+  modal: {
+    icons: {
+      close: Close
+    }
+  }
+};
+
+extendDefaultTheme(defaultThemeProps);
+
+Modal.defaultProps = {
+  ...defaultProps
+};
+
+
+
+export default withTheme(Modal);
