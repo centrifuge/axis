@@ -3,10 +3,7 @@ import {css, withTheme} from "styled-components";
 import NumberFormat, {NumberFormatValues} from 'react-number-format';
 import {TextInput} from "grommet";
 import {sizeStyle} from "grommet-styles";
-import {defaultProps} from "grommet/default-props";
 
-
-// TODO Fork react-currency-input and use pure grommet components
 export const NumberInput = withTheme((props) => {
   // Props get passed to the html input and React will trow errors for unsuported input porps
   // Do must clean up custom props here
