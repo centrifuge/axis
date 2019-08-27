@@ -13,7 +13,7 @@ storiesOf("Components | Modal", module)
             render() {
                 return (
                     <AxisTheme>
-                        <Box fill align="center" justify="center">
+                        <Box fill align="center" justify="center" pad={'medium'}>
                             <Button
                                 label={"Open Modal"}
                                 onClick={() => {
@@ -58,7 +58,7 @@ storiesOf("Components | Modal", module)
             render() {
                 return (
                     <AxisTheme>
-                        <Box fill align="center" justify="center">
+                        <Box fill align="center" justify="center" pad={'medium'}>
                             <Button
                                 label={"Open Modal"}
                                 onClick={() => {
@@ -104,7 +104,7 @@ storiesOf("Components | Modal", module)
             render() {
                 return (
                     <AxisTheme>
-                        <Box fill align="center" justify="center">
+                        <Box fill align="center" justify="center" pad={'medium'}>
                             <Button
                                 label={"Open Modal"}
                                 onClick={() => {

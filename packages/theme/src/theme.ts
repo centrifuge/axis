@@ -2,7 +2,7 @@ import { css } from "styled-components";
 import { generate } from "grommet/themes";
 import {Button, Select} from "grommet";
 import { deepMerge } from "grommet/utils/object";
-import { Close } from "grommet-icons";
+import { Close, FormClose } from "grommet-icons";
 
 /*
   REUSED VARIABLES
@@ -333,7 +333,10 @@ export const axisThemeConfig = deepMerge(base, {
     },
   },
   dateInput:{
-
+    icons: {
+      close: FormClose,
+      margin: { horizontal: 'small' }
+    }
   },
   textArea: {
     extend: css``

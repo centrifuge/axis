@@ -19,7 +19,7 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "jsx": "preserve",
-    "isolatedModules": true,
+    "isolatedModules": false,
     "strictPropertyInitialization": false,
     "lib": [
       "dom",
