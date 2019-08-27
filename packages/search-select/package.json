@@ -1,9 +1,9 @@
 {
-  "name": "@centrifuge/axis-section",
+  "name": "@centrifuge/axis-search-select",
   "version": "0.3.1",
-  "description": "Sample component",
+  "description": "Search Select",
   "author": "razvan <razvan@centrifuge.io>",
-  "homepage": "https://github.com/centrifuge/axis/tree/master/packages/search-select#readme",
+  "homepage": "https://github.com/centrifuge/axis/tree/master/packages/a-sample-component#readme",
   "license": "ISC",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

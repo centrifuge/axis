@@ -81,8 +81,11 @@
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "packages/**/src/**/*.js",
-      "!packages/a-sample-package/**",
+      "!**/?(*.).js?(x)",
+      "!**/?(*.).ts?(x)",
+      "!**/?(*.)(test).js?(x)",
+      "!**/?(*.)(test).ts?(x)",
+      "!packages/axis-sample-package/**",
       "!**/node_modules/**",
       "!**/storybook/**"
     ],
@@ -99,7 +102,7 @@
       "<rootDir>/coverage/"
     ],
     "transform": {
-      "^.+\\.(js|jsx|ts)$": "babel-jest"
+      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
     },
     "transformIgnorePatterns": [
       "<rootDir>/node_modules/(?!(styled-icons)/)"
@@ -108,11 +111,12 @@
       "NODE_ENV": "test"
     },
     "testMatch": [
-      "**/?(*.)(test).js?(x)"
+      "**/?(*.)(test).js?(x)",
+      "**/?(*.)(test).ts?(x)"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",
-      "<rootDir>/packages/a-sample-package/"
+      "<rootDir>/packages/axis-sample-package/"
     ]
   },
   "dependencies": {
@@ -120,6 +124,7 @@
     "@centrifuge/axis-theme": "file:packages/theme",
     "@centrifuge/axis-section": "file:packages/section",
     "@centrifuge/axis-date-input": "file:packages/date-input",
+    "@centrifuge/axis-search-select": "file:packages/search-select",
     "@centrifuge/axis-number-input": "file:packages/number-input",
     "@centrifuge/axis-spinner": "file:packages/spinner"
   }
