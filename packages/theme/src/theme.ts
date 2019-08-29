@@ -482,6 +482,29 @@ export const axisThemeConfig = deepMerge(base, {
       close: Close
     }
   },
+  multipleSelect: {
+    size: 'medium',
+    // Supports all BoxProps
+    itemsContainer: {
+      wrap: true,
+      direction: 'row',
+      pad: {vertical: 'xsmall'}
+    },
+    icons: {
+      close: Close,
+      size:'small',
+    },
+    // Supports all BoxProps
+    item: {
+      margin: {vertical: '5px', 'right': 'xsmall'},
+      pad: {vertical: 'xsmall', horizontal: 'xsmall'},
+      background: 'light-4',
+      direction: 'row',
+      align: 'center',
+      round: 'xsmall',
+      gap: 'xsmall',
+    }
+  },
 
   section: {
     heading: {

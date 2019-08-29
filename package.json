@@ -16,7 +16,7 @@
   "homepage": "https://github.com/centrifuge/axis/#readme",
   "scripts": {
     "start": "NODE_ENV=development start-storybook -p 5003 -c .storybook",
-    "test": "jest --no-cache --coverage --verbose",
+    "test": "jest --watch --no-cache --coverage --verbose",
     "bootstrap": "lerna bootstrap",
     "build": "lerna exec --stream -- rollup -c",
     "build-storybook": "build-storybook -c .storybook -o storybook-static",
@@ -54,8 +54,8 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-react-app": "^7.0.2",
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.9.1",
+    "enzyme": "3.10.0",
+    "enzyme-adapter-react-16": "1.14.0",
     "glob-loader": "^0.3.0",
     "grommet": "^2.7.5",
     "jest": "^24.1.0",
@@ -63,7 +63,7 @@
     "react": "^16.8.3",
     "react-docgen-typescript-loader": "^3.1.0",
     "react-dom": "^16.8.3",
-    "react-test-renderer": "^16.7.0",
+    "react-test-renderer": "^16.9.0",
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-filesize": "^6.0.1",
@@ -125,6 +125,7 @@
     "@centrifuge/axis-section": "file:packages/section",
     "@centrifuge/axis-date-input": "file:packages/date-input",
     "@centrifuge/axis-search-select": "file:packages/search-select",
+    "@centrifuge/axis-multiple-select": "file:packages/mutiple-select",
     "@centrifuge/axis-number-input": "file:packages/number-input",
     "@centrifuge/axis-spinner": "file:packages/spinner"
   }
