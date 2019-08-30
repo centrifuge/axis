@@ -2,19 +2,18 @@ import React from 'react';
 import {mount, shallow} from 'enzyme';
 import {SelectContainer} from 'grommet/components/Select/SelectContainer'
 import {SelectOption} from 'grommet/components/Select/SelectOption'
-import SearchSelect from './SearchSelect';
+import MultipleSelect, {defaultThemeProps} from './MultipleSelect';
 import {Select, TextInput} from "grommet";
 import {act} from 'react-dom/test-utils';
 
-describe('Search Select', () => {
+describe('Multiple Select', () => {
   const inputProps = {
     labelKey: 'label',
     valueKey: 'value',
-    name: 'dropdown',
     onBlur: jest.fn(),
     onChange: jest.fn(),
     onFocus: jest.fn(),
-    value: undefined,
+    value: [],
   };
 
   const items = [
@@ -37,7 +36,7 @@ describe('Search Select', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(
-        <SearchSelect
+        <MultipleSelect
           {...inputProps}
           options={items}
         />,
@@ -51,7 +50,7 @@ describe('Search Select', () => {
 
     it('should open the drop on click and contain 3 items and SearchBar', () => {
 
-      expect(wrapper.find(TextInput).first().props().placeholder).toEqual('Select');
+    expect(wrapper.find(TextInput).first().props().placeholder).toEqual('Select');
       wrapper.simulate('click');
 
       const container = wrapper.find(SelectContainer);
@@ -60,11 +59,43 @@ describe('Search Select', () => {
       expect(container.find(SelectOption).length).toEqual(3);
     });
 
-    it('should select the proper element', () => {
+    it('should select the proper elements', () => {
       wrapper.simulate('click');
       wrapper.find(SelectOption).first().find('button').first().simulate('click');
-      expect(inputProps.onChange).toHaveBeenCalledWith(items[0]);
+      expect(inputProps.onChange).toHaveBeenCalledWith([items[0]]);
+
+      wrapper.simulate('click');
+      wrapper.find(SelectOption).at(1).find('button').first().simulate('click');
+      expect(inputProps.onChange).toHaveBeenCalledWith([items[1]]);
     });
+
+
+    it('should select and remove a element from the drop', () => {
+      wrapper.setProps({
+        value: [items[0],items[1]]
+      })
+      wrapper.simulate('click');
+      wrapper.find(SelectOption).first().find('button').first().simulate('click');
+      expect(inputProps.onChange).toHaveBeenCalledWith([items[1]]);
+      wrapper.simulate('click');
+      wrapper.find(SelectOption).at(1).find('button').first().simulate('click');
+      expect(inputProps.onChange).toHaveBeenCalledWith([items[0]]);
+    });
+
+
+    it('should  remove a element by clicking the close icons on a selected element', () => {
+      wrapper.setProps({
+        value: [items[0],items[1]]
+      })
+
+      wrapper.find(defaultThemeProps.multipleSelect.icons.close).first().simulate('click');
+      expect(inputProps.onChange).toHaveBeenCalledWith([items[1]]);
+
+      wrapper.find(defaultThemeProps.multipleSelect.icons.close).at(1).simulate('click');
+      expect(inputProps.onChange).toHaveBeenCalledWith([items[0]]);
+
+    });
+
 
     it('should filter out items to 1', () => {
       wrapper.simulate('click');

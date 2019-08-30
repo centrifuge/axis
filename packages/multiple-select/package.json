@@ -1,16 +1,15 @@
 {
-  "name": "@centrifuge/axis-theme",
+  "name": "@centrifuge/axis-mutiple-select",
   "version": "0.3.1",
-  "description": "Grommet theme superset for Centrifuge",
+  "description": "Search Select",
   "author": "razvan <razvan@centrifuge.io>",
-  "homepage": "https://github.com/centrifuge/axis/tree/master/packages/theme#readme",
+  "homepage": "https://github.com/centrifuge/axis/tree/master/packages/a-sample-component#readme",
   "license": "ISC",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "source": "src/index.ts",
   "files": [
     "dist",
-    "fonts",
     "src"
   ],
   "publishConfig": {
