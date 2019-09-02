@@ -1,9 +1,9 @@
 {
   "name": "@centrifuge/axis-mutiple-select",
   "version": "0.3.1",
-  "description": "Search Select",
+  "description": "Multiple Select",
   "author": "razvan <razvan@centrifuge.io>",
-  "homepage": "https://github.com/centrifuge/axis/tree/master/packages/a-sample-component#readme",
+  "homepage": "https://github.com/centrifuge/axis/tree/master/packages/multiple-select#readme",
   "license": "ISC",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
