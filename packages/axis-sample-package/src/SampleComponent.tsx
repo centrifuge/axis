@@ -26,9 +26,12 @@ export const SampleComponent: React.FunctionComponent<Props> = (
     theme
   }
 ) => {
+  //${theme.sampleComponent.margin} this will fail if
+  // it a theme is used and the style props are missing
+
   return (
     <div>
-      <p>{`${value} and ${theme.sampleComponent.margin}`}</p>
+      <p>{`${value}`}</p>
     </div>
   );
 };

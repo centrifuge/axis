@@ -338,6 +338,24 @@ export const axisThemeConfig = deepMerge(base, {
       margin: { horizontal: 'small' }
     }
   },
+  displayField: {
+    labelBox: {
+      // Supports all Box props
+      border: {
+        side: 'bottom',
+        color: 'light-4'
+      },
+    },
+    labelText: {
+      // Supports all Text props
+    },
+    anchor: {
+      // Supports all Anchor props.
+      color: 'brand',
+    },
+    extend: undefined,
+
+  },
   textArea: {
     extend: css``
   },
