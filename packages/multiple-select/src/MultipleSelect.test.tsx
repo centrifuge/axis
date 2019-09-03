@@ -59,6 +59,19 @@ describe('Multiple Select', () => {
       expect(container.find(SelectOption).length).toEqual(3);
     });
 
+
+    it('should open the drop on click and contain 2 items when changing the options prop', () => {
+
+      wrapper.setProps({
+        options: [items[0],items[1]]
+      })
+
+      wrapper.simulate('click');
+      const container = wrapper.find(SelectContainer);
+      expect(container.length).toEqual(1);
+      expect(container.find(SelectOption).length).toEqual(2);
+    });
+
     it('should select the proper elements', () => {
       wrapper.simulate('click');
       wrapper.find(SelectOption).first().find('button').first().simulate('click');
