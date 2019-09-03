@@ -406,7 +406,9 @@ export const axisThemeConfig = deepMerge(base, {
     /* NOTE:
      *
      */
-    extend: css``,
+    extend: css`
+      width: 100%;
+    `,
     header: {
       pad: {
         left: "none"
