@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Select, SelectProps} from 'grommet';
 
 
@@ -15,6 +15,10 @@ export const SearchSelect: React.FunctionComponent<Props> = (
   }
 ) => {
   const [filteredOptions, setFilteredOptions] = useState(options);
+
+  useEffect(() => {
+    setFilteredOptions(options)
+  },[options])
 
   const onSelect = selected => {
     //reset options

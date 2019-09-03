@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Box, BoxProps, Select, SelectProps, Text} from 'grommet';
 import {Close, Icon} from "grommet-icons";
 import {ThemeProps as StyledThemeProps, withTheme} from "styled-components";
@@ -34,6 +34,10 @@ export const MultipleSelect: React.FunctionComponent<Props> = (
   }
 ) => {
   const [filteredOptions, setFilteredOptions] = useState(options);
+
+  useEffect(() => {
+    setFilteredOptions(options)
+  },[options])
 
   const {multipleSelect: {size,itemsContainer,item, icons}} =  theme;
 
