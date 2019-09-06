@@ -2,7 +2,7 @@ import { css } from "styled-components";
 import { generate } from "grommet/themes";
 import {Button, Select} from "grommet";
 import { deepMerge } from "grommet/utils/object";
-import { Close, FormClose } from "grommet-icons";
+import { Close, FormClose,Menu, User } from "grommet-icons";
 
 /*
   REUSED VARIABLES
@@ -523,6 +523,15 @@ export const axisThemeConfig = deepMerge(base, {
       align: 'center',
       round: 'xsmall',
       gap: 'xsmall',
+    }
+  },
+
+  navBar: {
+
+    icons:{
+      menu: Menu,
+      close: Close,
+      user: User
     }
   },
 
