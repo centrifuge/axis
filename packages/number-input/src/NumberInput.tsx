@@ -25,7 +25,7 @@ export const NumberInput = withTheme((props) => {
       placeholder={getPlaceholder()}
       thousandSeparator="," decimalScale={precision}
       allowNegative={false} prefix={prefix} suffix={suffix} customInput={TextInput}
-      isNumericString value={value} onValueChange={onChange} {...rest}
+      value={value} onValueChange={onChange} {...rest}
     />
 
   );
