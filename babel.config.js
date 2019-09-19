@@ -15,6 +15,14 @@ module.exports = {
       ],
       plugins: [
         [
+          require.resolve('babel-plugin-module-resolver'),
+          {
+            alias: {
+              "@centrifuge/axis-utils": "./packages/utils/src"
+            }
+          }
+        ],
+        [
           "@babel/plugin-transform-modules-commonjs",
           { allowTopLevelThis: true }
         ],

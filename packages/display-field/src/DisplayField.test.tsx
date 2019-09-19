@@ -3,7 +3,7 @@ import DisplayField from "./DisplayField";
 import {mount} from 'enzyme';
 import {Anchor, Paragraph} from "grommet";
 
-describe("Sample Component test", () => {
+describe("Display field", () => {
   describe('Child rendering and interaction', () => {
     let wrapper;
     const value = 'some value we want to display'
@@ -17,7 +17,7 @@ describe("Sample Component test", () => {
     });
 
     it('should display the value in a paragraph',() => {
-      const p = wrapper.find(Paragraph);
+      const p = wrapper.find('p');
       expect(p.length).toEqual(1);
       expect(p.text()).toEqual(value);
     })
@@ -53,6 +53,22 @@ describe("Sample Component test", () => {
       expect(anchor.prop('href')).toEqual('http://example.com');
       expect(anchor.prop('target')).toEqual('_blank');
       expect(anchor.text()).toEqual(value);
+    })
+
+    it('should display a copy icon and copy the value to clipboard', async () => {
+      wrapper.setProps({
+        copy:true,
+        link: {
+          href:"http://example.com",
+          target:'_blank'
+        }
+      })
+      const anchor = wrapper.find(Anchor);
+      expect(anchor.length).toEqual(2);
+      const copy = anchor.at(1);
+      copy.simulate('click');
+      expect(await window.navigator.clipboard.readText()).toEqual(value);
+
     })
   });
 });
