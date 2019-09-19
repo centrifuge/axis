@@ -1,7 +1,10 @@
 import React from "react";
 import styled, {ThemeProps as StyledThemeProps, withTheme} from "styled-components";
 import {defaultProps, extendDefaultTheme} from "grommet/default-props";
-import {Anchor, AnchorProps, Box, BoxProps, Paragraph, Text, TextProps} from "grommet";
+import {Anchor, AnchorProps, Box, BoxProps, Text, TextProps} from "grommet";
+import {MarginType, PolymorphicType} from "grommet/utils";
+import {copyToClipboard} from "@centrifuge/axis-utils";
+import {Copy, Icon} from "grommet-icons";
 
 // Define type for theme props
 interface ThemeProps {
@@ -10,12 +13,19 @@ interface ThemeProps {
     labelText?: TextProps,
     anchor?: AnchorProps,
     extend?: (props) => string,
+    icons: {
+      copy: Icon,
+      margin?: MarginType,
+      size?: "small" | "medium" | "large" | "xlarge" | string;
+    }
   }
 }
 
 interface Props extends StyledThemeProps<ThemeProps> {
   value: string,
+  as?: PolymorphicType;
   link?: string | AnchorProps,
+  copy?: boolean,
   label?: string,
 }
 
@@ -24,23 +34,28 @@ const DisplayFieldBox = styled(Box)`
   &  {
     padding: 2px 0px;
     // Force height on display field when value is empty
-    p {
+    .display_field_text {
       overflow: hidden;
+      display: block;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
-    
-    a, a: hover {
-      text-decoration: none;
-    }
-    
-     p:after {
+    .display_field_text:after {
       content: '';
       display: inline-block;
     }
-    
+    a,a:hover {
+      text-decoration: none;
+    }
+    a.display_field_anchor {
+      width: 100%;
+    }
+    a.icon_anchor {
+       svg {
+          vertical-align: middle;
+       }
+    } 
   }
-  
   ${props => props.theme.displayField && props.theme.displayField.extend}
 `;
 
@@ -55,35 +70,58 @@ export const DisplayField: React.FunctionComponent<Props> = (
     value,
     link,
     label,
+    as = 'p',
+    copy,
     theme
   }
 ) => {
 
 
-  const {displayField: {labelBox, labelText, anchor}} = theme;
+  const {
+    displayField: {
+      labelBox,
+      labelText,
+      anchor,
+      icons
+    }
+  } = theme;
 
   const WithLink = ({link, children}) => {
-    return link ? <Anchor {...anchor} {...(typeof link === 'string' ? {href:link} : link)} >
+    return link ? <Anchor className={'display_field_anchor'} {...anchor} {...(typeof link === 'string' ? {href: link} : link)} >
       {children}
     </Anchor> : children;
   }
 
   const WithLabel = ({label, children}) => {
     return label ? <LabelBox {...labelBox}>
-      <Text {...labelText} as="label" >{label}</Text>
+      <Text {...labelText} as="label">{label}</Text>
       {children}
     </LabelBox> : children
+  }
+
+  const WithCopyIcon = ({children}) => {
+    return copy ? <Box direction={'row'} align={'center'} gap={'xsmall'}>
+      {children}
+      <Anchor className={'icon_anchor'} onClick={() => copyToClipboard(value)} title={'Copy to clipboard'}>
+        <icons.copy size={icons.size}/>
+      </Anchor>
+    </Box> : children
   }
 
 
   return (
     <DisplayFieldBox>
       <WithLabel label={label}>
-        <WithLink link={link}>
-          <Paragraph margin={{vertical: 'small'}}>
-            {value}
-          </Paragraph>
-        </WithLink>
+        <WithCopyIcon>
+          <WithLink link={link}>
+            <Text as={as} className={'display_field_text'} onClick={() => {
+              copyToClipboard(value)
+            }}>
+              {value}
+            </Text>
+
+          </WithLink>
+        </WithCopyIcon>
       </WithLabel>
     </DisplayFieldBox>
   );
@@ -98,8 +136,12 @@ export const defaultThemeProps: ThemeProps = {
         color: 'light-4'
       },
     },
-    anchor:{
+    anchor: {
       color: 'brand'
+    },
+    icons: {
+      copy: Copy,
+      size: 'small',
     }
   }
 };

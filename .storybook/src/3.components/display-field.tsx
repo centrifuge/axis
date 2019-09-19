@@ -85,6 +85,33 @@ storiesOf("Components | Display Field", module)
 
     return <Comp/>;
   })
+
+  .add("With Copy", () => {
+    const Comp = (props) => {
+
+      return (
+        <AxisTheme>
+          <Box gap={'medium'} width={'200px'} pad={'medium'}>
+            <DisplayField
+              copy={true}
+              link={{
+                href: 'http://google.com',
+                target: '_blank'
+              }}
+              value="Link as Anchor props where you define the target"/>
+            <DisplayField
+              copy={true}
+              label={'Some label'}
+              value="Some Value that is to long and it does not fit"/>
+          </Box>
+
+        </AxisTheme>
+      );
+    }
+
+    return <Comp/>;
+  })
+
   .add("With Link and Label", () => {
     const Comp = (props) => {
 
