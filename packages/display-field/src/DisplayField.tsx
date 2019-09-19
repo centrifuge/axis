@@ -48,7 +48,7 @@ const DisplayFieldBox = styled(Box)`
       text-decoration: none;
     }
     a.display_field_anchor {
-      width: 100%;
+      overflow: hidden;
     }
     a.icon_anchor {
        svg {
