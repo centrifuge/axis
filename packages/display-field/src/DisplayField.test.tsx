@@ -71,7 +71,7 @@ describe("Display field", () => {
 
     })
 
-    it('should copy custom value to clipboard, async () => {
+    it('should copy custom value to clipboard', async () => {
       wrapper.setProps({
         valueToCopy:'Custom Value',
         copy:true,
