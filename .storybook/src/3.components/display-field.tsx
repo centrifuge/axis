@@ -27,14 +27,13 @@ storiesOf("Components | Display Field", module)
 
       return (
         <AxisTheme>
-          <Box gap={'medium'}  pad={'medium'}>
+          <Box gap={'medium'} pad={'medium'}>
             <Box width={'200px'}>
               <DisplayField value="Some text in a fixed container that is to long and it does not fit"/>
             </Box>
 
             <DisplayField value="Some random stuff that that is long and unbound "/>
           </Box>
-
 
 
         </AxisTheme>
@@ -91,20 +90,31 @@ storiesOf("Components | Display Field", module)
 
       return (
         <AxisTheme>
-          <Box gap={'medium'} width={'200px'} pad={'medium'}>
-            <DisplayField
-              copy={true}
-              link={{
-                href: 'http://google.com',
-                target: '_blank'
-              }}
-              value="Link as Anchor props where you define the target"/>
-            <DisplayField
-              copy={true}
-              label={'Some label'}
-              value="Some Value that is to long and it does not fit"/>
-          </Box>
+          <Box gap={'medium'} pad={'medium'}>
+            <Box width={'200px'}>
+              <DisplayField
+                copy={true}
+                link={{
+                  href: 'http://google.com',
+                  target: '_blank'
+                }}
+                value="Link as Anchor props where you define the target"/>
+              <DisplayField
+                copy={true}
+                label={'Some label'}
+                value="Some Value that is to long and it does not fit"/>
 
+
+            </Box>
+
+            <Box width={'300px'}>
+              <DisplayField
+                copy={true}
+                valueToCopy={'Random Custom value'}
+                label={'Some label'}
+                value="Copies custom value"/>
+            </Box>
+          </Box>
         </AxisTheme>
       );
     }
