@@ -26,6 +26,7 @@ interface Props extends StyledThemeProps<ThemeProps> {
   as?: PolymorphicType;
   link?: string | AnchorProps,
   copy?: boolean,
+  valueToCopy?: string,
   label?: string,
 }
 
@@ -68,6 +69,7 @@ const LabelBox = styled(Box)`
 export const DisplayField: React.FunctionComponent<Props> = (
   {
     value,
+    valueToCopy,
     link,
     label,
     as = 'p',
@@ -87,9 +89,10 @@ export const DisplayField: React.FunctionComponent<Props> = (
   } = theme;
 
   const WithLink = ({link, children}) => {
-    return link ? <Anchor className={'display_field_anchor'} {...anchor} {...(typeof link === 'string' ? {href: link} : link)} >
-      {children}
-    </Anchor> : children;
+    return link ?
+      <Anchor className={'display_field_anchor'} {...anchor} {...(typeof link === 'string' ? {href: link} : link)} >
+        {children}
+      </Anchor> : children;
   }
 
   const WithLabel = ({label, children}) => {
@@ -115,7 +118,7 @@ export const DisplayField: React.FunctionComponent<Props> = (
         <WithCopyIcon>
           <WithLink link={link}>
             <Text as={as} className={'display_field_text'} onClick={() => {
-              copyToClipboard(value)
+              copyToClipboard(valueToCopy || value)
             }}>
               {value}
             </Text>

@@ -103,6 +103,12 @@ storiesOf("Components | Display Field", module)
               copy={true}
               label={'Some label'}
               value="Some Value that is to long and it does not fit"/>
+
+            <DisplayField
+              copy={true}
+              valueToCopy={'Random Custom value'}
+              label={'Some label'}
+              value="Copies custom value"/>
           </Box>
 
         </AxisTheme>

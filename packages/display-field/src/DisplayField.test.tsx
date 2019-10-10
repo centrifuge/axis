@@ -70,5 +70,22 @@ describe("Display field", () => {
       expect(await window.navigator.clipboard.readText()).toEqual(value);
 
     })
+
+    it('should copy custom value to clipboard, async () => {
+      wrapper.setProps({
+        valueToCopy:'Custom Value',
+        copy:true,
+        link: {
+          href:"http://example.com",
+          target:'_blank'
+        }
+      })
+      const anchor = wrapper.find(Anchor);
+      expect(anchor.length).toEqual(2);
+      const copy = anchor.at(1);
+      copy.simulate('click');
+      expect(await window.navigator.clipboard.readText()).toEqual('Custom Value');
+
+    })
   });
 });
