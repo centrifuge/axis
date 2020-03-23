@@ -4,7 +4,6 @@ import {Close as CloseIcon, Icon, Menu as MenuIcon, User as UserIcon} from 'grom
 import styled, {ThemeProps as StyledThemeProps, withTheme} from 'styled-components';
 import {defaultProps, extendDefaultTheme} from "grommet/default-props";
 
-
 // Define type for theme props
 interface ThemeProps {
   navBar: {
