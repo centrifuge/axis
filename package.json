@@ -42,27 +42,30 @@
     "@storybook/addon-storysource": "^5.0.3",
     "@storybook/addon-viewport": "^5.0.3",
     "@storybook/addons": "^5.0.3",
-    "@storybook/react": "^5.0.3",
+    "@storybook/react": "^5.1.10",
     "@types/jest": "^24.0.15",
     "@types/react": "^16.8.23",
     "@types/storybook__react": "^4.0.2",
+    "@types/styled-components": "^4.1.18",
     "awesome-typescript-loader": "^5.2.1",
     "babel-jest": "^24.1.0",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-react-app": "^7.0.2",
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.9.1",
+    "enzyme": "3.10.0",
+    "enzyme-adapter-react-16": "1.14.0",
     "glob-loader": "^0.3.0",
-    "grommet": "2.7.1",
+    "grommet": "^2.7.5",
     "jest": "^24.1.0",
+    "jsdom": "^15.1.1",
     "lerna": "^3.13.1",
     "react": "^16.8.3",
     "react-docgen-typescript-loader": "^3.1.0",
     "react-dom": "^16.8.3",
-    "react-test-renderer": "^16.7.0",
+    "react-test-renderer": "^16.9.0",
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-filesize": "^6.0.1",
@@ -80,8 +83,11 @@
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "packages/**/src/**/*.js",
-      "!packages/a-sample-package/**",
+      "!**/?(*.).js?(x)",
+      "!**/?(*.).ts?(x)",
+      "!**/?(*.)(test).js?(x)",
+      "!**/?(*.)(test).ts?(x)",
+      "!packages/axis-sample-package/**",
       "!**/node_modules/**",
       "!**/storybook/**"
     ],
@@ -98,7 +104,7 @@
       "<rootDir>/coverage/"
     ],
     "transform": {
-      "^.+\\.(js|jsx|ts)$": "babel-jest"
+      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
     },
     "transformIgnorePatterns": [
       "<rootDir>/node_modules/(?!(styled-icons)/)"
@@ -107,11 +113,12 @@
       "NODE_ENV": "test"
     },
     "testMatch": [
-      "**/?(*.)(test).js?(x)"
+      "**/?(*.)(test).js?(x)",
+      "**/?(*.)(test).ts?(x)"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",
-      "<rootDir>/packages/a-sample-package/"
+      "<rootDir>/packages/axis-sample-package/"
     ]
   },
   "dependencies": {
@@ -119,7 +126,10 @@
     "@centrifuge/axis-theme": "file:packages/theme",
     "@centrifuge/axis-section": "file:packages/section",
     "@centrifuge/axis-date-input": "file:packages/date-input",
+    "@centrifuge/axis-search-select": "file:packages/search-select",
+    "@centrifuge/axis-multiple-select": "file:packages/multiple-select",
     "@centrifuge/axis-number-input": "file:packages/number-input",
-    "@centrifuge/axis-spinner": "file:packages/spinner"
+    "@centrifuge/axis-spinner": "file:packages/spinner",
+    "@centrifuge/axis-utils": "file:packages/utils"
   }
 }

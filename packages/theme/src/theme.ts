@@ -2,7 +2,7 @@ import { css } from "styled-components";
 import { generate } from "grommet/themes";
 import {Button, Select} from "grommet";
 import { deepMerge } from "grommet/utils/object";
-import { Close } from "grommet-icons";
+import { Close, FormClose,Menu, User,Copy, Clone } from "grommet-icons";
 
 /*
   REUSED VARIABLES
@@ -333,6 +333,31 @@ export const axisThemeConfig = deepMerge(base, {
     },
   },
   dateInput:{
+    icons: {
+      close: FormClose,
+      margin: { horizontal: 'small' }
+    }
+  },
+  displayField: {
+    labelBox: {
+      // Supports all Box props
+      border: {
+        side: 'bottom',
+        color: 'light-4'
+      },
+    },
+    labelText: {
+      // Supports all Text props
+    },
+    anchor: {
+      // Supports all Anchor props.
+      color: 'brand',
+    },
+    icons: {
+      copy: Clone,
+      size: '18px',
+    },
+    extend: undefined,
 
   },
   textArea: {
@@ -385,7 +410,9 @@ export const axisThemeConfig = deepMerge(base, {
     /* NOTE:
      *
      */
-    extend: css``,
+    extend: css`
+      width: 100%;
+    `,
     header: {
       pad: {
         left: "none"
@@ -477,6 +504,38 @@ export const axisThemeConfig = deepMerge(base, {
   modal: {
     icons: {
       close: Close
+    }
+  },
+  multipleSelect: {
+    size: 'medium',
+    // Supports all BoxProps
+    itemsContainer: {
+      wrap: true,
+      direction: 'row',
+      pad: {vertical: 'xsmall'}
+    },
+    icons: {
+      close: Close,
+      size:'small',
+    },
+    // Supports all BoxProps
+    item: {
+      margin: {vertical: '5px', 'right': 'xsmall'},
+      pad: {vertical: 'xsmall', horizontal: 'xsmall'},
+      background: 'light-4',
+      direction: 'row',
+      align: 'center',
+      round: 'xsmall',
+      gap: 'xsmall',
+    }
+  },
+
+  navBar: {
+
+    icons:{
+      menu: Menu,
+      close: Close,
+      user: User
     }
   },
 
