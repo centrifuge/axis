@@ -78,7 +78,7 @@
     "typescript": "^3.5.2"
   },
   "jest": {
-    "setupFilesAfterEnv": [
+    "setu": [
       "<rootDir>/tests.config.js"
     ],
     "collectCoverage": true,
@@ -128,6 +128,7 @@
     "@centrifuge/axis-date-input": "file:packages/date-input",
     "@centrifuge/axis-search-select": "file:packages/search-select",
     "@centrifuge/axis-multiple-select": "file:packages/multiple-select",
+    "@centrifuge/axis-display-field": "file:packages/display-field",
     "@centrifuge/axis-number-input": "file:packages/number-input",
     "@centrifuge/axis-spinner": "file:packages/spinner",
     "@centrifuge/axis-utils": "file:packages/utils"

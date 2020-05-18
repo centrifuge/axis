@@ -1,7 +1,6 @@
 import React from 'react';
 import {mount, shallow} from 'enzyme';
 import {SelectContainer} from 'grommet/components/Select/SelectContainer'
-import {SelectOption} from 'grommet/components/Select/SelectOption'
 import MultipleSelect, {defaultThemeProps} from './MultipleSelect';
 import {Select, TextInput} from "grommet";
 import {act} from 'react-dom/test-utils';
@@ -56,7 +55,7 @@ describe('Multiple Select', () => {
       const container = wrapper.find(SelectContainer);
       expect(container.length).toEqual(1);
       expect(container.find(TextInput).first().props().placeholder).toEqual('Search');
-      expect(container.find(SelectOption).length).toEqual(3);
+      expect(container.find('SelectContainer__OptionBox').length).toEqual(3);
     });
 
 
@@ -69,16 +68,16 @@ describe('Multiple Select', () => {
       wrapper.simulate('click');
       const container = wrapper.find(SelectContainer);
       expect(container.length).toEqual(1);
-      expect(container.find(SelectOption).length).toEqual(2);
+      expect(container.find('SelectContainer__OptionBox').length).toEqual(2);
     });
 
     it('should select the proper elements', () => {
       wrapper.simulate('click');
-      wrapper.find(SelectOption).first().find('button').first().simulate('click');
+      wrapper.find('SelectContainer__OptionBox').first().simulate('click');
       expect(inputProps.onChange).toHaveBeenCalledWith([items[0]]);
 
       wrapper.simulate('click');
-      wrapper.find(SelectOption).at(1).find('button').first().simulate('click');
+      wrapper.find('SelectContainer__OptionBox').at(1).first().simulate('click');
       expect(inputProps.onChange).toHaveBeenCalledWith([items[1]]);
     });
 
@@ -88,10 +87,10 @@ describe('Multiple Select', () => {
         value: [items[0],items[1]]
       })
       wrapper.simulate('click');
-      wrapper.find(SelectOption).first().find('button').first().simulate('click');
+      wrapper.find('SelectContainer__OptionBox').first().simulate('click');
       expect(inputProps.onChange).toHaveBeenCalledWith([items[1]]);
       wrapper.simulate('click');
-      wrapper.find(SelectOption).at(1).find('button').first().simulate('click');
+      wrapper.find('SelectContainer__OptionBox').at(1).first().simulate('click');
       expect(inputProps.onChange).toHaveBeenCalledWith([items[0]]);
     });
 
@@ -116,7 +115,7 @@ describe('Multiple Select', () => {
         wrapper.find(Select).prop('onSearch')('Coffee')
       });
       wrapper.update()
-      expect(wrapper.find(SelectOption).length).toEqual(1);
+      expect(wrapper.find('SelectContainer__OptionBox').length).toEqual(1);
     });
   })
 
