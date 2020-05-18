@@ -227,13 +227,13 @@ export const axisThemeConfig = deepMerge(base, {
   },
   box: {
     extend: props => css`
-      // 
+      //
       ${props.responsiveChildren && css`
         > * {
           flex: 1;
         }
       `}
-       
+
     `
   },
   button: {
@@ -265,29 +265,29 @@ export const axisThemeConfig = deepMerge(base, {
       text-align: center;
       font-size: 16px;
       line-height: 24px;
-      
+
        ${!props.disabled && css`
 
           &:hover {
-            
+
             box-shadow: none;
             border-color: ${brandColor};
-        
+
             ${!props.primary &&
             css`
                 color: ${brandColor};
-            ` || 
+            ` ||
             css`
               background-color: ${brandColor};
             `
-            }   
+            }
           }
           &:active {
             opacity: 0.9;
-          }      
+          }
        `}
 
-      
+
 
 
       /* NEW PROP: textAlign
@@ -312,7 +312,7 @@ export const axisThemeConfig = deepMerge(base, {
         `}
 
       /* NEW PROP: white
-       * Customizes the hover background & border colors 
+       * Customizes the hover background & border colors
        */
       ${props.white &&
     css`
@@ -393,13 +393,13 @@ export const axisThemeConfig = deepMerge(base, {
     },
     margin: 0,
     extend: css`
-      
       label {
         line-height: 1;
       }
       input {
         padding: 16px 0 15px 0;
         line-height: 1;
+        border: 0;
       }
       button {
         box-shadow: none;
