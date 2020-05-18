@@ -1,6 +1,6 @@
 {
   "name": "@centrifuge/axis-display-field",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Display Field",
   "author": "razvan <razvan@centrifuge.io>",
   "homepage": "https://github.com/centrifuge/axis/tree/master/packages/display-field#readme",
@@ -27,11 +27,11 @@
     "url": "https://github.com/centrifuge/axis/issues"
   },
   "peerDependencies": {
+    "@centrifuge/axis-utils": ">= 0.x",
     "grommet": "2.7.x",
     "react": ">= 16.6.1",
     "react-dom": ">= 16.6.1",
-    "styled-components": ">= 4.x",
-    "@centrifuge/axis-utils": ">= 0.x"
+    "styled-components": ">= 4.x"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
