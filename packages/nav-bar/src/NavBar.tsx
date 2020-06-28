@@ -18,7 +18,6 @@ interface ThemeProps {
 
 const defaultThemeProps: ThemeProps = {
   navBar: {
-
     icons: {
       menu: MenuIcon,
       close: CloseIcon,
@@ -139,7 +138,7 @@ const NavBar: FunctionComponent<Props> = (props) => {
 
         const isSmall = size === 'small';
         const isMedium = size === 'medium';
-        const isMobile = isSmall || isMedium;
+        const isMobile = isSmall;
 
 
         return <Box
@@ -196,7 +195,7 @@ const NavBar: FunctionComponent<Props> = (props) => {
             {isMobile && (
               <Box direction="row" align="center">
                 <Anchor>
-                  <icons.menu size={icons.size} onClick={openMenu}/>
+                  <icons.menu size={icons.size} onClick={openMenu} style={{ verticalAlign: 'middle' }} />
                 </Anchor>
               </Box>
 
