@@ -5,14 +5,11 @@
 
 Single source of truth used to build user interfaces for Centrifuge
 
-
-#### Develop branch 
+#### Develop branch
 [https://develop.axis.centrifuge.io](https://develop.axis.centrifuge.io)
 
-
-#### Master branch  
+#### Master branch
 [https://axis.centrifuge.io](https://axis.centrifuge.io)
-
 
 #### How to use
 ```javascript
@@ -23,3 +20,8 @@ npm install @centrifuge/axis-[packageName]@canary // Ex: npm install @centrifuge
 // releases from master
 npm install @centrifuge/axis-[packageName] // Ex: npm install @centrifuge/axis-theme
 ```
+
+#### Development
+
+Install and link all dependencies: `npm install`
+Run storybook to view all examples: `npm start`
