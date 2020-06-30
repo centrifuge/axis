@@ -138,7 +138,7 @@ const NavBar: FunctionComponent<Props> = (props) => {
 
         const isSmall = size === 'small';
         const isMedium = size === 'medium';
-        const isMobile = isSmall;
+        const isMobile = isSmall || isMedium;
 
 
         return <Box
@@ -212,7 +212,7 @@ const NavBar: FunctionComponent<Props> = (props) => {
               onClickOutside={closeMenu}
               onEsc={closeMenu}
             >
-              <Box width={overlayWidth} pad={{"top":'medium'}}>
+              <Box width={overlayWidth} pad={'medium'}>
                 <Box fill={'horizontal'} align={'end'}>
                   <Anchor onClick={closeMenu}>
                     <icons.close size={icons.size}/>
@@ -220,7 +220,7 @@ const NavBar: FunctionComponent<Props> = (props) => {
 
                 </Box>
                 <Box gap={sectionGap}>
-                  <Box gap={itemGap}>
+                  <Box gap={itemGap} pad={{horizontal: 'xxxlarge'}}>
                     {getMainMenuItems()}
                   </Box>
 
