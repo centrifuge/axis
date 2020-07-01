@@ -47,7 +47,7 @@ storiesOf("Components | Nav Bar", module)
     return <Comp/>;
   })
 
-  .add("width custom width and height", () => {
+  .add("with custom width and height", () => {
     const Comp = (props) => {
 
       const [selectedRoute, setSelectedRoute] = useState('route/to/home');
@@ -77,6 +77,7 @@ storiesOf("Components | Nav Bar", module)
               onRouteClick={(item) => {
                 setSelectedRoute(item.route);
               }}
+              menuItemProps={{ style: { fontSize: 14 } }}
             />
           </Box>
         </AxisTheme>

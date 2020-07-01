@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react';
+import React, {FunctionComponent, useState, CSSProperties} from 'react';
 import {Anchor, Box, BoxProps, Button, Layer, Menu, ResponsiveContext, Text} from 'grommet';
 import {Close as CloseIcon, Icon, Menu as MenuIcon, User as UserIcon} from 'grommet-icons';
 import styled, {ThemeProps as StyledThemeProps, withTheme} from 'styled-components';
@@ -23,7 +23,7 @@ const defaultThemeProps: ThemeProps = {
       close: CloseIcon,
       user: UserIcon
     }
-  }
+  },
 };
 
 
@@ -44,6 +44,7 @@ interface Props extends BoxProps, StyledThemeProps<ThemeProps> {
   menuItems: MenuItem[],
   overlayWidth?: string,
   onRouteClick: (item: MenuItem) => void,
+  menuItemProps?: MenuItemProps
 }
 
 
@@ -57,6 +58,9 @@ const StyledNavBar = styled(Box)<{
   `}
 `;
 
+interface MenuItemProps {
+  style?: CSSProperties,
+}
 
 const NavBar: FunctionComponent<Props> = (props) => {
 
@@ -75,6 +79,7 @@ const NavBar: FunctionComponent<Props> = (props) => {
     theme,
     children,
     overlayWidth,
+    menuItemProps,
     ...rest
   } = props;
 
@@ -91,7 +96,7 @@ const NavBar: FunctionComponent<Props> = (props) => {
   const DynamicPropsMenu: any = Menu;
 
 
-  const getMainMenuItems = () => {
+  const getMainMenuItems = (props?: MenuItemProps) => {
     return menuItems.filter(item => !item.secondary).map((item) => {
         const anchorProps = {
           ...{onClick: () => onRouteClick(item)},
@@ -104,6 +109,7 @@ const NavBar: FunctionComponent<Props> = (props) => {
           key={item.label}
           label={item.label}
           {...anchorProps}
+          {...props}
         />;
       },
     );
@@ -156,7 +162,7 @@ const NavBar: FunctionComponent<Props> = (props) => {
 
           <Box flex={'grow'} direction="row" justify={'end'} gap={sectionGap}>
             {!isMobile && <Box direction="row" gap={itemGap}>
-              {getMainMenuItems()}
+              {getMainMenuItems(menuItemProps)}
             </Box>}
             {(!isMobile) && <Box flex={mainMenuAlignment === 'left' ? 'grow' : false} justify={'center'}>
               {children}
@@ -221,7 +227,7 @@ const NavBar: FunctionComponent<Props> = (props) => {
                 </Box>
                 <Box gap={sectionGap}>
                   <Box gap={itemGap} pad={{horizontal: 'xxxlarge'}}>
-                    {getMainMenuItems()}
+                    {getMainMenuItems(menuItemProps)}
                   </Box>
 
                   {((menuLabel && isSmall) || (isMobile && !menuLabel)) &&
