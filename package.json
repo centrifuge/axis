@@ -19,6 +19,7 @@
     "test": "jest --no-cache --coverage --verbose",
     "bootstrap": "lerna bootstrap",
     "build": "lerna exec --stream -- rollup -c",
+    "build-watch": "lerna exec --parallel --stream -- rollup -c -w",
     "build-storybook": "build-storybook -c .storybook -o storybook-static",
     "publish-patch": "npm run build && lerna publish patch --yes",
     "publish-minor": "npm run build && lerna publish minor --yes",
@@ -130,6 +131,7 @@
     "@centrifuge/axis-multiple-select": "file:packages/multiple-select",
     "@centrifuge/axis-number-input": "file:packages/number-input",
     "@centrifuge/axis-spinner": "file:packages/spinner",
-    "@centrifuge/axis-utils": "file:packages/utils"
+    "@centrifuge/axis-utils": "file:packages/utils",
+    "@centrifuge/axis-web3-wallet": "file:packages/web3-wallet"
   }
 }

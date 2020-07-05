@@ -25,4 +25,5 @@ npm install @centrifuge/axis-[packageName] // Ex: npm install @centrifuge/axis-t
 
 Use node v10.15.3: `nvm use v10.15.3`
 Install and link all dependencies: `npm install`
-Run storybook to view all examples: `npm start`
+Build and watch all packages: `npm build-watch`
+In a separate terminal, run storybook to view all examples: `npm start`
