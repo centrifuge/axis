@@ -13,6 +13,7 @@ npm-debug.log
 # editor config
 .idea
 *.iml
+.vscode
 
 # OS files
 *.DS_Store
