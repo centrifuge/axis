@@ -27,7 +27,8 @@
     "publish-develop": "npm run build && lerna publish --canary --preid develop --yes --force-publish",
     "precommit": "npm run format && npm test",
     "postinstall": "npm run bootstrap",
-    "format": "prettier --write \"./**/*.{ts,tsx}\""
+    "format": "prettier --write \"./**/*.{ts,tsx}\"",
+    "check-format": "prettier --check \"./**/*.{ts,tsx}\""
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
