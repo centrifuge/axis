@@ -9,6 +9,9 @@ jobs:
   - stage: tests
     script:
     - npm run test
+  - stage: lint
+    script:
+    - npm run check-format
   - stage: Publish patch
     if: "(NOT type IN (pull_request)) AND (branch = develop)"
     script:

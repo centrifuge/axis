@@ -1,4 +1,3 @@
-
-describe("theme", () => {
-  it("needs tests", () => {});
-});
+describe('theme', () => {
+    it('needs tests', () => {})
+})

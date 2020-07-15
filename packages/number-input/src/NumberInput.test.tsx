@@ -1,3 +1,3 @@
-describe("Sample Component", () => {
-  it("needs tests", () => {});
-});
+describe('Sample Component', () => {
+    it('needs tests', () => {})
+})

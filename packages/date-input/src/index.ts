@@ -1,4 +1,2 @@
-import DateInput from "./DateInput";
-export {
-  DateInput
-}
+import DateInput from './DateInput'
+export { DateInput }

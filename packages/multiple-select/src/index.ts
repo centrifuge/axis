@@ -1,5 +1,3 @@
-import MultipleSelect  from "./MultipleSelect";
+import MultipleSelect from './MultipleSelect'
 
-export  {
-  MultipleSelect
-}
+export { MultipleSelect }

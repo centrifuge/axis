@@ -1,60 +1,60 @@
-import React, {Component} from "react";
-import {storiesOf} from "@storybook/react";
+import React, { Component } from 'react'
+import { storiesOf } from '@storybook/react'
 
-import {AxisTheme} from "../../../packages/theme";
-import {Spinner} from "../../../packages/spinner";
+import { AxisTheme } from '../../../packages/theme'
+import { Spinner } from '../../../packages/spinner'
 
-storiesOf("Components | Spinner", module)
-    .add("default", () => {
+storiesOf('Components | Spinner', module)
+    .add('default', () => {
         class SpinnerContaier extends Component {
             render() {
                 return (
                     <AxisTheme>
-                        <Spinner/>
+                        <Spinner />
                     </AxisTheme>
-                );
+                )
             }
         }
 
-        return <SpinnerContaier/>;
+        return <SpinnerContaier />
     })
 
-    .add("with message", () => {
+    .add('with message', () => {
         class SpinnerContaier extends Component {
             render() {
                 return (
                     <AxisTheme>
-                        <Spinner message={'Loading'}/>
+                        <Spinner message={'Loading'} />
                     </AxisTheme>
-                );
+                )
             }
         }
 
-        return <SpinnerContaier/>;
+        return <SpinnerContaier />
     })
-    .add("another color", () => {
+    .add('another color', () => {
         class SpinnerContaier extends Component {
             render() {
                 return (
                     <AxisTheme>
-                        <Spinner color={'red'} message={'Loading'}/>
+                        <Spinner color={'red'} message={'Loading'} />
                     </AxisTheme>
-                );
+                )
             }
         }
 
-        return <SpinnerContaier/>;
+        return <SpinnerContaier />
     })
-    .add("with Box props", () => {
+    .add('with Box props', () => {
         class SpinnerContaier extends Component {
             render() {
                 return (
                     <AxisTheme>
-                        <Spinner width={'xlarge'} background={'light-4'} height={'xlarge'} message={'Loading'}/>
+                        <Spinner width={'xlarge'} background={'light-4'} height={'xlarge'} message={'Loading'} />
                     </AxisTheme>
-                );
+                )
             }
         }
 
-        return <SpinnerContaier/>;
+        return <SpinnerContaier />
     })

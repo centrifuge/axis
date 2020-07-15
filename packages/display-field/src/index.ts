@@ -1,5 +1,3 @@
-import DisplayField  from "./DisplayField";
+import DisplayField from './DisplayField'
 
-export  {
-  DisplayField
-}
+export { DisplayField }

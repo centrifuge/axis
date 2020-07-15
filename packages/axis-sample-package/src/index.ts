@@ -1,5 +1,3 @@
-import SampleComponent  from "./SampleComponent";
+import SampleComponent from './SampleComponent'
 
-export  {
-  SampleComponent
-}
+export { SampleComponent }

@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { storiesOf } from "@storybook/react";
+import React, { Component } from 'react'
+import { storiesOf } from '@storybook/react'
 
-import { AxisTheme } from "../../../packages/theme";
-import { Box, Button, Paragraph } from "grommet";
-import { Section } from "../../../packages/section/src/";
+import { AxisTheme } from '../../../packages/theme'
+import { Box, Button, Paragraph } from 'grommet'
+import { Section } from '../../../packages/section/src/'
 
 /*
 storiesOf("Components | Section", module).add("default", () => {
