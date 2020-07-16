@@ -1,36 +1,19 @@
-import React, { FunctionComponent, useState, CSSProperties } from "react";
-import {
-  Anchor,
-  Box,
-  BoxProps,
-  Button,
-  Layer,
-  Menu,
-  ResponsiveContext,
-  Text,
-} from "grommet";
-import {
-  Close as CloseIcon,
-  Icon,
-  Menu as MenuIcon,
-  User as UserIcon,
-} from "grommet-icons";
-import styled, {
-  ThemeProps as StyledThemeProps,
-  withTheme,
-} from "styled-components";
-import { defaultProps, extendDefaultTheme } from "grommet/default-props";
+import React, { FunctionComponent, useState, CSSProperties } from 'react'
+import { Anchor, Box, BoxProps, Button, Layer, Menu, ResponsiveContext, Text } from 'grommet'
+import { Close as CloseIcon, Icon, Menu as MenuIcon, User as UserIcon } from 'grommet-icons'
+import styled, { ThemeProps as StyledThemeProps, withTheme } from 'styled-components'
+import { defaultProps, extendDefaultTheme } from 'grommet/default-props'
 
 // Define type for theme props
 interface ThemeProps {
   navBar: {
     icons: {
-      menu: Icon;
-      close: Icon;
-      user: Icon;
-      size?: "small" | "medium" | "large" | "xlarge" | string;
-    };
-  };
+      menu: Icon
+      close: Icon
+      user: Icon
+      size?: 'small' | 'medium' | 'large' | 'xlarge' | string
+    }
+  }
 }
 
 const defaultThemeProps: ThemeProps = {
@@ -41,47 +24,47 @@ const defaultThemeProps: ThemeProps = {
       user: UserIcon,
     },
   },
-};
+}
 
 export interface MenuItem {
-  label: string;
-  route: string;
-  secondary?: boolean;
+  label: string
+  route: string
+  secondary?: boolean
 }
 
 interface Props extends BoxProps, StyledThemeProps<ThemeProps> {
-  logo?: React.ReactNode;
-  menuLabel?: string;
-  selectedRoute: string;
-  sectionGap?: string;
-  itemGap?: string;
-  mainMenuAlignment?: "right" | "left";
-  sticky?: boolean;
-  menuItems: MenuItem[];
-  overlayWidth?: string;
-  onRouteClick: (item: MenuItem) => void;
-  menuItemProps?: MenuItemProps;
+  logo?: React.ReactNode
+  menuLabel?: string
+  selectedRoute: string
+  sectionGap?: string
+  itemGap?: string
+  mainMenuAlignment?: 'right' | 'left'
+  sticky?: boolean
+  menuItems: MenuItem[]
+  overlayWidth?: string
+  onRouteClick: (item: MenuItem) => void
+  menuItemProps?: MenuItemProps
 }
 
 interface StyledNavBarProps {
-  sticky: boolean | undefined;
+  sticky: boolean | undefined
 }
 
 const StyledNavBar = styled(Box)<StyledNavBarProps>`
-  ${(props) =>
+  ${props =>
     props.sticky &&
     `
     position: sticky;
     z-index: 1;
     top:0px;
   `}
-`;
+`
 
 interface MenuItemProps {
-  style?: CSSProperties;
+  style?: CSSProperties
 }
 
-const NavBar: FunctionComponent<Props> = (props) => {
+const NavBar: FunctionComponent<Props> = props => {
   const {
     logo,
     selectedRoute,
@@ -99,105 +82,71 @@ const NavBar: FunctionComponent<Props> = (props) => {
     overlayWidth,
     menuItemProps,
     ...rest
-  } = props;
+  } = props
 
-  const [opened, setOpened] = useState(false);
-  const openMenu = () => setOpened(true);
-  const closeMenu = () => setOpened(false);
+  const [opened, setOpened] = useState(false)
+  const openMenu = () => setOpened(true)
+  const closeMenu = () => setOpened(false)
 
   //get the icons from the theme
   const {
     navBar: { icons },
-  } = theme;
+  } = theme
 
   // Workaround for Menu typescript def bug
-  const DynamicPropsMenu: any = Menu;
+  const DynamicPropsMenu: any = Menu
 
   const getMainMenuItems = (props?: MenuItemProps) => {
     return menuItems
-      .filter((item) => !item.secondary)
-      .map((item) => {
+      .filter(item => !item.secondary)
+      .map(item => {
         const anchorProps = {
           ...{ onClick: () => onRouteClick(item) },
-          ...(selectedRoute === item.route ? { color: "selected" } : {}),
-        };
+          ...(selectedRoute === item.route ? { color: 'selected' } : {}),
+        }
 
-        return (
-          <Button
-            plain
-            key={item.label}
-            label={item.label}
-            {...anchorProps}
-            {...props}
-          />
-        );
-      });
-  };
+        return <Button plain key={item.label} label={item.label} {...anchorProps} {...props} />
+      })
+  }
 
   const getSecondaryMenuItems = () => {
     return menuItems
-      .filter((item) => item.secondary)
-      .map((item) => {
+      .filter(item => item.secondary)
+      .map(item => {
         const anchorProps = {
           ...{ onClick: () => onRouteClick(item) },
-          ...(selectedRoute === item.route ? { className: "selected" } : {}),
-        };
-        return <Anchor key={item.label} label={item.label} {...anchorProps} />;
-      });
-  };
+          ...(selectedRoute === item.route ? { className: 'selected' } : {}),
+        }
+        return <Anchor key={item.label} label={item.label} {...anchorProps} />
+      })
+  }
 
   return (
-    <StyledNavBar
-      {...rest}
-      sticky={sticky}
-      justify="center"
-      align="center"
-      fill="horizontal"
-    >
+    <StyledNavBar {...rest} sticky={sticky} justify="center" align="center" fill="horizontal">
       <ResponsiveContext.Consumer>
-        {(size) => {
-          const isSmall = size === "small";
-          const isMedium = size === "medium";
-          const isMobile = isSmall || isMedium;
+        {size => {
+          const isSmall = size === 'small'
+          const isMedium = size === 'medium'
+          const isMobile = isSmall || isMedium
 
           return (
-            <Box
-              direction="row"
-              fill="vertical"
-              align="center"
-              pad={pad}
-              gap={sectionGap}
-              width={width}
-            >
+            <Box direction="row" fill="vertical" align="center" pad={pad} gap={sectionGap} width={width}>
               {logo && <Box>{logo}</Box>}
 
-              <Box
-                flex={"grow"}
-                direction="row"
-                justify={"end"}
-                gap={sectionGap}
-              >
+              <Box flex={'grow'} direction="row" justify={'end'} gap={sectionGap}>
                 {!isMobile && (
                   <Box direction="row" gap={itemGap}>
                     {getMainMenuItems(menuItemProps)}
                   </Box>
                 )}
                 {!isMobile && (
-                  <Box
-                    flex={mainMenuAlignment === "left" ? "grow" : false}
-                    justify={"center"}
-                  >
+                  <Box flex={mainMenuAlignment === 'left' ? 'grow' : false} justify={'center'}>
                     {children}
                   </Box>
                 )}
                 {!menuLabel
                   ? !isMobile && (
-                      <Box
-                        direction="row"
-                        gap={itemGap}
-                        align="center"
-                        justify="end"
-                      >
+                      <Box direction="row" gap={itemGap} align="center" justify="end">
                         {getSecondaryMenuItems()}
                       </Box>
                     )
@@ -205,12 +154,12 @@ const NavBar: FunctionComponent<Props> = (props) => {
                       <DynamicPropsMenu
                         plain
                         items={menuItems
-                          .filter((item) => item.secondary)
-                          .map((item) => {
+                          .filter(item => item.secondary)
+                          .map(item => {
                             return {
                               label: item.label,
                               onClick: () => onRouteClick(item),
-                            };
+                            }
                           })}
                       >
                         {({ drop, hover }) => {
@@ -218,13 +167,13 @@ const NavBar: FunctionComponent<Props> = (props) => {
                             <Box
                               direction="row"
                               gap="small"
-                              pad={"small"}
-                              background={hover && drop ? "light-2" : undefined}
+                              pad={'small'}
+                              background={hover && drop ? 'light-2' : undefined}
                             >
                               <Text>{menuLabel}</Text>
                               <icons.user size={icons.size} />
                             </Box>
-                          );
+                          )
                         }}
                       </DynamicPropsMenu>
                     )}
@@ -232,11 +181,7 @@ const NavBar: FunctionComponent<Props> = (props) => {
                 {isMobile && (
                   <Box direction="row" align="center">
                     <Anchor>
-                      <icons.menu
-                        size={icons.size}
-                        onClick={openMenu}
-                        style={{ verticalAlign: "middle" }}
-                      />
+                      <icons.menu size={icons.size} onClick={openMenu} style={{ verticalAlign: 'middle' }} />
                     </Anchor>
                   </Box>
                 )}
@@ -250,19 +195,19 @@ const NavBar: FunctionComponent<Props> = (props) => {
                   onClickOutside={closeMenu}
                   onEsc={closeMenu}
                 >
-                  <Box width={overlayWidth} pad={"medium"}>
-                    <Box fill={"horizontal"} align={"end"}>
+                  <Box width={overlayWidth} pad={'medium'}>
+                    <Box fill={'horizontal'} align={'end'}>
                       <Anchor onClick={closeMenu}>
                         <icons.close size={icons.size} />
                       </Anchor>
                     </Box>
                     <Box gap={sectionGap}>
-                      <Box gap={itemGap} pad={{ horizontal: "xxxlarge" }}>
+                      <Box gap={itemGap} pad={{ horizontal: 'xxxlarge' }}>
                         {getMainMenuItems(menuItemProps)}
                       </Box>
 
                       {((menuLabel && isSmall) || (isMobile && !menuLabel)) && (
-                        <Box gap={itemGap} align={"center"}>
+                        <Box gap={itemGap} align={'center'}>
                           {getSecondaryMenuItems()}
                         </Box>
                       )}
@@ -271,26 +216,26 @@ const NavBar: FunctionComponent<Props> = (props) => {
                 </Layer>
               )}
             </Box>
-          );
+          )
         }}
       </ResponsiveContext.Consumer>
     </StyledNavBar>
-  );
-};
+  )
+}
 
-extendDefaultTheme(defaultThemeProps);
+extendDefaultTheme(defaultThemeProps)
 
 NavBar.defaultProps = {
-  sectionGap: "large",
-  itemGap: "medium",
+  sectionGap: 'large',
+  itemGap: 'medium',
   sticky: true,
-  pad: { horizontal: "medium" },
-  width: "100%",
-  background: "white",
-  mainMenuAlignment: "left",
-  height: "72px",
-  border: { side: "bottom", color: "light-4" },
+  pad: { horizontal: 'medium' },
+  width: '100%',
+  background: 'white',
+  mainMenuAlignment: 'left',
+  height: '72px',
+  border: { side: 'bottom', color: 'light-4' },
   ...defaultProps,
-};
+}
 
-export default withTheme(NavBar);
+export default withTheme(NavBar)

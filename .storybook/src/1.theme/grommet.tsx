@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { storiesOf } from "@storybook/react";
-import { AxisTheme } from "../../../packages/theme";
+import React, { Component } from 'react'
+import { storiesOf } from '@storybook/react'
+import { AxisTheme } from '../../../packages/theme'
 
 import {
   Accordion,
@@ -27,8 +27,8 @@ import {
   Text,
   TextArea,
   TextInput,
-  Video
-} from "grommet";
+  Video,
+} from 'grommet'
 
 class Components extends Component {
   state = {
@@ -36,22 +36,15 @@ class Components extends Component {
     checkBox: true,
     radioButton: true,
     rangeSelector: [1, 2],
-    themeName: "grommet"
-  };
+    themeName: 'grommet',
+  }
 
   render() {
-    const {
-      baseSize,
-      checkBox,
-      radioButton,
-      rangeSelector,
-      tabIndex,
-      themeName
-    } = this.state;
+    const { baseSize, checkBox, radioButton, rangeSelector, tabIndex, themeName } = this.state
 
     const content = [
       <Box key="type" align="start">
-        <Heading margin={{ top: "none" }}>Heading</Heading>
+        <Heading margin={{ top: 'none' }}>Heading</Heading>
         <Paragraph>Paragraph</Paragraph>
         <Text>Text</Text>
         <Anchor href="">Anchor</Anchor>
@@ -59,10 +52,10 @@ class Components extends Component {
           label="Menu"
           items={[
             {
-              label: "One",
-              onClick: () => {}
+              label: 'One',
+              onClick: () => {},
             },
-            { label: "Two" }
+            { label: 'Two' },
           ]}
         />
         <Button label="Default Button" onClick={() => {}} />
@@ -73,11 +66,7 @@ class Components extends Component {
         <Button disabled plain label="Plain Button" onClick={() => {}} />
       </Box>,
       <Box key="input" gap="small">
-        <Select
-          placeholder="Select"
-          options={["One", "Two"]}
-          onChange={() => {}}
-        />
+        <Select placeholder="Select" options={['One', 'Two']} onChange={() => {}} />
         <TextInput placeholder="TextInput" />
         <TextArea placeholder="TextArea" />
         <CheckBox
@@ -97,16 +86,14 @@ class Components extends Component {
           name="radio"
           checked={radioButton}
           label="RadioButton"
-          onChange={event =>
-            this.setState({ radioButton: event.target.checked })
-          }
+          onChange={event => this.setState({ radioButton: event.target.checked })}
         />
         <RangeInput value={24} onChange={() => {}} />
         <Stack>
           <Box direction="row" justify="between">
             {[0, 1, 2, 3].map(value => (
               <Box key={value} pad="small">
-                <Text style={{ fontFamily: "monospace" }}>{value}</Text>
+                <Text style={{ fontFamily: 'monospace' }}>{value}</Text>
               </Box>
             ))}
           </Box>
@@ -125,11 +112,7 @@ class Components extends Component {
           <TextInput placeholder="TextInput" />
         </FormField>
         <FormField label="Form field Select">
-          <Select
-              placeholder="Select"
-              options={["One", "Two"]}
-              onChange={() => {}}
-          />
+          <Select placeholder="Select" options={['One', 'Two']} onChange={() => {}} />
         </FormField>
       </Box>,
       <Box key="time" gap="medium">
@@ -138,13 +121,13 @@ class Components extends Component {
       <Box key="dataTable" alignSelf="start">
         <DataTable
           columns={[
-            { property: "name", header: "Name" },
-            { property: "color", header: "Color" }
+            { property: 'name', header: 'Name' },
+            { property: 'color', header: 'Color' },
           ]}
           data={[
-            { name: "Alan", color: "blue" },
-            { name: "Chris", color: "purple" },
-            { name: "Eric", color: "orange" }
+            { name: 'Alan', color: 'blue' },
+            { name: 'Chris', color: 'purple' },
+            { name: 'Eric', color: 'orange' },
           ]}
         />
       </Box>,
@@ -163,10 +146,7 @@ class Components extends Component {
         </Accordion>
       </Box>,
       <Box key="tabs">
-        <Tabs
-          activeIndex={tabIndex}
-          onActive={index => this.setState({ tabIndex: index })}
-        >
+        <Tabs activeIndex={tabIndex} onActive={index => this.setState({ tabIndex: index })}>
           <Tab title="Tab 1">
             <Box pad="small">
               <Text>Tab 1 content</Text>
@@ -181,25 +161,13 @@ class Components extends Component {
       </Box>,
       <Box key="video" alignSelf="start">
         <Video>
-          <source
-            src="http://techslides.com/demos/sample-videos/small.webm"
-            type="video/webm"
-          />
-          <source
-            src="http://techslides.com/demos/sample-videos/small.ogv"
-            type="video/ogg"
-          />
-          <source
-            src="http://techslides.com/demos/sample-videos/small.mp4"
-            type="video/mp4"
-          />
-          <source
-            src="http://techslides.com/demos/sample-videos/small.3gp"
-            type="video/3gp"
-          />
+          <source src="http://techslides.com/demos/sample-videos/small.webm" type="video/webm" />
+          <source src="http://techslides.com/demos/sample-videos/small.ogv" type="video/ogg" />
+          <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4" />
+          <source src="http://techslides.com/demos/sample-videos/small.3gp" type="video/3gp" />
         </Video>
-      </Box>
-    ];
+      </Box>,
+    ]
 
     return (
       <React.Fragment>
@@ -217,10 +185,8 @@ class Components extends Component {
           </Box>
         </AxisTheme>
       </React.Fragment>
-    );
+    )
   }
 }
 
-storiesOf("Theme | All Components", module).add("Light Mode", () => (
-  <Components />
-));
+storiesOf('Theme | All Components', module).add('Light Mode', () => <Components />)

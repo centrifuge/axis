@@ -1,3 +1,3 @@
-describe("Spinner test", () => {
-  it("needs tests", () => {});
-});
+describe('Spinner test', () => {
+  it('needs tests', () => {})
+})

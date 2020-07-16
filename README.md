@@ -23,7 +23,7 @@ npm install @centrifuge/axis-[packageName] // Ex: npm install @centrifuge/axis-t
 
 #### Development
 
-Use node v10.15.3: `nvm use v10.15.3`
+Use node v12.16.3: `nvm use` (the version is specified in `.nvmrc`)
 Install and link all dependencies: `npm install`
 Build and watch all packages: `npm run build-watch`
 In a separate terminal, run storybook to view all examples: `npm start`

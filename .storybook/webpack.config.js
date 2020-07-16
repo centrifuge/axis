@@ -9,14 +9,19 @@ module.exports = ({config, mode}) => {
       {
         loader: require.resolve('@storybook/addon-storysource/loader'),
         options: {
+          parser: 'typescript',
           prettierConfig: {
-            parser: 'babylon',
+            trailingComma: 'es5',
+            tabWidth: 2,
+            semi: false,
+            singleQuote: true,
+            printWidth: 120
           },
         },
       },
     ],
     enforce: 'pre',
-  });
+  })
 
   config.module.rules.push({
     test: /\.tsx?$/,

@@ -27,7 +27,8 @@
     "publish-develop": "npm run build && lerna publish --canary --preid develop --yes --force-publish",
     "precommit": "npm run format && npm test",
     "postinstall": "npm run bootstrap",
-    "format": "prettier --write \"./**/*.js\""
+    "format": "prettier --write \"./**/*.{ts,tsx}\"",
+    "check-format": "prettier --check \"./**/*.{ts,tsx}\""
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -36,6 +37,7 @@
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "7.10.4",
     "@rollup/plugin-image": "^2.0.5",
     "@storybook/addon-actions": "^5.0.3",
     "@storybook/addon-info": "^5.1.9",
@@ -64,6 +66,7 @@
     "jest": "^24.1.0",
     "jsdom": "^15.1.1",
     "lerna": "^3.13.1",
+    "prettier": "1.19.1",
     "react": "^16.8.3",
     "react-docgen-typescript-loader": "^3.1.0",
     "react-dom": "^16.8.3",

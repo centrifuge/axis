@@ -1,75 +1,63 @@
-import React from "react";
-import {storiesOf} from "@storybook/react";
-import {AxisTheme} from "../../../packages/theme";
-import {NumberInput} from "@centrifuge/axis-number-input";
-import {Box, FormField} from "grommet";
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import { AxisTheme } from '../../../packages/theme'
+import { NumberInput } from '@centrifuge/axis-number-input'
+import { Box, FormField } from 'grommet'
 
-
-storiesOf("Components | Number Input", module)
-  .add("Default", () => {
-    const Comp = (props) => {
-
-
+storiesOf('Components | Number Input', module)
+  .add('Default', () => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} pad={'medium'}>
-            <NumberInput/>
-          <NumberInput disabled={true} value={'2222'}/>
+            <NumberInput />
+            <NumberInput disabled={true} value={'2222'} />
           </Box>
-
         </AxisTheme>
-      );
+      )
     }
 
-    return <Comp/>;
+    return <Comp />
   })
-  .add("Percent", () => {
-    const Comp = (props) => {
-
-
+  .add('Percent', () => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} pad={'medium'}>
-            <NumberInput placeholder={'00.00'} suffix={'%'}/>
+            <NumberInput placeholder={'00.00'} suffix={'%'} />
           </Box>
         </AxisTheme>
-      );
+      )
     }
 
-    return <Comp/>;
+    return <Comp />
   })
 
-  .add("Currency", () => {
-    const Comp = (props) => {
-
-
+  .add('Currency', () => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} pad={'medium'}>
-            <NumberInput placeholder={'00.00'} prefix={'$'}/>
+            <NumberInput placeholder={'00.00'} prefix={'$'} />
           </Box>
         </AxisTheme>
-      );
+      )
     }
 
-    return <Comp/>;
+    return <Comp />
   })
 
-  .add("Inside a form field", () => {
-
-    const Comp = (props) => {
-
-
+  .add('Inside a form field', () => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} pad={'medium'}>
             <FormField label="Enter some number">
-              <NumberInput/>
+              <NumberInput />
             </FormField>
           </Box>
-
         </AxisTheme>
-      );
+      )
     }
-    return <Comp/>;
-  });
+    return <Comp />
+  })

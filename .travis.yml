@@ -1,6 +1,4 @@
 language: node_js
-node_js:
-- '10'
 cache:
   directories:
   - node_modules
@@ -9,6 +7,9 @@ jobs:
   - stage: tests
     script:
     - npm run test
+  - stage: lint
+    script:
+    - npm run check-format
   - stage: Publish patch
     if: "(NOT type IN (pull_request)) AND (branch = develop)"
     script:

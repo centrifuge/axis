@@ -1,7 +1,3 @@
-import {copyToClipboard} from './copy-to-clipboard'
+import { copyToClipboard } from './copy-to-clipboard'
 
-export {
-  copyToClipboard
-}
-
-
+export { copyToClipboard }

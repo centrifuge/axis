@@ -1,5 +1,3 @@
-import SearchSelect  from "./SearchSelect";
+import SearchSelect from './SearchSelect'
 
-export  {
-  SearchSelect
-}
+export { SearchSelect }
