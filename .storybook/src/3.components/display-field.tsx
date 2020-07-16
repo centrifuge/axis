@@ -7,7 +7,7 @@ import { Box } from 'grommet'
 
 storiesOf('Components | Display Field', module)
   .add('Default', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} width={'200px'} pad={'medium'}>
@@ -20,7 +20,7 @@ storiesOf('Components | Display Field', module)
     return <Comp />
   })
   .add('Default', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} pad={'medium'}>
@@ -37,7 +37,7 @@ storiesOf('Components | Display Field', module)
     return <Comp />
   })
   .add('With Link', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} pad={'medium'}>
@@ -58,7 +58,7 @@ storiesOf('Components | Display Field', module)
     return <Comp />
   })
   .add('With Label', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} width={'200px'} pad={'medium'}>
@@ -72,7 +72,7 @@ storiesOf('Components | Display Field', module)
   })
 
   .add('With Copy', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} pad={'medium'}>
@@ -105,7 +105,7 @@ storiesOf('Components | Display Field', module)
   })
 
   .add('With Link and Label', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} width={'200px'} pad={'medium'}>

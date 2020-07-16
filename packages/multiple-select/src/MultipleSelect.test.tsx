@@ -34,16 +34,26 @@ describe('Multiple Select', () => {
     let wrapper
     beforeEach(() => {
       wrapper = mount(<MultipleSelect {...inputProps} options={items} />)
-      ;['onBlur', 'onChange', 'onFocus'].forEach((cb) => inputProps[cb].mockClear())
+      ;['onBlur', 'onChange', 'onFocus'].forEach(cb => inputProps[cb].mockClear())
     })
 
     it('should open the drop on click and contain 3 items and SearchBar', () => {
-      expect(wrapper.find(TextInput).first().props().placeholder).toEqual('Select')
+      expect(
+        wrapper
+          .find(TextInput)
+          .first()
+          .props().placeholder
+      ).toEqual('Select')
       wrapper.simulate('click')
 
       const container = wrapper.find(SelectContainer)
       expect(container.length).toEqual(1)
-      expect(container.find(TextInput).first().props().placeholder).toEqual('Search')
+      expect(
+        container
+          .find(TextInput)
+          .first()
+          .props().placeholder
+      ).toEqual('Search')
       expect(container.find('SelectContainer__OptionBox').length).toEqual(3)
     })
 
@@ -60,11 +70,18 @@ describe('Multiple Select', () => {
 
     it('should select the proper elements', () => {
       wrapper.simulate('click')
-      wrapper.find('SelectContainer__OptionBox').first().simulate('click')
+      wrapper
+        .find('SelectContainer__OptionBox')
+        .first()
+        .simulate('click')
       expect(inputProps.onChange).toHaveBeenCalledWith([items[0]])
 
       wrapper.simulate('click')
-      wrapper.find('SelectContainer__OptionBox').at(1).first().simulate('click')
+      wrapper
+        .find('SelectContainer__OptionBox')
+        .at(1)
+        .first()
+        .simulate('click')
       expect(inputProps.onChange).toHaveBeenCalledWith([items[1]])
     })
 
@@ -73,10 +90,17 @@ describe('Multiple Select', () => {
         value: [items[0], items[1]],
       })
       wrapper.simulate('click')
-      wrapper.find('SelectContainer__OptionBox').first().simulate('click')
+      wrapper
+        .find('SelectContainer__OptionBox')
+        .first()
+        .simulate('click')
       expect(inputProps.onChange).toHaveBeenCalledWith([items[1]])
       wrapper.simulate('click')
-      wrapper.find('SelectContainer__OptionBox').at(1).first().simulate('click')
+      wrapper
+        .find('SelectContainer__OptionBox')
+        .at(1)
+        .first()
+        .simulate('click')
       expect(inputProps.onChange).toHaveBeenCalledWith([items[0]])
     })
 
@@ -85,10 +109,16 @@ describe('Multiple Select', () => {
         value: [items[0], items[1]],
       })
 
-      wrapper.find(defaultThemeProps.multipleSelect.icons.close).first().simulate('click')
+      wrapper
+        .find(defaultThemeProps.multipleSelect.icons.close)
+        .first()
+        .simulate('click')
       expect(inputProps.onChange).toHaveBeenCalledWith([items[1]])
 
-      wrapper.find(defaultThemeProps.multipleSelect.icons.close).at(1).simulate('click')
+      wrapper
+        .find(defaultThemeProps.multipleSelect.icons.close)
+        .at(1)
+        .simulate('click')
       expect(inputProps.onChange).toHaveBeenCalledWith([items[0]])
     })
 

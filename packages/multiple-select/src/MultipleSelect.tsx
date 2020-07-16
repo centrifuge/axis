@@ -41,26 +41,26 @@ export const MultipleSelect: React.FunctionComponent<Props> = ({
 
   const CloseIcon = icons.close
 
-  const onSelect = (selected) => {
+  const onSelect = selected => {
     //reset options
     setFilteredOptions(options)
     onChange && onChange(selected.value)
   }
 
-  const onFiltering = (text) => {
+  const onFiltering = text => {
     const exp = new RegExp(text, 'i')
     setFilteredOptions(
-      options.filter((o) => {
+      options.filter(o => {
         return exp.test(getItemLabel(o))
       })
     )
   }
 
-  const getItemValue = (value) => {
+  const getItemValue = value => {
     return getItemPropByKey(value, 'valueKey')
   }
 
-  const getItemLabel = (value) => {
+  const getItemLabel = value => {
     return getItemPropByKey(value, 'labelKey')
   }
 
@@ -85,7 +85,7 @@ export const MultipleSelect: React.FunctionComponent<Props> = ({
           <Box key={index} {...item}>
             <Text style={{ lineHeight: 1 }}>{getItemLabel(val)}</Text>
             <Box
-              onClick={(ev) => {
+              onClick={ev => {
                 ev.stopPropagation()
                 if (disabled) return
                 onSelect({

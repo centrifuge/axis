@@ -48,9 +48,7 @@ export const AxisTheme = ({ theme, children, ...rest }) => {
   return (
     <Grommet theme={theme || axisThemeConfig} {...rest}>
       <GlobalsStyles />
-      <ThemeContext.Consumer>
-        {(theme) => <ThemeProvider theme={theme}>{children}</ThemeProvider>}
-      </ThemeContext.Consumer>
+      <ThemeContext.Consumer>{theme => <ThemeProvider theme={theme}>{children}</ThemeProvider>}</ThemeContext.Consumer>
     </Grommet>
   )
 }

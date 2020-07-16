@@ -7,7 +7,7 @@ import { Box, FormField } from 'grommet/es6'
 
 storiesOf('Components | Date Input', module)
   .add('Default', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [date, setDate] = useState(undefined)
 
       return (
@@ -24,7 +24,7 @@ storiesOf('Components | Date Input', module)
     return <Comp />
   })
   .add('width drop props', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [date, setDate] = useState(undefined)
 
       return (
@@ -47,7 +47,7 @@ storiesOf('Components | Date Input', module)
     return <Comp />
   })
   .add('inside a form field', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [date, setDate] = useState(undefined)
 
       return (

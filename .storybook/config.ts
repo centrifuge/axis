@@ -4,7 +4,7 @@ const req = require.context('./src', true, /.tsx$/)
 
 function loadStories() {
   console.log('Load Stories', req.keys())
-  req.keys().forEach((filename) => req(filename))
+  req.keys().forEach(filename => req(filename))
 }
 
 addParameters({

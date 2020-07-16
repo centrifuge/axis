@@ -73,25 +73,25 @@ class Components extends Component {
           name="check"
           checked={checkBox}
           label="CheckBox"
-          onChange={(event) => this.setState({ checkBox: event.target.checked })}
+          onChange={event => this.setState({ checkBox: event.target.checked })}
         />
         <CheckBox
           name="toggle"
           toggle
           checked={checkBox}
           label="CheckBox toggle"
-          onChange={(event) => this.setState({ checkBox: event.target.checked })}
+          onChange={event => this.setState({ checkBox: event.target.checked })}
         />
         <RadioButton
           name="radio"
           checked={radioButton}
           label="RadioButton"
-          onChange={(event) => this.setState({ radioButton: event.target.checked })}
+          onChange={event => this.setState({ radioButton: event.target.checked })}
         />
         <RangeInput value={24} onChange={() => {}} />
         <Stack>
           <Box direction="row" justify="between">
-            {[0, 1, 2, 3].map((value) => (
+            {[0, 1, 2, 3].map(value => (
               <Box key={value} pad="small">
                 <Text style={{ fontFamily: 'monospace' }}>{value}</Text>
               </Box>
@@ -105,7 +105,7 @@ class Components extends Component {
             size="full"
             round="small"
             values={rangeSelector}
-            onChange={(values) => this.setState({ rangeSelector: values })}
+            onChange={values => this.setState({ rangeSelector: values })}
           />
         </Stack>
         <FormField label="FormField">
@@ -146,7 +146,7 @@ class Components extends Component {
         </Accordion>
       </Box>,
       <Box key="tabs">
-        <Tabs activeIndex={tabIndex} onActive={(index) => this.setState({ tabIndex: index })}>
+        <Tabs activeIndex={tabIndex} onActive={index => this.setState({ tabIndex: index })}>
           <Tab title="Tab 1">
             <Box pad="small">
               <Text>Tab 1 content</Text>

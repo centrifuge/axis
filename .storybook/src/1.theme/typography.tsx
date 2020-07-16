@@ -37,7 +37,7 @@ storiesOf('Theme | Typography / Headings', module)
   .add('Sizes', () => (
     <AxisTheme>
       <Box direction={'columns'} gap={'large'}>
-        {headingSizes.map((item) => {
+        {headingSizes.map(item => {
           return (
             <div key={item}>
               <Heading level={1} size={item}>
@@ -83,7 +83,7 @@ storiesOf('Theme | Typography / Paragraph', module)
   .add('Sizes', () => (
     <AxisTheme>
       <Box direction={'columns'} gap={'large'}>
-        {paragraphSizes.map((item) => (
+        {paragraphSizes.map(item => (
           <Paragraph key={item} size={item}>
             <strong>{item}:</strong> Proin pellentesque, arcu vitae maximus pharetra, diam nulla porttitor orci, gravida
             aliquam neque nulla et quam. Integer aliquam finibus purus vel vestibulum. Interdum et malesuada fames ac

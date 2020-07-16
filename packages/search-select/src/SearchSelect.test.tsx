@@ -35,16 +35,26 @@ describe('Search Select', () => {
     let wrapper
     beforeEach(() => {
       wrapper = mount(<SearchSelect {...inputProps} options={items} />)
-      ;['onBlur', 'onChange', 'onFocus'].forEach((cb) => inputProps[cb].mockClear())
+      ;['onBlur', 'onChange', 'onFocus'].forEach(cb => inputProps[cb].mockClear())
     })
 
     it('should open the drop on click and contain 3 items and SearchBar', () => {
-      expect(wrapper.find(TextInput).first().props().placeholder).toEqual('Select')
+      expect(
+        wrapper
+          .find(TextInput)
+          .first()
+          .props().placeholder
+      ).toEqual('Select')
       wrapper.simulate('click')
 
       const container = wrapper.find(SelectContainer)
       expect(container.length).toEqual(1)
-      expect(container.find(TextInput).first().props().placeholder).toEqual('Search')
+      expect(
+        container
+          .find(TextInput)
+          .first()
+          .props().placeholder
+      ).toEqual('Search')
       expect(container.find('SelectContainer__OptionBox').length).toEqual(3)
     })
 
@@ -61,7 +71,10 @@ describe('Search Select', () => {
 
     it('should select the proper element', () => {
       wrapper.simulate('click')
-      wrapper.find('SelectContainer__OptionBox').first().simulate('click')
+      wrapper
+        .find('SelectContainer__OptionBox')
+        .first()
+        .simulate('click')
       expect(inputProps.onChange).toHaveBeenCalledWith(items[0])
     })
 

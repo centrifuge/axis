@@ -46,7 +46,7 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
         {...rest}
         ref={contRef}
         plain
-        onClick={(e) => {
+        onClick={e => {
           if (!justClosed) {
             setOpen(true)
           }
@@ -67,7 +67,7 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
         <Drop
           plain
           responsive
-          onClickOutside={(e) => {
+          onClickOutside={e => {
             if (open) {
               setJustClosed(true)
               setOpen(false)
@@ -112,8 +112,8 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
             </Card>
           )}
           {transactions
-            .filter((tx) => (open ? true : tx.showIfClosed))
-            .map((tx) => (
+            .filter(tx => (open ? true : tx.showIfClosed))
+            .map(tx => (
               <Card>
                 <div>{tx.status}</div>
                 <div>{tx.description}</div>

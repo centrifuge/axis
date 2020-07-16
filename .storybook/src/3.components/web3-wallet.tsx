@@ -23,7 +23,7 @@ export const getAddressLink = (address: string) => {
 
 storiesOf('Components | Web3 Wallet', module)
   .add('Default', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selected, setSelected] = useState(undefined)
 
       return (
@@ -45,7 +45,7 @@ storiesOf('Components | Web3 Wallet', module)
     return <Comp />
   })
   .add('Within header', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box>
@@ -86,7 +86,7 @@ storiesOf('Components | Web3 Wallet', module)
     return <Comp />
   })
   .add('Within header and with transactions', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const transactions = [
         {
           description: 'Approve DROP',

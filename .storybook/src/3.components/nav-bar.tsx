@@ -9,7 +9,7 @@ import { Npm } from 'grommet-icons'
 
 storiesOf('Components | Nav Bar', module)
   .add('Default', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selectedRoute, setSelectedRoute] = useState('route/to/home')
       const menuItems: MenuItem[] = [
         {
@@ -32,7 +32,7 @@ storiesOf('Components | Nav Bar', module)
             <NavBar
               selectedRoute={selectedRoute}
               menuItems={menuItems}
-              onRouteClick={(item) => {
+              onRouteClick={item => {
                 setSelectedRoute(item.route)
               }}
             />
@@ -45,7 +45,7 @@ storiesOf('Components | Nav Bar', module)
   })
 
   .add('with custom width and height', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selectedRoute, setSelectedRoute] = useState('route/to/home')
       const menuItems: MenuItem[] = [
         {
@@ -70,7 +70,7 @@ storiesOf('Components | Nav Bar', module)
               height={'160px'}
               selectedRoute={selectedRoute}
               menuItems={menuItems}
-              onRouteClick={(item) => {
+              onRouteClick={item => {
                 setSelectedRoute(item.route)
               }}
               menuItemProps={{ style: { fontSize: 14 } }}
@@ -83,7 +83,7 @@ storiesOf('Components | Nav Bar', module)
     return <Comp />
   })
   .add('With Logo and Secondary Menu', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selectedRoute, setSelectedRoute] = useState('route/to/home')
       const menuItems: MenuItem[] = [
         {
@@ -113,7 +113,7 @@ storiesOf('Components | Nav Bar', module)
               logo={<Npm size={'large'} color="plain" />}
               selectedRoute={selectedRoute}
               menuItems={menuItems}
-              onRouteClick={(item) => {
+              onRouteClick={item => {
                 setSelectedRoute(item.route)
               }}
             />
@@ -126,7 +126,7 @@ storiesOf('Components | Nav Bar', module)
   })
 
   .add('With secondary menu in Dropdown', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selectedRoute, setSelectedRoute] = useState('route/to/home')
       const menuItems: MenuItem[] = [
         {
@@ -157,7 +157,7 @@ storiesOf('Components | Nav Bar', module)
               menuLabel={'John Doe'}
               selectedRoute={selectedRoute}
               menuItems={menuItems}
-              onRouteClick={(item) => {
+              onRouteClick={item => {
                 if (item.secondary) {
                   alert('Secondary clicked: ' + item.route)
                 } else {
@@ -174,7 +174,7 @@ storiesOf('Components | Nav Bar', module)
   })
 
   .add('Main Menu aliged to the right', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selectedRoute, setSelectedRoute] = useState('route/to/home')
       const menuItems: MenuItem[] = [
         {
@@ -206,7 +206,7 @@ storiesOf('Components | Nav Bar', module)
               selectedRoute={selectedRoute}
               menuItems={menuItems}
               mainMenuAlignment={'right'}
-              onRouteClick={(item) => {
+              onRouteClick={item => {
                 if (item.secondary) {
                   alert('Secondary clicked: ' + item.route)
                 } else {
@@ -223,7 +223,7 @@ storiesOf('Components | Nav Bar', module)
   })
 
   .add('With custom section between menus', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selectedRoute, setSelectedRoute] = useState('route/to/home')
       const menuItems: MenuItem[] = [
         {
@@ -254,7 +254,7 @@ storiesOf('Components | Nav Bar', module)
               menuLabel={'John Doe'}
               selectedRoute={selectedRoute}
               menuItems={menuItems}
-              onRouteClick={(item) => {
+              onRouteClick={item => {
                 if (item.secondary) {
                   alert('Secondary clicked: ' + item.route)
                 } else {
@@ -277,7 +277,7 @@ storiesOf('Components | Nav Bar', module)
               menuLabel={'John Doe'}
               selectedRoute={selectedRoute}
               menuItems={menuItems}
-              onRouteClick={(item) => {
+              onRouteClick={item => {
                 if (item.secondary) {
                   alert('Secondary clicked: ' + item.route)
                 } else {
@@ -299,7 +299,7 @@ storiesOf('Components | Nav Bar', module)
     return <Comp />
   })
   .add('Sticky', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selectedRoute, setSelectedRoute] = useState('route/to/home')
       const menuItems: MenuItem[] = [
         {
@@ -331,7 +331,7 @@ storiesOf('Components | Nav Bar', module)
               menuLabel={'John Doe'}
               selectedRoute={selectedRoute}
               menuItems={menuItems}
-              onRouteClick={(item) => {
+              onRouteClick={item => {
                 if (item.secondary) {
                   alert('Secondary clicked: ' + item.route)
                 } else {
@@ -347,7 +347,7 @@ storiesOf('Components | Nav Bar', module)
             </NavBar>
 
             <Box pad={'medium'}>
-              {Array.from(Array(100).keys()).map((item) => {
+              {Array.from(Array(100).keys()).map(item => {
                 return <Paragraph key={item}>{item}</Paragraph>
               })}
             </Box>

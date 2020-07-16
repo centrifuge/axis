@@ -13,22 +13,22 @@ const DateTimeTextInput = styled(TextInput)`
 const StyledDateInputDropButton = styled(DropButton)`
   font-size: inherit;
   ${DateTimeTextInput} {
-    ${(props) => props.disabled && 'cursor:default'}
+    ${props => props.disabled && 'cursor:default'}
   }
 
-  ${(props) => !props.plain && controlBorderStyle};
-  ${(props) => props.theme.dateInput && props.theme.dateInput.control && props.theme.dateInput.control.extend};
+  ${props => !props.plain && controlBorderStyle};
+  ${props => props.theme.dateInput && props.theme.dateInput.control && props.theme.dateInput.control.extend};
 `
 
 const StyledCalendar = styled(Calendar)`
   // Handle multiple sizes
-  ${(props) => props.theme.dateInput && props.theme.dateInput.calendar && props.theme.dateInput.calendar.extend};
+  ${props => props.theme.dateInput && props.theme.dateInput.calendar && props.theme.dateInput.calendar.extend};
 `
 
-const DropContent = (props) => {
+const DropContent = props => {
   const { date, locale, onClose, size } = props
 
-  const selectDate = (date) => {
+  const selectDate = date => {
     onClose(date)
   }
   return (
@@ -85,7 +85,7 @@ export const DateInput: React.FunctionComponent<Props> = ({
     padding = { right: size }
   }
 
-  const selectDate = (date) => {
+  const selectDate = date => {
     if (onChange) onChange(date)
     setOpen(false)
   }
@@ -115,7 +115,7 @@ export const DateInput: React.FunctionComponent<Props> = ({
         <Box gap={size} direction={'row'} margin={theme.dateInput.icons.margin}>
           {value && !disabled && (
             <Icon
-              onClick={(ev) => {
+              onClick={ev => {
                 ev.stopPropagation()
                 selectDate(undefined)
               }}

@@ -6,7 +6,7 @@ import { Box, FormField } from 'grommet'
 
 storiesOf('Components | Number Input', module)
   .add('Default', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} pad={'medium'}>
@@ -20,7 +20,7 @@ storiesOf('Components | Number Input', module)
     return <Comp />
   })
   .add('Percent', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} pad={'medium'}>
@@ -34,7 +34,7 @@ storiesOf('Components | Number Input', module)
   })
 
   .add('Currency', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} pad={'medium'}>
@@ -48,7 +48,7 @@ storiesOf('Components | Number Input', module)
   })
 
   .add('Inside a form field', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       return (
         <AxisTheme>
           <Box gap={'medium'} pad={'medium'}>

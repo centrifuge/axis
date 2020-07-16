@@ -57,7 +57,7 @@ const DisplayFieldBox = styled(Box)`
       }
     }
   }
-  ${(props) => props.theme.displayField && props.theme.displayField.extend}
+  ${props => props.theme.displayField && props.theme.displayField.extend}
 `
 
 const LabelBox = styled(Box)``

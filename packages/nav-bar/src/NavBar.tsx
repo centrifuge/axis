@@ -51,7 +51,7 @@ interface StyledNavBarProps {
 }
 
 const StyledNavBar = styled(Box)<StyledNavBarProps>`
-  ${(props) =>
+  ${props =>
     props.sticky &&
     `
     position: sticky;
@@ -64,7 +64,7 @@ interface MenuItemProps {
   style?: CSSProperties
 }
 
-const NavBar: FunctionComponent<Props> = (props) => {
+const NavBar: FunctionComponent<Props> = props => {
   const {
     logo,
     selectedRoute,
@@ -98,8 +98,8 @@ const NavBar: FunctionComponent<Props> = (props) => {
 
   const getMainMenuItems = (props?: MenuItemProps) => {
     return menuItems
-      .filter((item) => !item.secondary)
-      .map((item) => {
+      .filter(item => !item.secondary)
+      .map(item => {
         const anchorProps = {
           ...{ onClick: () => onRouteClick(item) },
           ...(selectedRoute === item.route ? { color: 'selected' } : {}),
@@ -111,8 +111,8 @@ const NavBar: FunctionComponent<Props> = (props) => {
 
   const getSecondaryMenuItems = () => {
     return menuItems
-      .filter((item) => item.secondary)
-      .map((item) => {
+      .filter(item => item.secondary)
+      .map(item => {
         const anchorProps = {
           ...{ onClick: () => onRouteClick(item) },
           ...(selectedRoute === item.route ? { className: 'selected' } : {}),
@@ -124,7 +124,7 @@ const NavBar: FunctionComponent<Props> = (props) => {
   return (
     <StyledNavBar {...rest} sticky={sticky} justify="center" align="center" fill="horizontal">
       <ResponsiveContext.Consumer>
-        {(size) => {
+        {size => {
           const isSmall = size === 'small'
           const isMedium = size === 'medium'
           const isMobile = isSmall || isMedium
@@ -154,8 +154,8 @@ const NavBar: FunctionComponent<Props> = (props) => {
                       <DynamicPropsMenu
                         plain
                         items={menuItems
-                          .filter((item) => item.secondary)
-                          .map((item) => {
+                          .filter(item => item.secondary)
+                          .map(item => {
                             return {
                               label: item.label,
                               onClick: () => onRouteClick(item),

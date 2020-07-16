@@ -24,7 +24,7 @@ const registries = [
 
 storiesOf('Components | Search Select', module)
   .add('Default', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selected, setSelected] = useState(undefined)
 
       return (
@@ -39,7 +39,7 @@ storiesOf('Components | Search Select', module)
     return <Comp />
   })
   .add('inside a form field', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selected, setSelected] = useState(undefined)
 
       return (
@@ -56,10 +56,10 @@ storiesOf('Components | Search Select', module)
     return <Comp />
   })
   .add('Object as options', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selected, setSelected] = useState(undefined)
 
-      const renderLabel = (value) => {
+      const renderLabel = value => {
         return (
           <Box pad={{ vertical: 'small' }}>
             {value ? (

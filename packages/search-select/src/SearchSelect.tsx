@@ -12,22 +12,22 @@ export const SearchSelect: React.FunctionComponent<Props> = ({ options, value, o
     setFilteredOptions(options)
   }, [options])
 
-  const onSelect = (selected) => {
+  const onSelect = selected => {
     //reset options
     setFilteredOptions(options)
     onChange && onChange(selected.value)
   }
 
-  const onFiltering = (text) => {
+  const onFiltering = text => {
     const exp = new RegExp(text, 'i')
     setFilteredOptions(
-      options.filter((o) => {
+      options.filter(o => {
         return exp.test(getItemLabel(o))
       })
     )
   }
 
-  const getItemLabel = (value) => {
+  const getItemLabel = value => {
     return getItemPropByKey(value, 'labelKey')
   }
 

@@ -4,7 +4,7 @@ import NumberFormat, { NumberFormatValues } from 'react-number-format'
 import { TextInput } from 'grommet'
 import { sizeStyle } from 'grommet-styles'
 
-export const NumberInput = withTheme((props) => {
+export const NumberInput = withTheme(props => {
   // Props get passed to the html input and React will trow errors for unsuported input porps
   // Do must clean up custom props here
   const { value, precision, prefix, suffix, onChange, placeholder, ...rest } = props

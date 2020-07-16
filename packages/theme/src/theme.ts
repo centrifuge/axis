@@ -61,11 +61,11 @@ const white = '#fff'
   HEADINGS
 */
 
-const isHeader = (props) => (props.level <= 2 || !props.level ? true : false)
+const isHeader = props => (props.level <= 2 || !props.level ? true : false)
 
-const isSubheader = (props) => (props.level >= 3 ? true : false)
+const isSubheader = props => (props.level >= 3 ? true : false)
 
-const generateHeadingSizes = (specs) => ({
+const generateHeadingSizes = specs => ({
   small: specs,
   medium: specs,
   large: specs,
@@ -115,17 +115,17 @@ const textSpecs = {
 
 const textSizes = {
   ...textSpecs,
-  extend: (props) => css`
+  extend: props => css`
     ${props.textAlign &&
-    props.textAlign === 'justify' &&
-    css`
-      text-align: justify;
-    `};
+      props.textAlign === 'justify' &&
+      css`
+        text-align: justify;
+      `};
 
     ${props.hyphens &&
-    css`
-      hyphens: ${props.hyphens === true ? 'auto' : 'unset'};
-    `}
+      css`
+        hyphens: ${props.hyphens === true ? 'auto' : 'unset'};
+      `}
   `,
 }
 
@@ -200,14 +200,14 @@ export const axisThemeConfig = deepMerge(base, {
   heading: {
     weight: fwDemibold,
     responsiveBreakpoint: null,
-    extend: (props) => css`
+    extend: props => css`
       font-family: ${ffStack};
     `,
   },
   paragraph: textSizes,
   text: textSizes,
   anchor: {
-    fontWeight: (props) => (props.bold ? fwDemibold : fwRegular),
+    fontWeight: props => (props.bold ? fwDemibold : fwRegular),
     textDecoration: 'underline',
     color: {
       dark: 'white',
@@ -225,14 +225,14 @@ export const axisThemeConfig = deepMerge(base, {
     `,
   },
   box: {
-    extend: (props) => css`
+    extend: props => css`
       //
       ${props.responsiveChildren &&
-      css`
-        > * {
-          flex: 1;
-        }
-      `}
+        css`
+          > * {
+            flex: 1;
+          }
+        `}
     `,
   },
   button: {
@@ -258,15 +258,14 @@ export const axisThemeConfig = deepMerge(base, {
         light: 'black',
       },
     },
-    extend: (props) => css`
+    extend: props => css`
       font-weight: ${fwMedium};
       font-family: ${ffStack};
       text-align: center;
       font-size: 16px;
       line-height: 24px;
 
-       ${
-         !props.disabled &&
+       ${!props.disabled &&
          css`
            &:hover {
              box-shadow: none;
@@ -276,15 +275,14 @@ export const axisThemeConfig = deepMerge(base, {
                css`
                  color: ${brandColor};
                `) ||
-             css`
-               background-color: ${brandColor};
-             `}
+               css`
+                 background-color: ${brandColor};
+               `}
            }
            &:active {
              opacity: 0.9;
            }
-         `
-       }
+         `}
 
 
 
@@ -305,25 +303,21 @@ export const axisThemeConfig = deepMerge(base, {
       /* NEW PROP: underline
        * Adds an underline to buttons, ideally used with 'plain' button type
        */
-      ${
-        props.underline &&
+      ${props.underline &&
         css`
           text-decoration: underline;
-        `
-      }
+        `}
 
       /* NEW PROP: white
        * Customizes the hover background & border colors
        */
-      ${
-        props.white &&
+      ${props.white &&
         css`
           &:hover {
             background-color: ${white};
             border-color: ${white};
           }
-        `
-      }
+        `}
     `,
   },
   calendar: {
@@ -366,20 +360,20 @@ export const axisThemeConfig = deepMerge(base, {
     extend: css``,
   },
   textInput: {
-    extend: (props) => css`
+    extend: props => css`
       /* NEW PROP: newsletter
        * Creates a custom styled textInput with a nice single bottom border
        */
       ${props.newsletter &&
-      css`
-        font-weight: ${fwMedium};
-        font-family: ${ffStack};
-        color: ${black};
-        border: none;
-        border-bottom: ${borderWidth}px solid ${props.newsletter && props.dark ? black : white};
-        border-radius: 0;
-        padding-bottom: calc(11px - 1px);
-      `}
+        css`
+          font-weight: ${fwMedium};
+          font-family: ${ffStack};
+          color: ${black};
+          border: none;
+          border-bottom: ${borderWidth}px solid ${props.newsletter && props.dark ? black : white};
+          border-radius: 0;
+          padding-bottom: calc(11px - 1px);
+        `}
     `,
   },
   formField: {

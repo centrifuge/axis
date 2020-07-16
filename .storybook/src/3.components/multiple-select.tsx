@@ -24,7 +24,7 @@ const registries = [
 
 storiesOf('Components | Multiple Select', module)
   .add('Default', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selected, setSelected] = useState(undefined)
 
       return (
@@ -39,7 +39,7 @@ storiesOf('Components | Multiple Select', module)
     return <Comp />
   })
   .add('inside a form field', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selected, setSelected] = useState(undefined)
 
       return (
@@ -56,12 +56,12 @@ storiesOf('Components | Multiple Select', module)
     return <Comp />
   })
   .add('Object as options', () => {
-    const Comp = (props) => {
+    const Comp = props => {
       const [selected, setSelected] = useState([registries[1], registries[0]])
 
-      const renderLabel = (value) => {
+      const renderLabel = value => {
         if (!value || !value.length) return null
-        return value.map((val) => {
+        return value.map(val => {
           return (
             <Box background="light-4" margin={{ right: '5px' }} pad={'small'}>
               <span>{`${val.label} -> ${val.address}`}</span>
