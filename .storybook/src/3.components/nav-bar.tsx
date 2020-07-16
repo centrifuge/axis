@@ -264,7 +264,7 @@ storiesOf('Components | Nav Bar', module)
             >
               <Box direction="row" gap={'medium'} align={'center'} justify="end">
                 <Box width={'200px'}>
-                  <TextInput placeholder={'Search'}></TextInput>
+                  <TextInput placeholder={'Search'} />
                 </Box>
 
                 <Anchor>Some custom link 1</Anchor>
@@ -287,7 +287,7 @@ storiesOf('Components | Nav Bar', module)
             >
               <Box>
                 <FormField>
-                  <TextInput placeholder={'Search'}></TextInput>
+                  <TextInput placeholder={'Search'} />
                 </FormField>
               </Box>
             </NavBar>
@@ -341,7 +341,7 @@ storiesOf('Components | Nav Bar', module)
             >
               <Box>
                 <FormField>
-                  <TextInput placeholder={'Search'}></TextInput>
+                  <TextInput placeholder={'Search'} />
                 </FormField>
               </Box>
             </NavBar>

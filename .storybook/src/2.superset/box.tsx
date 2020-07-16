@@ -8,17 +8,17 @@ storiesOf('Superset | Box', module).add('responsiveChildren', () => (
     <>
       <Heading level="4"> responsiveChildren = false </Heading>
       <Box width="xlarge" border="small" direction="rows" pad="medium">
-        <Box background="accent-1" pad="medium"></Box>
-        <Box background="accent-2" pad="medium"></Box>
-        <Box background="accent-3" pad="medium"></Box>
-        <Box background="accent-4" pad="medium"></Box>
+        <Box background="accent-1" pad="medium" />
+        <Box background="accent-2" pad="medium" />
+        <Box background="accent-3" pad="medium" />
+        <Box background="accent-4" pad="medium" />
       </Box>
       <Heading level="4">responsiveChildren = true</Heading>
       <Box width="xlarge" border="small" direction="rows" responsiveChildren pad="medium">
-        <Box background="accent-1" pad="medium"></Box>
-        <Box background="accent-2" pad="medium"></Box>
-        <Box background="accent-3" pad="medium"></Box>
-        <Box background="accent-4" pad="medium"></Box>
+        <Box background="accent-1" pad="medium" />
+        <Box background="accent-2" pad="medium" />
+        <Box background="accent-3" pad="medium" />
+        <Box background="accent-4" pad="medium" />
       </Box>
     </>
   </AxisTheme>
