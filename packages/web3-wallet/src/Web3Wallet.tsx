@@ -42,15 +42,24 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
 
   return (
     <>
-      <Container {...rest} ref={contRef}>
+      <Container
+        {...rest}
+        ref={contRef}
+        plain
+        onClick={(e) => {
+          if (!justClosed) {
+            setOpen(true)
+          }
+        }}
+      >
         <IdenticonSmall>
           <img src={toDataUrl(address)} width={24} height={24} />
         </IdenticonSmall>
         <StatusAddrSmall>
           <Status>Connected</Status>
-          <Addr>{shorten(address)}</Addr>
+          <Addr>{shorten(address, 4)}</Addr>
         </StatusAddrSmall>
-        <Caret plain onClick={() => (justClosed ? setJustClosed(false) : setOpen(true))}>
+        <Caret>
           <FormDown style={{ transform: open ? 'rotate(-180deg)' : '' }} />
         </Caret>
       </Container>
@@ -58,14 +67,15 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
         <Drop
           plain
           responsive
-          onClickOutside={() => {
+          onClickOutside={(e) => {
             if (open) {
               setJustClosed(true)
               setOpen(false)
+              setTimeout(() => setJustClosed(false), 0)
             }
           }}
           onEsc={() => setOpen(false)}
-          style={{ padding: 6, marginTop: 7 }}
+          style={{ padding: 6, marginTop: 20 }}
           target={contRef.current}
           align={{ right: 'right', top: 'bottom' }}
         >
@@ -79,7 +89,7 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
                   <Status>
                     Connected to {providerName} - {networkName}
                   </Status>
-                  <Addr>{address}</Addr>
+                  <Addr title={address}>{shorten(address, 8)}</Addr>
                 </StatusAddr>
                 <Copy
                   plain
@@ -117,9 +127,10 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
 
 export default Web3Wallet
 
-const shorten = (addr: string) => addr.substr(0, 4) + '...' + addr.substr(addr.length - 4)
+const shorten = (addr: string, visibleChars: number) =>
+  addr.substr(0, visibleChars) + '...' + addr.substr(addr.length - visibleChars)
 
-const Container = styled.div`
+const Container = styled(Button)`
   display: flex;
   align-items: center;
   padding: 0 16px 0 16px;
@@ -148,7 +159,7 @@ const Addr = styled.div`
   color: #000000;
 `
 
-const Caret = styled(Button)`
+const Caret = styled.div`
   height: 24px;
   margin-left: 20px;
   svg {
@@ -158,7 +169,7 @@ const Caret = styled(Button)`
 `
 
 const Card = styled.div`
-  width: 460px;
+  width: 356px;
   margin-bottom: 4px;
   padding: 16px;
   background: #ffffff;
@@ -183,11 +194,13 @@ const StatusAddrCopyLink = styled.div`
 `
 
 const Copy = styled(Button)`
+  margin-top: 1px;
   margin-left: auto;
   height: 24px;
 `
 
 const Link = styled(Button)`
+  margin-top: 1px;
   margin-left: 8px;
   height: 24px;
 `
