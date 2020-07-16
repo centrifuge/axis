@@ -34,7 +34,7 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({address, providerNam
   useEffect(() => setShowDrop(true));
 
   return <>
-    <Container {...rest} ref={contRef}>
+    <Container {...rest} ref={contRef} plain onClick={(e) => { if (!justClosed) { setOpen(true) } }}>
       <IdenticonSmall>
         <img src={toDataUrl(address)} width={24} height={24} />
       </IdenticonSmall>
@@ -42,11 +42,11 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({address, providerNam
         <Status>Connected</Status>
         <Addr>{shorten(address, 4)}</Addr>
       </StatusAddrSmall>
-      <Caret plain onClick={() => justClosed ? setJustClosed(false) : setOpen(true)}>
-        <FormDown style={{ transform: open ? 'rotate(-180deg)' : '' }} /></Caret>
+      <Caret><FormDown style={{ transform: open ? 'rotate(-180deg)' : '' }} /></Caret>
     </Container>
     {contRef.current &&
-      <Drop plain responsive onClickOutside={() => { if (open) { setJustClosed(true); setOpen(false) }}}
+      <Drop plain responsive onClickOutside={(e) => { if (open) { setJustClosed(true); setOpen(false); setTimeout(
+        () => setJustClosed(false), 0) } }}
         onEsc={() => setOpen(false)} style={{ padding: 6, marginTop: 20 }} target={contRef.current}
         align={{ right: 'right', top: 'bottom' }}>
         {open && <Card>
@@ -82,7 +82,7 @@ export default Web3Wallet;
 const shorten = (addr: string, visibleChars: number) => addr.substr(0, visibleChars) + "..." +
   addr.substr(addr.length - visibleChars);
 
-const Container = styled.div`
+const Container = styled(Button)`
   display: flex;
   align-items: center;
   padding: 0 16px 0 16px;
@@ -112,7 +112,7 @@ const Addr = styled.div`
   color: #000000;
 `;
 
-const Caret = styled(Button)`
+const Caret = styled.div`
   height: 24px;
   margin-left: 20px;
   svg {
