@@ -1,3 +1,3 @@
 describe('theme', () => {
-    it('needs tests', () => {})
+  it('needs tests', () => {})
 })
