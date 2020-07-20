@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, CSSProperties } from 'react'
-import { Anchor, Box, BoxProps, Button, Layer, Menu, ResponsiveContext, Text } from 'grommet'
+import { Anchor, Box, BoxProps, Button, Layer, Menu, Text } from 'grommet'
 import { Close as CloseIcon, Icon, Menu as MenuIcon, User as UserIcon } from 'grommet-icons'
 import styled, { ThemeProps as StyledThemeProps, withTheme } from 'styled-components'
 import { defaultProps, extendDefaultTheme } from 'grommet/default-props'
@@ -44,6 +44,7 @@ interface Props extends BoxProps, StyledThemeProps<ThemeProps> {
   overlayWidth?: string
   onRouteClick: (item: MenuItem) => void
   menuItemProps?: MenuItemProps
+  hamburgerBreakpoint?: number
 }
 
 interface StyledNavBarProps {
@@ -58,6 +59,26 @@ const StyledNavBar = styled(Box)<StyledNavBarProps>`
     z-index: 1;
     top:0px;
   `}
+`
+
+interface BreakpointProps {
+  breakpoint?: number
+}
+
+const MobileOnly = styled.div<BreakpointProps>`
+  display: none;
+
+  @media (max-width: ${props => (props.breakpoint ? `${props.breakpoint}px` : '768px')}) {
+    display: block;
+  }
+`
+
+const DesktopOnlyBox = styled(Box)<BreakpointProps>`
+  display: flex;
+
+  @media (max-width: ${props => (props.breakpoint ? `${props.breakpoint}px` : '768px')}) {
+    display: none;
+  }
 `
 
 interface MenuItemProps {
@@ -81,6 +102,7 @@ const NavBar: FunctionComponent<Props> = props => {
     children,
     overlayWidth,
     menuItemProps,
+    hamburgerBreakpoint,
     ...rest
   } = props
 
@@ -123,102 +145,86 @@ const NavBar: FunctionComponent<Props> = props => {
 
   return (
     <StyledNavBar {...rest} sticky={sticky} justify="center" align="center" fill="horizontal">
-      <ResponsiveContext.Consumer>
-        {size => {
-          const isSmall = size === 'small'
-          const isMedium = size === 'medium'
-          const isMobile = isSmall || isMedium
+      <Box direction="row" fill="vertical" align="center" pad={pad} gap={sectionGap} width={width}>
+        {logo && <Box>{logo}</Box>}
 
-          return (
-            <Box direction="row" fill="vertical" align="center" pad={pad} gap={sectionGap} width={width}>
-              {logo && <Box>{logo}</Box>}
+        <Box flex={'grow'} direction="row" justify={'end'} gap={sectionGap}>
+          <DesktopOnlyBox direction="row" gap={itemGap}>
+            {getMainMenuItems(menuItemProps)}
+          </DesktopOnlyBox>
 
-              <Box flex={'grow'} direction="row" justify={'end'} gap={sectionGap}>
-                {!isMobile && (
-                  <Box direction="row" gap={itemGap}>
+          <DesktopOnlyBox flex={mainMenuAlignment === 'left' ? 'grow' : false} justify={'center'}>
+            {children}
+          </DesktopOnlyBox>
+
+          {!menuLabel ? (
+            <DesktopOnlyBox direction="row" gap={itemGap} align="center" justify="end">
+              {getSecondaryMenuItems()}
+            </DesktopOnlyBox>
+          ) : (
+            <DesktopOnlyBox>
+              <DynamicPropsMenu
+                plain
+                items={menuItems
+                  .filter(item => item.secondary)
+                  .map(item => {
+                    return {
+                      label: item.label,
+                      onClick: () => onRouteClick(item),
+                    }
+                  })}
+              >
+                {({ drop, hover }) => {
+                  return (
+                    <Box direction="row" gap="small" pad={'small'} background={hover && drop ? 'light-2' : undefined}>
+                      <Text>{menuLabel}</Text>
+                      <icons.user size={icons.size} />
+                    </Box>
+                  )
+                }}
+              </DynamicPropsMenu>
+            </DesktopOnlyBox>
+          )}
+
+          <Box direction="row" align="center">
+            <MobileOnly>
+              <Anchor>
+                <icons.menu size={icons.size} onClick={openMenu} style={{ verticalAlign: 'middle' }} />
+              </Anchor>
+            </MobileOnly>
+          </Box>
+        </Box>
+
+        {opened && (
+          <MobileOnly>
+            <Layer
+              position="right"
+              full="vertical"
+              responsive={false}
+              animate={true}
+              onClickOutside={closeMenu}
+              onEsc={closeMenu}
+            >
+              <Box width={overlayWidth} pad={'medium'}>
+                <Box fill={'horizontal'} align={'end'}>
+                  <Anchor onClick={closeMenu}>
+                    <icons.close size={icons.size} />
+                  </Anchor>
+                </Box>
+                <Box gap={sectionGap}>
+                  <Box gap={itemGap} pad={{ horizontal: 'xxxlarge' }}>
                     {getMainMenuItems(menuItemProps)}
                   </Box>
-                )}
-                {!isMobile && (
-                  <Box flex={mainMenuAlignment === 'left' ? 'grow' : false} justify={'center'}>
-                    {children}
-                  </Box>
-                )}
-                {!menuLabel
-                  ? !isMobile && (
-                      <Box direction="row" gap={itemGap} align="center" justify="end">
-                        {getSecondaryMenuItems()}
-                      </Box>
-                    )
-                  : !isSmall && (
-                      <DynamicPropsMenu
-                        plain
-                        items={menuItems
-                          .filter(item => item.secondary)
-                          .map(item => {
-                            return {
-                              label: item.label,
-                              onClick: () => onRouteClick(item),
-                            }
-                          })}
-                      >
-                        {({ drop, hover }) => {
-                          return (
-                            <Box
-                              direction="row"
-                              gap="small"
-                              pad={'small'}
-                              background={hover && drop ? 'light-2' : undefined}
-                            >
-                              <Text>{menuLabel}</Text>
-                              <icons.user size={icons.size} />
-                            </Box>
-                          )
-                        }}
-                      </DynamicPropsMenu>
-                    )}
 
-                {isMobile && (
-                  <Box direction="row" align="center">
-                    <Anchor>
-                      <icons.menu size={icons.size} onClick={openMenu} style={{ verticalAlign: 'middle' }} />
-                    </Anchor>
+                  <Box gap={itemGap} align={'center'}>
+                    {getSecondaryMenuItems()}
                   </Box>
-                )}
+                </Box>
               </Box>
-              {opened && isMobile && (
-                <Layer
-                  position="right"
-                  full="vertical"
-                  responsive={false}
-                  animate={true}
-                  onClickOutside={closeMenu}
-                  onEsc={closeMenu}
-                >
-                  <Box width={overlayWidth} pad={'medium'}>
-                    <Box fill={'horizontal'} align={'end'}>
-                      <Anchor onClick={closeMenu}>
-                        <icons.close size={icons.size} />
-                      </Anchor>
-                    </Box>
-                    <Box gap={sectionGap}>
-                      <Box gap={itemGap} pad={{ horizontal: 'xxxlarge' }}>
-                        {getMainMenuItems(menuItemProps)}
-                      </Box>
-
-                      {((menuLabel && isSmall) || (isMobile && !menuLabel)) && (
-                        <Box gap={itemGap} align={'center'}>
-                          {getSecondaryMenuItems()}
-                        </Box>
-                      )}
-                    </Box>
-                  </Box>
-                </Layer>
-              )}
-            </Box>
-          )
-        }}
-      </ResponsiveContext.Consumer>
+            </Layer>
+          </MobileOnly>
+        )}
+      </Box>
     </StyledNavBar>
   )
 }
@@ -235,6 +241,7 @@ NavBar.defaultProps = {
   mainMenuAlignment: 'left',
   height: '72px',
   border: { side: 'bottom', color: 'light-4' },
+  hamburgerBreakpoint: 768,
   ...defaultProps,
 }
 
