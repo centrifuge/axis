@@ -358,3 +358,40 @@ storiesOf('Components | Nav Bar', module)
 
     return <Comp />
   })
+
+  .add('with mobile breakpoint', () => {
+    const Comp = props => {
+      const [selectedRoute, setSelectedRoute] = useState('route/to/home')
+      const menuItems: MenuItem[] = [
+        {
+          label: 'Home',
+          route: 'route/to/home',
+        },
+        {
+          label: 'About',
+          route: 'route/to/about',
+        },
+        {
+          label: 'Settings',
+          route: 'route/to/settings',
+        },
+      ]
+
+      return (
+        <AxisTheme>
+          <Box>
+            <NavBar
+              selectedRoute={selectedRoute}
+              menuItems={menuItems}
+              onRouteClick={item => {
+                setSelectedRoute(item.route)
+              }}
+              mobileBreakpoint={800}
+            />
+          </Box>
+        </AxisTheme>
+      )
+    }
+
+    return <Comp />
+  })

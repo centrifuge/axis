@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, CSSProperties } from 'react'
+import React, { FunctionComponent, useState, useEffect, CSSProperties } from 'react'
 import { Anchor, Box, BoxProps, Button, Layer, Menu, ResponsiveContext, Text } from 'grommet'
 import { Close as CloseIcon, Icon, Menu as MenuIcon, User as UserIcon } from 'grommet-icons'
 import styled, { ThemeProps as StyledThemeProps, withTheme } from 'styled-components'
@@ -44,6 +44,7 @@ interface Props extends BoxProps, StyledThemeProps<ThemeProps> {
   overlayWidth?: string
   onRouteClick: (item: MenuItem) => void
   menuItemProps?: MenuItemProps
+  mobileBreakpoint?: number
 }
 
 interface StyledNavBarProps {
@@ -81,12 +82,30 @@ const NavBar: FunctionComponent<Props> = props => {
     children,
     overlayWidth,
     menuItemProps,
+    mobileBreakpoint,
     ...rest
   } = props
 
   const [opened, setOpened] = useState(false)
   const openMenu = () => setOpened(true)
   const closeMenu = () => setOpened(false)
+
+  const [reachedMobileBreakpoint, setReachedMobileBreakpoint] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (mobileBreakpoint && window.innerWidth <= mobileBreakpoint) {
+        setReachedMobileBreakpoint(true)
+      } else {
+        setReachedMobileBreakpoint(false)
+      }
+    }
+
+    if (mobileBreakpoint) {
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
+    }
+  }, [mobileBreakpoint])
 
   //get the icons from the theme
   const {
@@ -127,7 +146,7 @@ const NavBar: FunctionComponent<Props> = props => {
         {size => {
           const isSmall = size === 'small'
           const isMedium = size === 'medium'
-          const isMobile = isSmall || isMedium
+          const isMobile = (mobileBreakpoint && reachedMobileBreakpoint) || (!mobileBreakpoint && (isSmall || isMedium))
 
           return (
             <Box direction="row" fill="vertical" align="center" pad={pad} gap={sectionGap} width={width}>
