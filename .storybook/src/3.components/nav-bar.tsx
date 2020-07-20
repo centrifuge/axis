@@ -359,7 +359,7 @@ storiesOf('Components | Nav Bar', module)
     return <Comp />
   })
 
-  .add('with mobile breakpoint', () => {
+  .add('with hamburger breakpoint', () => {
     const Comp = props => {
       const [selectedRoute, setSelectedRoute] = useState('route/to/home')
       const menuItems: MenuItem[] = [
@@ -386,7 +386,7 @@ storiesOf('Components | Nav Bar', module)
               onRouteClick={item => {
                 setSelectedRoute(item.route)
               }}
-              mobileBreakpoint={800}
+              hamburgerBreakpoint={800}
             />
           </Box>
         </AxisTheme>
