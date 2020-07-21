@@ -149,20 +149,30 @@ const NavBar: FunctionComponent<Props> = props => {
         {logo && <Box>{logo}</Box>}
 
         <Box flex={'grow'} direction="row" justify={'end'} gap={sectionGap}>
-          <DesktopOnlyBox direction="row" gap={itemGap}>
+          <DesktopOnlyBox breakpoint={props.hamburgerBreakpoint} direction="row" gap={itemGap}>
             {getMainMenuItems(menuItemProps)}
           </DesktopOnlyBox>
 
-          <DesktopOnlyBox flex={mainMenuAlignment === 'left' ? 'grow' : false} justify={'center'}>
+          <DesktopOnlyBox
+            breakpoint={props.hamburgerBreakpoint}
+            flex={mainMenuAlignment === 'left' ? 'grow' : false}
+            justify={'center'}
+          >
             {children}
           </DesktopOnlyBox>
 
           {!menuLabel ? (
-            <DesktopOnlyBox direction="row" gap={itemGap} align="center" justify="end">
+            <DesktopOnlyBox
+              breakpoint={props.hamburgerBreakpoint}
+              direction="row"
+              gap={itemGap}
+              align="center"
+              justify="end"
+            >
               {getSecondaryMenuItems()}
             </DesktopOnlyBox>
           ) : (
-            <DesktopOnlyBox>
+            <DesktopOnlyBox breakpoint={props.hamburgerBreakpoint}>
               <DynamicPropsMenu
                 plain
                 items={menuItems
@@ -187,7 +197,7 @@ const NavBar: FunctionComponent<Props> = props => {
           )}
 
           <Box direction="row" align="center">
-            <MobileOnly>
+            <MobileOnly breakpoint={props.hamburgerBreakpoint}>
               <Anchor>
                 <icons.menu size={icons.size} onClick={openMenu} style={{ verticalAlign: 'middle' }} />
               </Anchor>
@@ -196,7 +206,7 @@ const NavBar: FunctionComponent<Props> = props => {
         </Box>
 
         {opened && (
-          <MobileOnly>
+          <MobileOnly breakpoint={props.hamburgerBreakpoint}>
             <Layer
               position="right"
               full="vertical"
