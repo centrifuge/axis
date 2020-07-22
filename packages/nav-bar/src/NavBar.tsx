@@ -145,65 +145,79 @@ const NavBar: FunctionComponent<Props> = props => {
 
   return (
     <StyledNavBar {...rest} sticky={sticky} justify="center" align="center" fill="horizontal">
-      <Box direction="row" fill="vertical" align="center" pad={pad} gap={sectionGap} width={width}>
-        {logo && <Box>{logo}</Box>}
+      <Box direction="row" fill="vertical" align="center" pad={pad} gap={'0px'} width={width}>
+        {logo && <Box margin={{ right: sectionGap }}>{logo}</Box>}
 
-        <Box flex={'grow'} direction="row" justify={'end'} gap={sectionGap}>
-          <DesktopOnlyBox breakpoint={props.hamburgerBreakpoint} direction="row" gap={itemGap}>
+        <Box flex={'grow'} direction="row" justify={'start'} gap={sectionGap}>
+          <DesktopOnlyBox
+            breakpoint={props.hamburgerBreakpoint}
+            direction="row"
+            gap={itemGap}
+            style={{ marginRight: 'auto' }}
+          >
             {getMainMenuItems(menuItemProps)}
           </DesktopOnlyBox>
 
-          <DesktopOnlyBox
-            breakpoint={props.hamburgerBreakpoint}
-            flex={mainMenuAlignment === 'left' ? 'grow' : false}
-            justify={'center'}
-          >
-            {children}
-          </DesktopOnlyBox>
-
-          {!menuLabel ? (
+          {children && (
             <DesktopOnlyBox
               breakpoint={props.hamburgerBreakpoint}
-              direction="row"
-              gap={itemGap}
-              align="center"
-              justify="end"
+              flex={mainMenuAlignment === 'left' ? 'grow' : false}
+              justify={'center'}
             >
-              {getSecondaryMenuItems()}
-            </DesktopOnlyBox>
-          ) : (
-            <DesktopOnlyBox breakpoint={props.hamburgerBreakpoint}>
-              <DynamicPropsMenu
-                plain
-                items={menuItems
-                  .filter(item => item.secondary)
-                  .map(item => {
-                    return {
-                      label: item.label,
-                      onClick: () => onRouteClick(item),
-                    }
-                  })}
-              >
-                {({ drop, hover }) => {
-                  return (
-                    <Box direction="row" gap="small" pad={'small'} background={hover && drop ? 'light-2' : undefined}>
-                      <Text>{menuLabel}</Text>
-                      <icons.user size={icons.size} />
-                    </Box>
-                  )
-                }}
-              </DynamicPropsMenu>
+              {children}
             </DesktopOnlyBox>
           )}
 
-          <Box direction="row" align="center">
-            <MobileOnly breakpoint={props.hamburgerBreakpoint}>
-              <Anchor>
-                <icons.menu size={icons.size} onClick={openMenu} style={{ verticalAlign: 'middle' }} />
-              </Anchor>
-            </MobileOnly>
-          </Box>
+          {!menuLabel
+            ? getSecondaryMenuItems().length > 0 && (
+                <DesktopOnlyBox
+                  breakpoint={props.hamburgerBreakpoint}
+                  direction="row"
+                  gap={itemGap}
+                  align="center"
+                  justify="end"
+                >
+                  {getSecondaryMenuItems()}
+                </DesktopOnlyBox>
+              )
+            : getSecondaryMenuItems().length > 0 && (
+                <DesktopOnlyBox breakpoint={props.hamburgerBreakpoint}>
+                  <DynamicPropsMenu
+                    plain
+                    items={menuItems
+                      .filter(item => item.secondary)
+                      .map(item => {
+                        return {
+                          label: item.label,
+                          onClick: () => onRouteClick(item),
+                        }
+                      })}
+                  >
+                    {({ drop, hover }) => {
+                      return (
+                        <Box
+                          direction="row"
+                          gap="small"
+                          pad={'small'}
+                          background={hover && drop ? 'light-2' : undefined}
+                        >
+                          <Text>{menuLabel}</Text>
+                          <icons.user size={icons.size} />
+                        </Box>
+                      )
+                    }}
+                  </DynamicPropsMenu>
+                </DesktopOnlyBox>
+              )}
         </Box>
+
+        <MobileOnly breakpoint={props.hamburgerBreakpoint}>
+          <Box direction="row" align="center">
+            <Anchor>
+              <icons.menu size={icons.size} onClick={openMenu} style={{ verticalAlign: 'middle' }} />
+            </Anchor>
+          </Box>
+        </MobileOnly>
 
         {opened && (
           <MobileOnly breakpoint={props.hamburgerBreakpoint}>
