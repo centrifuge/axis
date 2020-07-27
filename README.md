@@ -24,6 +24,17 @@ npm install @centrifuge/axis-[packageName] // Ex: npm install @centrifuge/axis-t
 #### Development
 
 Use node v12.16.3: `nvm use` (the version is specified in `.nvmrc`)
+
 Install and link all dependencies: `npm install`
+
 Build and watch all packages: `npm run build-watch`
+
 In a separate terminal, run storybook to view all examples: `npm start`
+
+#### Linking
+
+If you want to develop tinlake-ui, then you can use linking to depend on the local version of an axis component rather than the one in the npm package library. There are a few steps for this:
+
+1. In `packages/[some_component]`, run `npm link` to link `[some_component]` to your global `node_modules`.
+2. In the root of `axis`, run `npm link [tinlake_ui_path]/node_modules/react`, where `[tinlake_ui_path]` is the path to your local tinlake-ui repo. This tells the axis components to use the `react` dependency from the tinlake-ui package, rather than the one from the axis `node_modules` folder. This prevents errors with React Hooks due to there being multiple instances of `react`.
+3. In your tinlake-ui repo, run `npm link @centrifuge/axis-[some_component]`.
