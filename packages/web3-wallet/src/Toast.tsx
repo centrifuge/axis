@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { StatusInfo, Checkmark, Close } from 'grommet-icons'
 import { withTheme, ThemeProps as StyledThemeProps } from 'styled-components'
 
-import { ToastData } from './types'
+import { Transaction } from './types'
 import { ToastCard, Icon, Content, Action, Title, Description } from './styles'
 import { Spinner } from './Spinner'
 
@@ -15,7 +14,7 @@ interface ThemeProps {
   global: any
 }
 
-interface Props extends ToastData, StyledThemeProps<ThemeProps> {}
+interface Props extends Transaction, StyledThemeProps<ThemeProps> {}
 
 const ToastWrapperInner: React.FC<Props> = (props: Props) => {
   const getTitle = () => {

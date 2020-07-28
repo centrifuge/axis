@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 
 import { AxisTheme } from '../../../packages/theme'
 import { Box } from 'grommet/es6'
-import { Web3Wallet, ToastData } from '../../../packages/web3-wallet'
+import { Web3Wallet, Transaction } from '../../../packages/web3-wallet'
 
 const transactions = [
   {
@@ -87,7 +87,7 @@ storiesOf('Components | Web3 Wallet', module)
   })
   .add('Within header and with transactions', () => {
     const Comp = props => {
-      const transactions: ToastData[] = [
+      const transactions: Transaction[] = [
         {
           description: 'Approve DROP',
           status: 'unconfirmed',

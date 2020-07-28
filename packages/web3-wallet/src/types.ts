@@ -1,4 +1,4 @@
-export interface ToastData {
+export interface Transaction {
   description: string
   status: 'unconfirmed' | 'pending' | 'succeeded' | 'failed'
   txHash: string

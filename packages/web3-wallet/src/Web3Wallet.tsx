@@ -9,14 +9,14 @@ const { toDataUrl } = require('ethereum-blockies')
 import { copyToClipboard } from '@centrifuge/axis-utils'
 
 import { ToastWrapper } from './Toast'
-import { ToastData } from './types'
+import { Transaction } from './types'
 
 interface Props {
   address: string
   providerName: string
   networkName: string
   onDisconnect: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-  transactions: ToastData[]
+  transactions: Transaction[]
   getAddressLink: (address: string) => string
 }
 
