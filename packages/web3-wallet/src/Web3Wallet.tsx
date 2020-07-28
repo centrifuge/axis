@@ -8,12 +8,8 @@ import linkIcon from './img/External-link.svg'
 const { toDataUrl } = require('ethereum-blockies')
 import { copyToClipboard } from '@centrifuge/axis-utils'
 
-interface Transaction {
-  description: string
-  status: 'unconfirmed' | 'pending' | 'succeeded' | 'failed'
-  txHash: string
-  showIfClosed?: boolean
-}
+import { ToastWrapper } from './Toast'
+import { Transaction } from './types'
 
 interface Props {
   address: string
@@ -114,10 +110,7 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
           {transactions
             .filter(tx => (open ? true : tx.showIfClosed))
             .map(tx => (
-              <Card>
-                <div>{tx.status}</div>
-                <div>{tx.description}</div>
-              </Card>
+              <ToastWrapper {...tx} />
             ))}
         </Drop>
       )}
