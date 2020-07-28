@@ -19,7 +19,7 @@ interface Props extends ToastData, StyledThemeProps<ThemeProps> {}
 
 const ToastWrapperInner: React.FC<Props> = (props: Props) => {
   const getTitle = () => {
-    if (props.status === 'succeeded') return 'Transaction succesful'
+    if (props.status === 'succeeded') return 'Transaction successful'
     if (props.status === 'failed') return 'Transaction failed'
     if (props.status === 'unconfirmed') return 'Waiting for confirmation'
     if (props.status === 'pending') return 'Transaction pending'
