@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 
 import { AxisTheme } from '../../../packages/theme'
 import { Box } from 'grommet/es6'
-import { Web3Wallet } from '../../../packages/web3-wallet'
+import { Web3Wallet, ToastData } from '../../../packages/web3-wallet'
 
 const transactions = [
   {
@@ -87,7 +87,7 @@ storiesOf('Components | Web3 Wallet', module)
   })
   .add('Within header and with transactions', () => {
     const Comp = props => {
-      const transactions = [
+      const transactions: ToastData[] = [
         {
           description: 'Approve DROP',
           status: 'unconfirmed',
@@ -103,6 +103,7 @@ storiesOf('Components | Web3 Wallet', module)
           description: 'Borrow 1,000.00 DAI',
           status: 'succeeded',
           txHahs: '0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1',
+          externalLink: 'https://etherscan.io/',
         },
         {
           description: 'Borrow 1,000.00 DAI',
