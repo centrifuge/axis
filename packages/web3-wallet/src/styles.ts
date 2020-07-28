@@ -17,7 +17,7 @@ export const ToastCard = styled.div<ToastCardProps>`
 `
 
 interface IconProps {
-    color?: string
+  color?: string
 }
 
 export const Icon = styled.div<IconProps>`
@@ -36,7 +36,7 @@ export const Content = styled.div`
 `
 
 interface TitleProps {
-    color?: string
+  color?: string
 }
 
 export const Title = styled.div<TitleProps>`
