@@ -10,6 +10,13 @@ import alertIcon from './img/Alert-circle.svg'
 import failedIcon from './img/Failed-circle.svg'
 import externalLinkIcon from './img/External-link.svg'
 
+const statusConfig = {
+  succeeded: { title: 'Transaction successful', color: '#7ED321', background: '#fff', icon: checkIcon },
+  failed: { title: 'Transaction failed', color: '#F44E72', background: '#fff', icon: failedIcon },
+  unconfirmed: { title: 'Waiting for confirmation', color: '#FCBA59', background: '#FFF5DA', icon: alertIcon },
+  pending: { title: 'Transaction pending', color: '#999', background: '#fff', icon: 'spinner' },
+}
+
 interface ThemeProps {
   global: any
 }
@@ -17,30 +24,16 @@ interface ThemeProps {
 interface Props extends Transaction, StyledThemeProps<ThemeProps> {}
 
 const ToastWrapperInner: React.FC<Props> = (props: Props) => {
-  const getTitle = () => {
-    if (props.status === 'succeeded') return 'Transaction successful'
-    if (props.status === 'failed') return 'Transaction failed'
-    if (props.status === 'unconfirmed') return 'Waiting for confirmation'
-    if (props.status === 'pending') return 'Transaction pending'
-  }
-
-  const getColor = () => {
-    if (props.status === 'succeeded') return '#7ED321'
-    if (props.status === 'failed') return '#F44E72'
-    if (props.status === 'unconfirmed') return '#FCBA59'
-    if (props.status === 'pending') return '#999'
-  }
+  const config = statusConfig[props.status]
 
   return (
-    <ToastCard backgroundColor={props.status === 'unconfirmed' ? '#FFF5DA' : '#fff'}>
-      <Icon color={getColor()}>
-        {props.status === 'succeeded' && <img src={checkIcon} alt={getTitle()} />}
-        {props.status === 'failed' && <img src={failedIcon} alt={getTitle()} />}
-        {props.status === 'unconfirmed' && <img src={alertIcon} alt={getTitle()} />}
-        {props.status === 'pending' && <Spinner color={getColor()} />}
+    <ToastCard backgroundColor={config.background}>
+      <Icon color={config.color}>
+        {config.icon === 'spinner' && <Spinner color={config.color} />}
+        {config.icon !== 'spinner' && <img src={config.icon} alt={config.title} />}
       </Icon>
       <Content>
-        <Title color={getColor()}>{getTitle()}</Title>
+        <Title color={config.color}>{config.title}</Title>
         <Description>{props.description}</Description>
       </Content>
       {props.externalLink && (

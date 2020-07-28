@@ -19,11 +19,13 @@ const Wrapper = styled.div<Props>`
   @keyframes spin {
     to {
       -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
     }
   }
   @-webkit-keyframes spin {
     to {
       -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
     }
   }
 `
