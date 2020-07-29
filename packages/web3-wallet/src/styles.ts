@@ -11,7 +11,7 @@ export const ToastCard = styled.div<ToastCardProps>`
   height: 60px;
   background: ${props => props.backgroundColor || '#fff'};
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  border-radius: 8px;
   display: flex;
   flex-direction: row;
 `
