@@ -10,6 +10,7 @@ import { copyToClipboard } from '@centrifuge/axis-utils'
 
 import { ToastWrapper } from './Toast'
 import { Transaction } from './types'
+import { AnimatedBar } from './AnimatedBar'
 
 interface Props {
   address: string
@@ -58,6 +59,8 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
         <Caret>
           <FormDown style={{ transform: open ? 'rotate(-180deg)' : '' }} />
         </Caret>
+
+        {transactions.filter(tx => tx.status === 'pending').length > 0 && <AnimatedBar />}
       </Container>
       {contRef.current && (
         <Drop
