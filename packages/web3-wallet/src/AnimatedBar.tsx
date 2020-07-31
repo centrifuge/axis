@@ -5,16 +5,16 @@ interface Props {}
 
 // Based on https://stackoverflow.com/a/34773398/625231
 const Wrapper = styled.div`
-  position: absolute;
+  position: relative;
   width: 170px;
-  bottom: 0;
+  top: 11px;
   height: 3px;
   overflow-x: hidden;
   background: #fff;
 `
 
 const Line = styled.div`
-  position: absolute;
+  position: relative;
   background: rgba(0, 0, 0, 0.1);
   height: 3px;
 `
