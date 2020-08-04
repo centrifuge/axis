@@ -120,8 +120,8 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
           )}
           {transactions
             .filter(tx => (open ? true : tx.showIfClosed))
-            .map(tx => (
-              <ToastWrapper {...tx} />
+            .map((tx: Transaction, index: number) => (
+              <ToastWrapper key={index} {...tx} />
             ))}
         </Drop>
       )}
@@ -175,7 +175,6 @@ const Caret = styled.div`
 
 const Card = styled.div`
   width: 356px;
-  margin-bottom: 4px;
   padding: 16px;
   background: #ffffff;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
