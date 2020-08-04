@@ -10,6 +10,13 @@ import { copyToClipboard } from '@centrifuge/axis-utils'
 
 import { ToastWrapper } from './Toast'
 import { Transaction } from './types'
+import { AnimatedBar } from './AnimatedBar'
+
+const InnerWallet = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: -7px;
+`
 
 interface Props {
   address: string
@@ -48,16 +55,20 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
           }
         }}
       >
-        <IdenticonSmall>
-          <img src={toDataUrl(address)} width={24} height={24} />
-        </IdenticonSmall>
-        <StatusAddrSmall>
-          <Status>Connected</Status>
-          <Addr>{shorten(address, 4)}</Addr>
-        </StatusAddrSmall>
-        <Caret>
-          <FormDown style={{ transform: open ? 'rotate(-180deg)' : '' }} />
-        </Caret>
+        <InnerWallet>
+          <IdenticonSmall>
+            <img src={toDataUrl(address)} width={24} height={24} />
+          </IdenticonSmall>
+          <StatusAddrSmall>
+            <Status>Connected</Status>
+            <Addr>{shorten(address, 4)}</Addr>
+          </StatusAddrSmall>
+          <Caret>
+            <FormDown style={{ transform: open ? 'rotate(-180deg)' : '' }} />
+          </Caret>
+        </InnerWallet>
+
+        {transactions.filter(tx => tx.status === 'pending').length > 0 && <AnimatedBar />}
       </Container>
       {contRef.current && (
         <Drop
@@ -109,8 +120,8 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
           )}
           {transactions
             .filter(tx => (open ? true : tx.showIfClosed))
-            .map(tx => (
-              <ToastWrapper {...tx} />
+            .map((tx: Transaction, index: number) => (
+              <ToastWrapper key={index} {...tx} />
             ))}
         </Drop>
       )}
@@ -125,6 +136,7 @@ const shorten = (addr: string, visibleChars: number) =>
 
 const Container = styled(Button)`
   display: flex;
+  flex-direction: column;
   align-items: center;
   padding: 0 16px 0 16px;
 `
@@ -163,7 +175,6 @@ const Caret = styled.div`
 
 const Card = styled.div`
   width: 356px;
-  margin-bottom: 4px;
   padding: 16px;
   background: #ffffff;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);

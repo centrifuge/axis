@@ -1,25 +1,28 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState } from 'react'
 import { storiesOf } from '@storybook/react'
 
 import { AxisTheme } from '../../../packages/theme'
 import { Box } from 'grommet/es6'
-import { Web3Wallet, Transaction } from '../../../packages/web3-wallet'
+import { Web3Wallet } from '../../../packages/web3-wallet'
+
+export const getAddressLink = (address: string) => {
+  return `https://kovan.etherscan.io/address/${address}`
+}
 
 const transactions = [
   {
     description: 'Approve DROP',
     status: 'unconfirmed',
-    txHahs: '0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1',
     showIfClosed: true,
   },
-  { description: 'Supply 5,000.00 DAI', status: 'pending', txHahs: '0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1' },
-  { description: 'Borrow 1,000.00 DAI', status: 'succeeded', txHahs: '0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1' },
-  { description: 'Borrow 1,000.00 DAI', status: 'failed', txHahs: '0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1' },
+  { description: 'Supply 5,000.00 DAI', status: 'pending' },
+  { description: 'Borrow 1,000.00 DAI', status: 'succeeded' },
+  {
+    description: 'Borrow 1,000.00 DAI',
+    status: 'failed',
+    externalLink: getAddressLink('0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1'),
+  },
 ]
-
-export const getAddressLink = (address: string) => {
-  return `https://kovan.etherscan.io/address/${address}`
-}
 
 storiesOf('Components | Web3 Wallet', module)
   .add('Default', () => {
@@ -87,31 +90,6 @@ storiesOf('Components | Web3 Wallet', module)
   })
   .add('Within header and with transactions', () => {
     const Comp = props => {
-      const transactions: Transaction[] = [
-        {
-          description: 'Approve DROP',
-          status: 'unconfirmed',
-          txHahs: '0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1',
-          showIfClosed: true,
-        },
-        {
-          description: 'Supply 5,000.00 DAI',
-          status: 'pending',
-          txHahs: '0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1',
-        },
-        {
-          description: 'Borrow 1,000.00 DAI',
-          status: 'succeeded',
-          txHahs: '0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1',
-          externalLink: 'https://etherscan.io/',
-        },
-        {
-          description: 'Borrow 1,000.00 DAI',
-          status: 'failed',
-          txHahs: '0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1',
-        },
-      ]
-
       return (
         <AxisTheme>
           <Box>
