@@ -1,16 +1,19 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-interface Props {}
+interface Props {
+  active: boolean
+}
 
 // Based on https://stackoverflow.com/a/34773398/625231
-const Wrapper = styled.div`
+const Wrapper = styled.div<Props>`
   position: relative;
   width: 170px;
   top: 11px;
   height: 3px;
   overflow-x: hidden;
   background: #fff;
+  visibility: ${props => (props.active ? 'visible' : 'hidden')};
 `
 
 const Line = styled.div`
@@ -51,7 +54,7 @@ const Decrease = styled(Line)`
 
 export const AnimatedBar: React.FC<Props> = (props: Props) => {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <Increase />
       <Decrease />
     </Wrapper>
