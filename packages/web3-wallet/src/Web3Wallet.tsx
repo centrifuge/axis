@@ -68,7 +68,7 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
           </Caret>
         </InnerWallet>
 
-        {transactions.filter(tx => tx.status === 'pending').length > 0 && <AnimatedBar />}
+        <AnimatedBar active={transactions.filter(tx => tx.status === 'pending').length > 0} />
       </Container>
       {contRef.current && (
         <Drop
@@ -142,6 +142,7 @@ const Container = styled(Button)`
 `
 
 const IdenticonSmall = styled.div`
+  margin-top: 4px;
   height: 24px;
   margin-right: 8px;
 `
@@ -167,6 +168,7 @@ const Addr = styled.div`
 const Caret = styled.div`
   height: 24px;
   margin-left: 20px;
+  margin-top: 4px;
   svg {
     transition: 200ms;
     transform-style: preserve-3d;
@@ -182,6 +184,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 8px;
 `
 
 const Identicon = styled.div`

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { storiesOf } from '@storybook/react'
 
 import { AxisTheme } from '../../../packages/theme'
-import { Box } from 'grommet/es6'
+import { Box, Button } from 'grommet/es6'
 import { Web3Wallet } from '../../../packages/web3-wallet'
 
 export const getAddressLink = (address: string) => {
@@ -90,6 +90,8 @@ storiesOf('Components | Web3 Wallet', module)
   })
   .add('Within header and with transactions', () => {
     const Comp = props => {
+      const [showAnimatedBar, setShowAnimatedBar] = useState(true)
+
       return (
         <AxisTheme>
           <Box>
@@ -115,13 +117,18 @@ storiesOf('Components | Web3 Wallet', module)
                     providerName="MetaMask"
                     networkName="Mainnet"
                     onDisconnect={() => console.log('disconnect clicked')}
-                    transactions={transactions}
+                    transactions={transactions.map((tx: any) => {
+                      if (!showAnimatedBar && tx.status === 'pending') return { ...tx, status: 'unconfirmed' }
+                      return tx
+                    })}
                     getAddressLink={getAddressLink}
                     style={{ marginLeft: 'auto' }}
                   />
                 </Box>
               </Box>
             </Box>
+
+            <Button onClick={() => setShowAnimatedBar(!showAnimatedBar)}>Toggle animated bar</Button>
           </Box>
         </AxisTheme>
       )

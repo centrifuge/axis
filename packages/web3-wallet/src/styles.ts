@@ -6,7 +6,7 @@ interface ToastCardProps {
 
 export const ToastCard = styled.div<ToastCardProps>`
   width: 356px;
-  margin-top: 8px;
+  margin-bottom: 8px;
   padding: 12px 16px 6px 16px;
   height: 60px;
   background: ${props => props.backgroundColor || '#fff'};
