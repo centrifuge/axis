@@ -1,6 +1,6 @@
 {
   "name": "@centrifuge/axis-date-input",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Date input",
   "author": "razvan <razvan@centrifuge.io>",
   "homepage": "https://github.com/centrifuge/axis/tree/master/packages/date-input#readme",

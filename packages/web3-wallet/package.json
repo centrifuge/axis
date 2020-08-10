@@ -1,6 +1,6 @@
 {
   "name": "@centrifuge/axis-web3-wallet",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Web3 Wallet ",
   "author": "Philip Stanislaus <6912756+philipstanislaus@users.noreply.github.com>",
   "homepage": "https://github.com/centrifuge/axis/tree/master/packages/web3-wallet#readme",

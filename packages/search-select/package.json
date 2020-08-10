@@ -1,6 +1,6 @@
 {
   "name": "@centrifuge/axis-search-select",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Search Select",
   "author": "razvan <razvan@centrifuge.io>",
   "homepage": "https://github.com/centrifuge/axis/tree/master/packages/search-select#readme",
