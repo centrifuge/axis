@@ -135,6 +135,7 @@
     "@centrifuge/axis-multiple-select": "file:packages/multiple-select",
     "@centrifuge/axis-number-input": "file:packages/number-input",
     "@centrifuge/axis-spinner": "file:packages/spinner",
+    "@centrifuge/axis-token-input": "file:packages/token-input",
     "@centrifuge/axis-utils": "file:packages/utils",
     "@centrifuge/axis-web3-wallet": "file:packages/web3-wallet"
   }
