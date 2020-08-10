@@ -1,7 +1,5 @@
 import babel from "rollup-plugin-babel";
-import filesize from "rollup-plugin-filesize";
 import resolve from "rollup-plugin-node-resolve";
-import progress from "rollup-plugin-progress";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import url from "rollup-plugin-url";
 import { DEFAULT_EXTENSIONS } from '@babel/core';
@@ -29,9 +27,7 @@ export default {
     }
   ],
   plugins: [
-
     peerDepsExternal(),
-    progress(),
     resolve({
       extensions
     }),
@@ -44,9 +40,7 @@ export default {
     babel({
       babelrc: true,
       extensions
-
-    }),
-    filesize()
+    })
   ]
 };
 
