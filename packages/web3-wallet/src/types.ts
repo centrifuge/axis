@@ -3,4 +3,5 @@ export interface Transaction {
   status: 'unconfirmed' | 'pending' | 'succeeded' | 'failed'
   externalLink?: string
   showIfClosed?: boolean
+  failedReason?: string
 }

@@ -7,13 +7,17 @@ interface ToastCardProps {
 export const ToastCard = styled.div<ToastCardProps>`
   width: 356px;
   margin-bottom: 8px;
-  padding: 12px 16px 6px 16px;
-  height: 60px;
   background: ${props => props.backgroundColor || '#fff'};
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   display: flex;
+  flex-direction: column;
+`
+
+export const MainToastCard = styled.div`
+  display: flex;
   flex-direction: row;
+  padding: 12px 16px 6px 16px;
 `
 
 interface IconProps {
@@ -51,4 +55,19 @@ export const Description = styled.div`
 
 export const Action = styled.div`
   padding-top: 4px;
+`
+
+interface FailedReasonProps {
+  color?: string
+}
+
+export const FailedReason = styled.div<FailedReasonProps>`
+  background: #fff2f5;
+  width: 100%;
+  color: ${(props: TitleProps) => props.color || '#f44e72'};
+  font-weight: bold;
+  padding: 6px 12px 8px 12px;
+  font-size: 11px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 `

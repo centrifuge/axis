@@ -2,7 +2,7 @@ import * as React from 'react'
 import { withTheme, ThemeProps as StyledThemeProps } from 'styled-components'
 
 import { Transaction } from './types'
-import { ToastCard, Icon, Content, Action, Title, Description } from './styles'
+import { ToastCard, MainToastCard, Icon, Content, Action, Title, Description, FailedReason } from './styles'
 import { Spinner } from './Spinner'
 
 import checkIcon from './img/Check-circle.svg'
@@ -28,21 +28,25 @@ const ToastWrapperInner: React.FC<Props> = (props: Props) => {
 
   return (
     <ToastCard backgroundColor={config.background}>
-      <Icon color={config.color}>
-        {config.icon === 'spinner' && <Spinner color={config.color} />}
-        {config.icon !== 'spinner' && <img src={config.icon} alt={config.title} />}
-      </Icon>
-      <Content>
-        <Title color={config.color}>{config.title}</Title>
-        <Description>{props.description}</Description>
-      </Content>
-      {props.externalLink && (
-        <Action>
-          <a href={props.externalLink} target="_blank">
-            <img src={externalLinkIcon} alt="Open link" />
-          </a>
-        </Action>
-      )}
+      <MainToastCard>
+        <Icon color={config.color}>
+          {config.icon === 'spinner' && <Spinner color={config.color} />}
+          {config.icon !== 'spinner' && <img src={config.icon} alt={config.title} />}
+        </Icon>
+        <Content>
+          <Title color={config.color}>{config.title}</Title>
+          <Description>{props.description}</Description>
+        </Content>
+        {props.externalLink && (
+          <Action>
+            <a href={props.externalLink} target="_blank">
+              <img src={externalLinkIcon} alt="Open link" />
+            </a>
+          </Action>
+        )}
+      </MainToastCard>
+
+      {props.failedReason && <FailedReason color={config.color}>{props.failedReason}</FailedReason>}
     </ToastCard>
   )
 }
