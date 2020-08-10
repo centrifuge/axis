@@ -8,8 +8,13 @@ storiesOf('Components | Token Input', module).add('Default', () => {
   const Comp = props => {
     return (
       <AxisTheme>
-        <Box gap={'medium'} pad={'medium'}>
-          <TokenInput />
+        <Box gap={'medium'} pad={'medium'} width={'medium'}>
+          <TokenInput
+            token="DAI"
+            value="1000"
+            maxValue="10000"
+            onChange={(newValue: string) => console.log(newValue)}
+          />
         </Box>
       </AxisTheme>
     )

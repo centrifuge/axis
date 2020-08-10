@@ -30,6 +30,7 @@
     "grommet": "2.7.x",
     "react": ">= 16.6.1",
     "react-dom": ">= 16.6.1",
+    "react-number-format": "4.4.1",
     "styled-components": ">= 4.x"
   },
   "devDependencies": {
