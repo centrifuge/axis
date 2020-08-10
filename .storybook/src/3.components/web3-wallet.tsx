@@ -136,3 +136,59 @@ storiesOf('Components | Web3 Wallet', module)
 
     return <Comp />
   })
+
+  .add('Within header and with failed transaction', () => {
+    const Comp = props => {
+      return (
+        <AxisTheme>
+          <Box>
+            <Box
+              style={{
+                position: 'sticky',
+                top: 0,
+                height: '56px',
+                zIndex: 2,
+                boxShadow: '0 0 4px 0px #00000075',
+              }}
+              background="white"
+              justify="center"
+              align="center"
+              direction="row"
+              fill="horizontal"
+              pad={{ horizontal: 'small' }}
+            >
+              <Box direction="row" width="xlarge" align="center">
+                <Box align="center" direction="row" basis="full">
+                  <Web3Wallet
+                    address="0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1"
+                    providerName="MetaMask"
+                    networkName="Mainnet"
+                    onDisconnect={() => console.log('disconnect clicked')}
+                    transactions={[
+                      {
+                        description: 'Borrow 1,000.00 DAI',
+                        status: 'failed',
+                        showIfClosed: true,
+                        failedReason: 'Insufficient funds in account.',
+                      },
+                      {
+                        description: 'Borrow 1,000.00 DAI',
+                        status: 'failed',
+                        showIfClosed: true,
+                        failedReason:
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus turpis, gravida nec justo in, commodo commodo ligula. Proin consequat, ex a aliquam aliquet, sem magna accumsan enim, sed placerat velit massa et sapien. Nunc ultricies, erat vel gravida pulvinar, lorem nulla placerat purus, id sollicitudin orci est ut sem.',
+                      },
+                    ]}
+                    getAddressLink={getAddressLink}
+                    style={{ marginLeft: 'auto' }}
+                  />
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </AxisTheme>
+      )
+    }
+
+    return <Comp />
+  })
