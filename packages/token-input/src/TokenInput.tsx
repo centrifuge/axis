@@ -1,85 +1,22 @@
 import * as React from 'react'
-import styled from 'styled-components'
 import NumberFormat, { NumberFormatValues } from 'react-number-format'
-import { FormField, TextInput } from 'grommet'
+import { TextInput } from 'grommet'
 import { addThousandsSeparators, baseToDisplay, displayToBase } from './utils'
 import { Decimal } from 'decimal.js-light'
 
 import { tokens } from './tokens'
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const Input = styled.div`
-  display: flex;
-`
-
-const InputField = styled(FormField)`
-  flex-grow: 1;
-
-  > div {
-    flex-grow: 1;
-
-    > div {
-      flex-direction: row;
-    }
-  }
-
-  input {
-    box-shadow: none;
-  }
-
-  /* Error box */
-  > span {
-    display: none;
-  }
-`
-
-const Token = styled.div`
-  font-size: 14px;
-  margin: 12px 0 0 1px;
-  width: 80px;
-  border-bottom: 1px solid #d8d8d8;
-  display: flex;
-`
-
-const InnerToken = styled.div`
-  padding: 4px 0 0 8px;
-  border-left: 1px solid #eee;
-  width: 100%;
-  margin-top: auto;
-  margin-bottom: 2px;
-`
-
-const TokenIcon = styled.img`
-  display: inline;
-  width: 18px;
-  height: 18px;
-  margin-right: 6px;
-  position: relative;
-  padding-bottom: 4px;
-  top: 4px;
-`
-
-const Limit = styled.div`
-  display: flex;
-  padding-top: 4px;
-`
-
-const LimitText = styled.div`
-  flex-grow: 1;
-`
-const LimitAction = styled.div`
-  text-align: left;
-  width: 80px;
-  float: right;
-  text-decoration: underline;
-  font-weight: bold;
-  padding-left: 8px;
-  cursor: pointer;
-`
+import {
+  Wrapper,
+  Input,
+  InputField,
+  Token,
+  InnerToken,
+  TokenBorderBottom,
+  TokenIcon,
+  Limit,
+  LimitText,
+  LimitAction,
+} from './styles'
 
 interface Props {
   label?: string
@@ -147,6 +84,7 @@ export const TokenInput: React.FunctionComponent<Props> = (props: Props) => {
             <TokenIcon src={token.img} alt={props.token as string} />
             {props.token}
           </InnerToken>
+          <TokenBorderBottom>&nbsp;</TokenBorderBottom>
         </Token>
       </Input>
 
