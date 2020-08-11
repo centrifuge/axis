@@ -134,6 +134,7 @@
     "@centrifuge/axis-search-select": "file:packages/search-select",
     "@centrifuge/axis-multiple-select": "file:packages/multiple-select",
     "@centrifuge/axis-number-input": "file:packages/number-input",
+    "@centrifuge/axis-ratio-bar": "file:packages/ratio-bar",
     "@centrifuge/axis-spinner": "file:packages/spinner",
     "@centrifuge/axis-utils": "file:packages/utils",
     "@centrifuge/axis-web3-wallet": "file:packages/web3-wallet"
