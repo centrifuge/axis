@@ -56,11 +56,13 @@ export const BottomSeparators = styled.div``
 
 interface SeparatorTextProps extends Segment {}
 
+// margin-left is [center of the separator] - [half number of characters in text * average character width]
 export const SeparatorText = styled.div<SeparatorTextProps>`
     display: inline;
     color: ${props => props.separatorColor || '#000'};
     transition: margin-left 200ms linear;
-    margin-left: ${props => props.widthSoFar ? `${props.widthSoFar - 10}%` : '0'};
+    margin-left: ${props =>
+    props.widthSoFar ? `calc(${props.widthSoFar}% - ${(props.separatorText || []).length / 2}ch)` : '0'};
     overflow: hidden;
     white-space: nowrap;
 `
