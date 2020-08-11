@@ -39,9 +39,7 @@ export const SegmentDiv = styled.div<SegmentDivProps>`
   margin-right: -1px;
 `
 
-interface SeparatorProps extends Segment {}
-
-export const Separator = styled.div<SeparatorProps>`
+export const Separator = styled.div<Segment>`
   width: 1px;
   height: 40px;
   background-color: ${props => props.separatorColor || '#000'};
@@ -50,14 +48,10 @@ export const Separator = styled.div<SeparatorProps>`
   top: ${props => (props.separatorPosition === 'bottom' ? '8px' : '0')};
 `
 
-export const TopSeparators = styled.div``
-
-export const BottomSeparators = styled.div``
-
-interface SeparatorTextProps extends Segment {}
+export const Separators = styled.div``
 
 // margin-left is [center of the separator] - [half number of characters in text * average character width]
-export const SeparatorText = styled.div<SeparatorTextProps>`
+export const SeparatorText = styled.div<Segment>`
   display: inline;
   color: ${props => props.separatorColor || '#000'};
   transition: margin-left 200ms linear;

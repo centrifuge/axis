@@ -1,16 +1,6 @@
 import * as React from 'react'
 
-import {
-  Wrapper,
-  Bar,
-  Label,
-  SegmentDiv,
-  Separator,
-  InnerBar,
-  TopSeparators,
-  BottomSeparators,
-  SeparatorText,
-} from './styles'
+import { Wrapper, Bar, Label, SegmentDiv, Separator, InnerBar, Separators, SeparatorText } from './styles'
 import { Segment } from './types'
 
 interface Labels {
@@ -40,7 +30,7 @@ export const RatioBar: React.FunctionComponent<Props> = (props: Props) => {
     <Wrapper>
       {props.labels && props.labels.left && <Label>{props.labels.left}</Label>}
       <Bar>
-        <TopSeparators>
+        <Separators>
           {augmentedSegments.map((segment: Segment) => (
             <>
               {segment.separatorText && segment.separatorPosition !== 'bottom' && (
@@ -48,7 +38,7 @@ export const RatioBar: React.FunctionComponent<Props> = (props: Props) => {
               )}
             </>
           ))}
-        </TopSeparators>
+        </Separators>
         <InnerBar>
           {augmentedSegments.map((segment: Segment, index: number) => (
             <>
@@ -57,7 +47,7 @@ export const RatioBar: React.FunctionComponent<Props> = (props: Props) => {
             </>
           ))}
         </InnerBar>
-        <BottomSeparators>
+        <Separators>
           {augmentedSegments.map((segment: Segment) => (
             <>
               {segment.separatorText && segment.separatorPosition === 'bottom' && (
@@ -65,7 +55,7 @@ export const RatioBar: React.FunctionComponent<Props> = (props: Props) => {
               )}
             </>
           ))}
-        </BottomSeparators>
+        </Separators>
       </Bar>
       {props.labels && props.labels.right && <Label>{props.labels.right}</Label>}
     </Wrapper>
