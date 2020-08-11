@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { AxisTheme } from '../../../packages/theme'
 import { TokenInput } from '@centrifuge/axis-token-input'
-import { Box } from 'grommet'
+import { Box, Text } from 'grommet'
 
 storiesOf('Components | Token Input', module).add('Default', () => {
   const Comp = props => {
@@ -13,6 +13,9 @@ storiesOf('Components | Token Input', module).add('Default', () => {
     return (
       <AxisTheme>
         <Box gap={'medium'} pad={'medium'} width={'medium'}>
+          <Text>DAI value outside TokenInput component: {daiValue}</Text>
+          <br />
+
           <TokenInput
             label="Form label"
             token="DAI"
