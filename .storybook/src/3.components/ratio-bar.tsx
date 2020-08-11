@@ -18,8 +18,8 @@ storiesOf('Components | Ratio Bar', module).add('Default', () => {
 
     return (
       <AxisTheme>
-        <Box gap={'medium'} pad={'medium'} width={'medium'}>
-          <Button onClick={randomize}>Randomize values</Button>
+        <Box gap={'medium'} pad={'medium'} width={'large'}>
+          <Button onClick={randomize}>Randomize TIN ratio</Button>
 
           <RatioBar
             labels={{ left: 'DROP', right: 'TIN' }}
@@ -27,7 +27,7 @@ storiesOf('Components | Ratio Bar', module).add('Default', () => {
               {
                 width: 100 - tinRatio,
                 backgroundColor: '#0828BE',
-                separatorText: 'Current Ratio 30%',
+                separatorText: `Current Ratio ${tinRatio}%`,
                 separatorColor: '#0828BE',
                 separatorPosition: 'top',
               },
@@ -36,7 +36,7 @@ storiesOf('Components | Ratio Bar', module).add('Default', () => {
                 backgroundColor: '#D8D8D8',
                 separatorText: 'Minimum Ratio 10%',
                 separatorColor: '#000',
-                separatorPosition: 'bottotm',
+                separatorPosition: 'bottom',
               },
               {
                 width: minTinRatio,

@@ -10,12 +10,16 @@ export const Label = styled.div`
     flex: 0 0 60px;
     font-size: 16px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
 `
 
 export const Bar = styled.div`
     flex-grow: 1;
     margin-right: 12px;
 `
+
+export const InnerBar = styled.div``
 
 interface SegmentDivProps extends Segment {
     isFirst?: boolean
@@ -42,4 +46,21 @@ export const Separator = styled.div<SeparatorProps>`
     height: 40px;
     background-color: ${props => props.separatorColor || '#000'};
     display: inline-block;
+    position: relative;
+    top: ${props => props.separatorPosition === 'bottom' ? '8px' : '0'};
+`
+
+export const TopSeparators = styled.div``
+
+export const BottomSeparators = styled.div``
+
+interface SeparatorTextProps extends Segment {}
+
+export const SeparatorText = styled.div<SeparatorTextProps>`
+    display: inline;
+    color: ${props => props.separatorColor || '#000'};
+    transition: margin-left 200ms linear;
+    margin-left: ${props => props.widthSoFar ? `${props.widthSoFar - 10}%` : '0'};
+    overflow: hidden;
+    white-space: nowrap;
 `

@@ -4,4 +4,5 @@ export interface Segment {
   separatorColor?: string
   separatorText?: string
   separatorPosition?: 'top' | 'bottom'
+  widthSoFar?: number
 }
