@@ -4,7 +4,7 @@ import { TextInput } from 'grommet'
 import { addThousandsSeparators, baseToDisplay, displayToBase } from './utils'
 import { Decimal } from 'decimal.js-light'
 
-import { tokens } from './tokens'
+import { tokens, TokenSpec } from './tokens'
 import {
   Wrapper,
   Input,
@@ -22,12 +22,12 @@ interface Props {
   label?: string
   value: string
   onChange: (newValue: string) => void
-  token: keyof typeof tokens
+  token: keyof typeof tokens | TokenSpec
   maxValue?: string
 }
 
 export const TokenInput: React.FunctionComponent<Props> = (props: Props) => {
-  const token = tokens[props.token]
+  const token = typeof props.token === 'object' ? props.token : tokens[props.token]
 
   const [value, setValue] = React.useState('')
   const [maxValue, setMaxValue] = React.useState('')
@@ -81,8 +81,8 @@ export const TokenInput: React.FunctionComponent<Props> = (props: Props) => {
         </InputField>
         <Token>
           <InnerToken>
-            <TokenIcon src={token.img} alt={props.token as string} />
-            {props.token}
+            <TokenIcon src={token.img} alt={token.symbol} />
+            {token.symbol}
           </InnerToken>
           <TokenBorderBottom>&nbsp;</TokenBorderBottom>
         </Token>

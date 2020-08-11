@@ -62,6 +62,7 @@ export const TokenIcon = styled.img`
   position: relative;
   padding-bottom: 4px;
   top: 6px;
+  object-fit: contain;
 `
 
 export const Limit = styled.div`
