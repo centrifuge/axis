@@ -16,7 +16,12 @@ const transactions = [
     showIfClosed: true,
   },
   { description: 'Supply 5,000.00 DAI', status: 'pending' },
-  { description: 'Borrow 1,000.00 DAI', status: 'succeeded' },
+  {
+    description: 'Borrow 1,000.00 DAI',
+    status: 'succeeded',
+    externalLink: getAddressLink('0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1'),
+    showIfClosed: true,
+  },
   {
     description: 'Borrow 1,000.00 DAI',
     status: 'failed',
