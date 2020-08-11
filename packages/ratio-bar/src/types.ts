@@ -1,7 +1,7 @@
 export interface Separator {
-    text: string
-    color?: string
-    position?: 'top' | 'bottom'
+  text: string
+  color?: string
+  position?: 'top' | 'bottom'
 }
 
 export interface Segment {

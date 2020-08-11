@@ -56,7 +56,9 @@ export const SeparatorText = styled.div<Segment>`
   color: ${props => (props.separator && props.separator.color) || '#000'};
   transition: margin-left 200ms linear;
   margin-left: ${props =>
-    props.widthSoFar ? `calc(${props.widthSoFar}% - ${((props.separator && props.separator.text) || []).length / 2}ch)` : '0'};
+    props.widthSoFar
+      ? `calc(${props.widthSoFar}% - ${((props.separator && props.separator.text) || []).length / 2}ch)`
+      : '0'};
   overflow: hidden;
   white-space: nowrap;
 `
