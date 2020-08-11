@@ -127,16 +127,17 @@
     ]
   },
   "dependencies": {
-    "@centrifuge/axis-modal": "file:packages/modal",
-    "@centrifuge/axis-theme": "file:packages/theme",
-    "@centrifuge/axis-section": "file:packages/section",
     "@centrifuge/axis-date-input": "file:packages/date-input",
-    "@centrifuge/axis-search-select": "file:packages/search-select",
+    "@centrifuge/axis-modal": "file:packages/modal",
     "@centrifuge/axis-multiple-select": "file:packages/multiple-select",
     "@centrifuge/axis-number-input": "file:packages/number-input",
+    "@centrifuge/axis-search-select": "file:packages/search-select",
+    "@centrifuge/axis-section": "file:packages/section",
     "@centrifuge/axis-spinner": "file:packages/spinner",
+    "@centrifuge/axis-theme": "file:packages/theme",
     "@centrifuge/axis-token-input": "file:packages/token-input",
     "@centrifuge/axis-utils": "file:packages/utils",
-    "@centrifuge/axis-web3-wallet": "file:packages/web3-wallet"
+    "@centrifuge/axis-web3-wallet": "file:packages/web3-wallet",
+    "tinlake": "github:centrifuge/tinlake.js#7d03da6436fff2db23943c1d10597ea77df2c2d3"
   }
 }

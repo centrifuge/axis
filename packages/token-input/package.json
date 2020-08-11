@@ -27,6 +27,8 @@
     "url": "https://github.com/centrifuge/axis/issues"
   },
   "peerDependencies": {
+    "bn.js": "5.1.2",
+    "decimal.js-light": "2.5.0",
     "grommet": "2.7.x",
     "react": ">= 16.6.1",
     "react-dom": ">= 16.6.1",
@@ -38,6 +40,7 @@
     "@babel/plugin-transform-typescript": "^7.5.2",
     "@babel/preset-env": "^7.5.4",
     "@babel/runtime": "^7.3.1",
+    "@types/bn.js": "4.11.6",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
     "@types/styled-components": "^4.1.18",

@@ -1,15 +1,27 @@
+import daiIcon from './img/dai.svg'
+import dropIcon from './img/drop.svg'
+import tinIcon from './img/tin.svg'
+
 interface TokenSpec {
-    symbol: string,
-    img: any,
+    img: string,
     decimals: number,
     precision: number
 }
 
 export const tokens: { [key: string]: TokenSpec } = {
   'DAI': {
-    'symbol': 'DAI',
-    'img': 'test',
-    'decimals': 16,
-    'precision': 2
+    'img': daiIcon,
+    'decimals': 18,
+    'precision': 18
+  },
+  'DROP': {
+    'img': dropIcon,
+    'decimals': 18,
+    'precision': 18
+  },
+  'TIN': {
+    'img': tinIcon,
+    'decimals': 18,
+    'precision': 18
   }
 }

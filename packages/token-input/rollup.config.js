@@ -3,6 +3,7 @@ import resolve from "rollup-plugin-node-resolve";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import url from "rollup-plugin-url";
 import { DEFAULT_EXTENSIONS } from '@babel/core';
+import image from '@rollup/plugin-image';
 
 const extensions = [
     ...DEFAULT_EXTENSIONS,
@@ -41,7 +42,8 @@ export default {
       babelrc: true,
       extensions
 
-    })
+    }),
+    image()
   ]
 };
 
