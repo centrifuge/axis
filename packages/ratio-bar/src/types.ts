@@ -1,8 +1,12 @@
+export interface Separator {
+    text: string
+    color?: string
+    position?: 'top' | 'bottom'
+}
+
 export interface Segment {
   width: number
   backgroundColor?: string
-  separatorColor?: string
-  separatorText?: string
-  separatorPosition?: 'top' | 'bottom'
+  separator?: Separator
   widthSoFar?: number
 }

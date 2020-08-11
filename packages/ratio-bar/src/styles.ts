@@ -30,7 +30,7 @@ export const SegmentDiv = styled.div<SegmentDivProps>`
   display: inline-block;
   transition: width 200ms linear;
   height: 32px;
-  width: ${props => (props.separatorText ? `calc(${props.width}% - 1px)` : `${props.width}%`)};
+  width: ${props => (props.separator && props.separator.text ? `calc(${props.width}% - 1px)` : `${props.width}%`)};
   background: ${props => props.backgroundColor};
   border-top-left-radius: ${props => (props.isFirst ? '8px' : 0)};
   border-bottom-left-radius: ${props => (props.isFirst ? '8px' : 0)};
@@ -42,10 +42,10 @@ export const SegmentDiv = styled.div<SegmentDivProps>`
 export const Separator = styled.div<Segment>`
   width: 1px;
   height: 40px;
-  background-color: ${props => props.separatorColor || '#000'};
+  background-color: ${props => (props.separator && props.separator.color) || '#000'};
   display: inline-block;
   position: relative;
-  top: ${props => (props.separatorPosition === 'bottom' ? '8px' : '0')};
+  top: ${props => ((props.separator && props.separator.position) === 'bottom' ? '8px' : '0')};
 `
 
 export const Separators = styled.div``
@@ -53,10 +53,10 @@ export const Separators = styled.div``
 // margin-left is [center of the separator] - [half number of characters in text * average character width]
 export const SeparatorText = styled.div<Segment>`
   display: inline;
-  color: ${props => props.separatorColor || '#000'};
+  color: ${props => (props.separator && props.separator.color) || '#000'};
   transition: margin-left 200ms linear;
   margin-left: ${props =>
-    props.widthSoFar ? `calc(${props.widthSoFar}% - ${(props.separatorText || []).length / 2}ch)` : '0'};
+    props.widthSoFar ? `calc(${props.widthSoFar}% - ${((props.separator && props.separator.text) || []).length / 2}ch)` : '0'};
   overflow: hidden;
   white-space: nowrap;
 `

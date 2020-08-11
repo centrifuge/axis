@@ -33,8 +33,8 @@ export const RatioBar: React.FunctionComponent<Props> = (props: Props) => {
         <Separators>
           {augmentedSegments.map((segment: Segment) => (
             <>
-              {segment.separatorText && segment.separatorPosition !== 'bottom' && (
-                <SeparatorText {...segment}>{segment.separatorText}</SeparatorText>
+              {segment.separator && segment.separator.text && segment.separator.position !== 'bottom' && (
+                <SeparatorText {...segment}>{segment.separator.text}</SeparatorText>
               )}
             </>
           ))}
@@ -43,15 +43,15 @@ export const RatioBar: React.FunctionComponent<Props> = (props: Props) => {
           {augmentedSegments.map((segment: Segment, index: number) => (
             <>
               <SegmentDiv {...segment} isFirst={index === 0} isLast={index === props.segments.length - 1}></SegmentDiv>
-              {segment.separatorText && <Separator {...segment}></Separator>}
+              {segment.separator && segment.separator.text && <Separator {...segment}></Separator>}
             </>
           ))}
         </InnerBar>
         <Separators>
           {augmentedSegments.map((segment: Segment) => (
             <>
-              {segment.separatorText && segment.separatorPosition === 'bottom' && (
-                <SeparatorText {...segment}>{segment.separatorText}</SeparatorText>
+              {segment.separator && segment.separator.text && segment.separator.position === 'bottom' && (
+                <SeparatorText {...segment}>{segment.separator.text}</SeparatorText>
               )}
             </>
           ))}
