@@ -80,7 +80,7 @@
     "rollup-plugin-url": "2.2.0",
     "styled-components": "4.2.1",
     "ts-jest": "24.0.2",
-    "typescript": "3.5.2"
+    "typescript": "3.9.7"
   },
   "jest": {
     "setupFilesAfterEnv": [
@@ -133,6 +133,7 @@
     "@centrifuge/axis-number-input": "file:packages/number-input",
     "@centrifuge/axis-search-select": "file:packages/search-select",
     "@centrifuge/axis-section": "file:packages/section",
+    "@centrifuge/axis-ratio-bar": "file:packages/ratio-bar",
     "@centrifuge/axis-spinner": "file:packages/spinner",
     "@centrifuge/axis-theme": "file:packages/theme",
     "@centrifuge/axis-token-input": "file:packages/token-input",
