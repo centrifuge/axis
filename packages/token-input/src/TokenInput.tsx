@@ -3,6 +3,7 @@ import NumberFormat, { NumberFormatValues } from 'react-number-format'
 import { TextInput } from 'grommet'
 import { addThousandsSeparators, baseToDisplay, displayToBase } from './utils'
 import { Decimal } from 'decimal.js-light'
+import BN from 'bn.js'
 
 import { tokens, TokenSpec } from './tokens'
 import {
@@ -58,7 +59,7 @@ export const TokenInput: React.FunctionComponent<Props> = (props: Props) => {
     const baseUnits = displayToBase(nonBaseUnit, token.decimals)
     props.onChange(baseUnits)
 
-    if (props.maxValue && baseUnits > props.maxValue) {
+    if (props.maxValue && new BN(baseUnits, token.precision).gt(new BN(props.maxValue, token.precision))) {
       setError(' ')
     } else if (error) {
       setError(undefined)
