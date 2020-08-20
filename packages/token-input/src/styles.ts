@@ -68,6 +68,7 @@ export const TokenIcon = styled.img`
 export const Limit = styled.div`
   display: flex;
   padding-top: 4px;
+  font-size: 12px;
 `
 
 export const LimitText = styled.div`
