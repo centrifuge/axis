@@ -8,20 +8,30 @@ import { RatioBar } from '../../../packages/ratio-bar'
 storiesOf('Components | Ratio Bar', module).add('TIN Ratio', () => {
   const Comp = props => {
     const minTinRatio = 10
+    const maxTinRatio = 50
     const [tinRatio, setTinRatio] = React.useState(30)
 
     const randomize = () => {
-      // Between 10 and 70
-      const tinRatio = Math.floor(Math.random() * 60) + 10
+      // Between 10 and 50
+      const tinRatio = Math.floor(Math.random() * 40) + 10
       setTinRatio(tinRatio)
     }
 
     const segments = [
       {
-        width: 100 - tinRatio,
+        width: maxTinRatio,
         backgroundColor: '#0828BE',
         separator: {
-          text: `Current Ratio ${tinRatio}%`,
+          text: `Max: ${maxTinRatio}%`,
+          color: '#000',
+          position: 'bottom',
+        },
+      },
+      {
+        width: 100 - tinRatio - maxTinRatio,
+        backgroundColor: '#0828BE',
+        separator: {
+          text: `Current: ${tinRatio}%`,
           color: '#0828BE',
           position: 'top',
         },
@@ -30,7 +40,7 @@ storiesOf('Components | Ratio Bar', module).add('TIN Ratio', () => {
         width: tinRatio - minTinRatio,
         backgroundColor: '#D8D8D8',
         separator: {
-          text: 'Minimum Ratio 10%',
+          text: 'Min: 10%',
           color: '#000',
           position: 'bottom',
         },
