@@ -423,7 +423,7 @@ export const axisThemeConfig = deepMerge(base, {
         left: 'none',
         right: 'none',
         top: 'small',
-        bottom: 'small'
+        bottom: 'small',
       },
       fill: 'vertical',
       border: {
