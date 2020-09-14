@@ -24,6 +24,10 @@ import {
   Stack,
   Tab,
   Tabs,
+  Table,
+  TableBody,
+  TableRow,
+  TableCell,
   Text,
   TextArea,
   TextInput,
@@ -130,6 +134,20 @@ class Components extends Component {
             { name: 'Eric', color: 'orange' },
           ]}
         />
+        <br />
+
+        <Table>
+          <TableBody>
+            <TableRow>
+              <TableCell scope="row">Current Price</TableCell>
+              <TableCell style={{ textAlign: 'end' }}> 1.232 </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell scope="row">Your DAI Value</TableCell>
+              <TableCell style={{ textAlign: 'end' }}>DAI 1321,523.00</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </Box>,
       <Box key="accordion">
         <Accordion>
