@@ -24,7 +24,7 @@ export const RatioBar: React.FunctionComponent<Props> = (props: Props) => {
     })
 
     setAugmentedSegments(augmentedSegments)
-  })
+  }, [props.segments])
 
   return (
     <Wrapper>
