@@ -48,7 +48,9 @@ export const Separator = styled.div<Segment>`
   top: ${props => ((props.separator && props.separator.position) === 'bottom' ? '8px' : '0')};
 `
 
-export const Separators = styled.div``
+export const Separators = styled.div`
+  position: relative;
+`
 
 // margin-left is [center of the separator] - [half number of characters in text * average character width]
 export const SeparatorText = styled.div<Segment>`
@@ -61,4 +63,5 @@ export const SeparatorText = styled.div<Segment>`
       : '0'};
   overflow: hidden;
   white-space: nowrap;
+  position: absolute;
 `

@@ -34,7 +34,9 @@ export const RatioBar: React.FunctionComponent<Props> = (props: Props) => {
           {augmentedSegments.map((segment: Segment) => (
             <>
               {segment.separator && segment.separator.text && segment.separator.position !== 'bottom' && (
-                <SeparatorText {...segment}>{segment.separator.text}</SeparatorText>
+                <SeparatorText {...segment} style={{ top: -20 }}>
+                  {segment.separator.text}
+                </SeparatorText>
               )}
             </>
           ))}
