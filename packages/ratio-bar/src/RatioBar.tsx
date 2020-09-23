@@ -31,31 +31,31 @@ export const RatioBar: React.FunctionComponent<Props> = (props: Props) => {
       {props.labels && props.labels.left && <Label>{props.labels.left}</Label>}
       <Bar>
         <Separators>
-          {augmentedSegments.map((segment: Segment) => (
-            <>
+          {augmentedSegments.map((segment: Segment, index: number) => (
+            <React.Fragment key={`separator-top-${index}`}>
               {segment.separator && segment.separator.text && segment.separator.position !== 'bottom' && (
                 <SeparatorText {...segment} style={{ top: -20 }}>
                   {segment.separator.text}
                 </SeparatorText>
               )}
-            </>
+            </React.Fragment>
           ))}
         </Separators>
         <InnerBar>
           {augmentedSegments.map((segment: Segment, index: number) => (
-            <>
+            <React.Fragment key={`bar-segment-${index}`}>
               <SegmentDiv {...segment} isFirst={index === 0} isLast={index === props.segments.length - 1}></SegmentDiv>
               {segment.separator && segment.separator.text && <Separator {...segment}></Separator>}
-            </>
+            </React.Fragment>
           ))}
         </InnerBar>
         <Separators>
-          {augmentedSegments.map((segment: Segment) => (
-            <>
+          {augmentedSegments.map((segment: Segment, index: number) => (
+            <React.Fragment key={`separator-bottom-${index}`}>
               {segment.separator && segment.separator.text && segment.separator.position === 'bottom' && (
                 <SeparatorText {...segment}>{segment.separator.text}</SeparatorText>
               )}
-            </>
+            </React.Fragment>
           ))}
         </Separators>
       </Bar>
