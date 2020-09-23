@@ -37,14 +37,18 @@ export const TokenInput: React.FunctionComponent<Props> = (props: Props) => {
   React.useEffect(() => {
     if (props.value) {
       const valueToDecimal = new Decimal(baseToDisplay(props.value, token.decimals)).toFixed(token.precision)
-      setValue(addThousandsSeparators(valueToDecimal.toString()))
+      const newValue = addThousandsSeparators(valueToDecimal.toString())
+
+      if (newValue !== value) setValue(newValue)
     }
   }, [props.value])
 
   React.useEffect(() => {
     if (props.maxValue) {
       const valueToDecimal = new Decimal(baseToDisplay(props.maxValue, token.decimals)).toFixed(token.precision)
-      setMaxValue(addThousandsSeparators(valueToDecimal.toString()))
+      const newMaxValue = addThousandsSeparators(valueToDecimal.toString())
+
+      if (newMaxValue !== maxValue) setMaxValue(newMaxValue)
     }
   }, [props.maxValue])
 
