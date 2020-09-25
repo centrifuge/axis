@@ -21,6 +21,7 @@ import {
 
 interface Props {
   label?: string
+  limitLabel?: string
   value: string
   onChange: (newValue: string) => void
   token: keyof typeof tokens | TokenSpec
@@ -95,7 +96,9 @@ export const TokenInput: React.FunctionComponent<Props> = (props: Props) => {
 
       {props.maxValue && (
         <Limit>
-          <LimitText>Limit: {maxValue}</LimitText>
+          <LimitText>
+            {props.limitLabel || 'Limit'}: {maxValue}
+          </LimitText>
           <LimitAction onClick={setMax}>Set max</LimitAction>
         </Limit>
       )}
