@@ -22,6 +22,7 @@ import {
 interface Props {
   label?: string
   limitLabel?: string
+  error?: string
   value: string
   onChange: (newValue: string) => void
   token: keyof typeof tokens | TokenSpec
@@ -74,7 +75,7 @@ export const TokenInput: React.FunctionComponent<Props> = (props: Props) => {
   return (
     <Wrapper>
       <Input>
-        <InputField label={props.label} error={error}>
+        <InputField label={props.label} error={props.error || error}>
           <NumberFormat
             thousandSeparator=","
             decimalScale={token.precision}
@@ -94,12 +95,12 @@ export const TokenInput: React.FunctionComponent<Props> = (props: Props) => {
         </Token>
       </Input>
 
-      {props.maxValue && (
+      {(props.error || props.maxValue) && (
         <Limit>
-          <LimitText>
-            {props.limitLabel || 'Limit'}: {maxValue}
+          <LimitText error={props.error !== undefined || error !== undefined}>
+            {props.error ? props.error : `${props.limitLabel || 'Limit'}: ${maxValue}`}
           </LimitText>
-          <LimitAction onClick={setMax}>Set max</LimitAction>
+          {props.maxValue && <LimitAction onClick={setMax}>Set max</LimitAction>}
         </Limit>
       )}
     </Wrapper>

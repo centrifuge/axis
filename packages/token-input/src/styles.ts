@@ -71,8 +71,13 @@ export const Limit = styled.div`
   font-size: 12px;
 `
 
-export const LimitText = styled.div`
+interface LimitTextProps {
+  error?: boolean;
+}
+
+export const LimitText = styled.div<LimitTextProps>`
   flex-grow: 1;
+  color: ${props => props.error ? 'red' : '#000'};
 `
 export const LimitAction = styled.div`
   text-align: left;
