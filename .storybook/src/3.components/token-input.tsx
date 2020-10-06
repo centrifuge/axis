@@ -67,3 +67,45 @@ storiesOf('Components | Token Input', module)
 
     return <Comp />
   })
+  .add('with error messages', () => {
+    const Comp = props => {
+      const [daiValue, setDaiValue] = React.useState('234000000000000000')
+      const [dropValue, setDropValue] = React.useState('600')
+      const [tinValue, setTinValue] = React.useState('100')
+
+      return (
+        <AxisTheme>
+          <Box gap={'medium'} pad={'medium'} width={'medium'}>
+            <Text>DAI value outside TokenInput component: {daiValue}</Text>
+            <br />
+
+            <TokenInput
+              label="Form label"
+              token="DAI"
+              value={daiValue}
+              maxValue="1230000000000000000"
+              onChange={(newValue: string) => setDaiValue(newValue)}
+              error="Minimum Investment: 10.000 DAI"
+            />
+
+            <TokenInput
+              token="DROP"
+              value={dropValue}
+              maxValue="5000000000000000000"
+              onChange={(newValue: string) => setDropValue(newValue)}
+              error="Minimum Investment: 10.000 DAI"
+            />
+
+            <TokenInput
+              token="TIN"
+              value={tinValue}
+              onChange={(newValue: string) => setTinValue(newValue)}
+              error="Minimum Investment: 10.000 DAI"
+            />
+          </Box>
+        </AxisTheme>
+      )
+    }
+
+    return <Comp />
+  })
