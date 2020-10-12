@@ -63,7 +63,7 @@ export const TokenInput: React.FunctionComponent<Props> = (props: Props) => {
     setValue(nonBaseUnit)
 
     const baseUnits = displayToBase(nonBaseUnit, token.decimals)
-    props.onChange(baseUnits)
+    if (new BN(props.value).cmp(new BN(baseUnits)) !== 0) props.onChange(baseUnits)
 
     if (props.maxValue && new BN(baseUnits, token.precision).gt(new BN(props.maxValue, token.precision))) {
       setError(' ')
