@@ -1,9 +1,9 @@
 {
-  "name": "@centrifuge/axis-ratio-bar",
+  "name": "@centrifuge/axis-tooltip",
   "version": "0.4.1",
   "description": "Ratio bar",
   "author": "Jeroen Offerijns <Offerijns@users.noreply.github.com>",
-  "homepage": "https://github.com/centrifuge/axis/tree/master/packages/axis-ratio-bar#readme",
+  "homepage": "https://github.com/centrifuge/axis/tree/master/packages/axis-tooltip#readme",
   "license": "ISC",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -56,9 +56,6 @@
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-url": "^2.2.0",
     "typescript": "^3.9.7"
-  },
-  "dependencies": {
-    "react-tooltip": "4.2.10"
   },
   "gitHead": "ef53db97aa8cc0b402b3544a731dc10c9ff12641"
 }
