@@ -137,6 +137,7 @@
     "@centrifuge/axis-spinner": "file:packages/spinner",
     "@centrifuge/axis-theme": "file:packages/theme",
     "@centrifuge/axis-token-input": "file:packages/token-input",
+    "@centrifuge/axis-tooltip": "file:packages/tooltip",
     "@centrifuge/axis-utils": "file:packages/utils",
     "@centrifuge/axis-web3-wallet": "file:packages/web3-wallet",
     "tinlake": "github:centrifuge/tinlake.js#7d03da6436fff2db23943c1d10597ea77df2c2d3"
