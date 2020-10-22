@@ -5,6 +5,7 @@ import { Anchor, AnchorProps, Box, BoxProps, Text, TextProps } from 'grommet'
 import { MarginType, PolymorphicType } from 'grommet/utils'
 import { copyToClipboard } from '@centrifuge/axis-utils'
 import { Copy, Icon } from 'grommet-icons'
+import copyIcon from './img/Copy.svg'
 
 // Define type for theme props
 interface ThemeProps {
@@ -109,7 +110,7 @@ export const DisplayField: React.FunctionComponent<Props> = ({
           }}
           title={'Copy to clipboard'}
         >
-          <icons.copy size={icons.size} />
+          <img src={copyIcon} />
         </Anchor>
       </Box>
     ) : (
