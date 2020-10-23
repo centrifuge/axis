@@ -427,8 +427,8 @@ export const axisThemeConfig = deepMerge(base, {
       pad: {
         left: 'none',
         right: 'none',
-        top: 'small',
-        bottom: 'small',
+        top: '15px',
+        bottom: '15px',
       },
       fill: 'vertical',
       border: {
