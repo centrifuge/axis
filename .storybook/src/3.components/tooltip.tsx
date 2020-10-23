@@ -13,13 +13,19 @@ storiesOf('Components | Tooltip', module).add('Tooltip', () => {
           <Table>
             <TableBody>
               <TableRow>
-                <TableCell scope="row">Current Price</TableCell>
-                <TableCell style={{ textAlign: 'end' }}> 1.232 </TableCell>
+                <TableCell scope="row">
+                  <Tooltip title="When the last epoch closed">Current Price</Tooltip>
+                </TableCell>
+                <TableCell style={{ textAlign: 'end' }}>1.232</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell scope="row">
-                  <Tooltip text="Net Asset Value">
-                    <span>NAV</span>
+                  <Tooltip
+                    title="Net Asset Value"
+                    description="The NAV (Net asset value) reflects the present value of the outstanding portfolio of financings. It is basically the sum of present values of the risk-adjusted expected repayments of all outstanding financings"
+                    link={{ text: 'Learn more', url: 'https://centrifuge.hackmd.io/OMYT-Gh6Tm-D91CynWX0fA?view#NAV' }}
+                  >
+                    Asset Value
                   </Tooltip>
                 </TableCell>
                 <TableCell style={{ textAlign: 'end' }}>1321,523.00 DAI</TableCell>
