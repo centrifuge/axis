@@ -1,31 +1,73 @@
 import * as React from 'react'
-import ReactTooltip from 'react-tooltip'
+import ReactTooltip, { TooltipProps } from 'react-tooltip'
 import styled from 'styled-components'
 
 const StyledTooltip = styled(ReactTooltip)`
-  padding: 4px 8px !important;
+  padding: 6px 8px !important;
   font-size: 12px !important;
   background: #000 !important;
-  opacity: 0.8 !important;
+  opacity: 0.9 !important;
+  max-width: 240px;
+
+  em {
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    margin-left: 6px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
 `
 
 import { Wrapper } from './styles'
 
-interface Props {
+interface TooltipLink {
   text: string
+  url: string
+}
+
+interface Props extends TooltipProps {
+  title: string
+  description?: string
+  link?: TooltipLink
   children: React.ReactNode
 }
 
 export const Tooltip: React.FunctionComponent<Props> = (props: Props) => {
-  const tooltipRef = React.useRef(null)
-
   return (
     <>
-      <Wrapper data-tip={props.text} ref={tooltipRef}>
+      <Wrapper
+        data-tip={
+          props.description
+            ? props.link
+              ? `<em>${props.title}</em><p>${props.description} <a href="${props.link.url}" target="_blank">${props.link.text} 	&rarr;</a></p>`
+              : `<em>${props.title}</em><p>${props.description}</p>`
+            : `${props.title}`
+        }
+        data-html={true}
+        data-place={props.place || 'bottom'}
+      >
         {props.children}
       </Wrapper>
 
-      <StyledTooltip effect="solid" multiline={true} place="top" />
+      <StyledTooltip
+        effect="solid"
+        multiline={true}
+        arrowColor="transparent"
+        delayShow={props.delayShow || 500}
+        delayHide={props.delayHide || 500}
+        clickable={true}
+      />
     </>
   )
 }
