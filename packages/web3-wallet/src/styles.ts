@@ -58,14 +58,15 @@ export const Action = styled.div`
   padding-top: 4px;
 `
 
-interface FailedReasonProps {
+interface NoticeProps {
+  backgroundColor?: string
   color?: string
 }
 
-export const FailedReason = styled.div<FailedReasonProps>`
-  background: #fff2f5;
+export const Notice = styled.div<NoticeProps>`
+  background: ${(props: NoticeProps) => props.backgroundColor || '#fff2f5'};
   width: 100%;
-  color: ${(props: TitleProps) => props.color || '#f44e72'};
+  color: ${(props: NoticeProps) => props.color || '#f44e72'};
   font-weight: bold;
   padding: 6px 12px 8px 12px;
   font-size: 11px;

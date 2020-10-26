@@ -2,7 +2,7 @@ import * as React from 'react'
 import { withTheme, ThemeProps as StyledThemeProps } from 'styled-components'
 
 import { Transaction } from './types'
-import { ToastCard, MainToastCard, Icon, Content, Action, Title, Description, FailedReason } from './styles'
+import { ToastCard, MainToastCard, Icon, Content, Action, Title, Description, Notice } from './styles'
 import { Spinner } from './Spinner'
 
 import checkIcon from './img/Check-circle.svg'
@@ -46,7 +46,17 @@ const ToastWrapperInner: React.FC<Props> = (props: Props) => {
         )}
       </MainToastCard>
 
-      {props.failedReason && <FailedReason color={config.color}>{props.failedReason}</FailedReason>}
+      {props.failedReason && (
+        <Notice color={config.color} backgroundColor="#fff2f5">
+          {props.failedReason}
+        </Notice>
+      )}
+
+      {!props.failedReason && props.notice && (
+        <Notice color="#777" backgroundColor="#f6f6f6">
+          {props.notice}
+        </Notice>
+      )}
     </ToastCard>
   )
 }

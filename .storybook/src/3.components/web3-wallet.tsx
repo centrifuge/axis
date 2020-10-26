@@ -17,10 +17,11 @@ const transactions = [
   },
   { description: 'Supply 5,000.00 DAI', status: 'pending' },
   {
-    description: 'Borrow 1,000.00 DAI',
+    description: 'Lock 1,000 DAI for TIN investment',
     status: 'succeeded',
     externalLink: getAddressLink('0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1'),
     showIfClosed: true,
+    notice: 'You can collect your TIN after order execution',
   },
   {
     description: 'Borrow 1,000.00 DAI',

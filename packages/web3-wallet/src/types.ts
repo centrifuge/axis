@@ -3,5 +3,6 @@ export interface Transaction {
   status: 'unconfirmed' | 'pending' | 'succeeded' | 'failed'
   externalLink?: string
   showIfClosed?: boolean
+  notice?: string
   failedReason?: string
 }
