@@ -2,13 +2,13 @@
   "command": {
     "exec": {
       "ignore": [
-        "@centrifuge/axis-sample-package"
+        "@centrifuge/axis-sample-component"
       ]
     },
 
     "bootstrap": {
       "ignore": [
-        "@centrifuge/axis-sample-package"
+        "@centrifuge/axis-sample-component"
       ]
     }
   },

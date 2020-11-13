@@ -1,5 +1,6 @@
 {
   "name": "@centrifuge/axis-sample-component",
+  "private": true,
   "version": "0.4.1",
   "description": "Sample component",
   "author": "razvan <razvan@centrifuge.io>",

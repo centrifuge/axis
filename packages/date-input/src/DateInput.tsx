@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Calendar, DropButton, DropProps, TextInput } from 'grommet'
+import { StyledWeeksContainer } from 'grommet/components/Calendar/StyledCalendar'
 import { FormClose, Icon } from 'grommet-icons'
 import { controlBorderStyle } from 'grommet/utils/styles'
 import { defaultProps, extendDefaultTheme } from 'grommet/default-props'
@@ -22,6 +23,9 @@ const StyledDateInputDropButton = styled(DropButton)`
 
 const StyledCalendar = styled(Calendar)`
   // Handle multiple sizes
+  ${StyledWeeksContainer} {
+    box-shadow: none !important;
+  }
   ${props => props.theme.dateInput && props.theme.dateInput.calendar && props.theme.dateInput.calendar.extend};
 `
 
@@ -36,6 +40,7 @@ const DropContent = props => {
       <StyledCalendar
         locale={locale}
         daysOfWeek
+        animate={false}
         size={'small'}
         date={date}
         onSelect={selectDate}
