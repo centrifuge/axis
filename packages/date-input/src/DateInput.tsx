@@ -36,6 +36,7 @@ const DropContent = props => {
       <StyledCalendar
         locale={locale}
         daysOfWeek
+        animate={false}
         size={'small'}
         date={date}
         onSelect={selectDate}
