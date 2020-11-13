@@ -391,20 +391,20 @@ export const axisThemeConfig = deepMerge(base, {
       label {
         line-height: 1;
       }
-   
+
       input {
         padding: 16px 0 15px 0;
         line-height: 1;
         border: 0;
-        box-shadow:none;
+        box-shadow: none;
       }
       button {
         border: none;
         box-shadow: none;
       }
-       button:focus {
-          box-shadow: none !important;
-        }
+      button:focus {
+        box-shadow: none !important;
+      }
     `,
   },
   table: {
