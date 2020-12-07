@@ -15,6 +15,7 @@ const StyledTooltip = styled(ReactTooltip)`
   }
 
   p {
+    font-weight: normal;
     margin: 0;
   }
 
