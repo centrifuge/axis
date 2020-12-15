@@ -126,10 +126,16 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
               </StatusAddrCopyLink>
 
               {showKycInfo && (
-                <KYCSection margin={{ top: 'medium' }}>
+                <KYCSection>
                   <StatusAddr>
                     <Subtitle>KYC Status</Subtitle>
-                    <Addr>Awaiting verification</Addr>
+                    <Addr>
+                      {kycStatus === 'pending'
+                        ? 'Awaiting verification'
+                        : kycStatus === 'verified'
+                        ? 'Verified'
+                        : 'Connected'}
+                    </Addr>
                   </StatusAddr>
                   <ExternalLink plain href={getAddressLink(address)} target="_blank">
                     <img src={linkIcon} />
@@ -138,8 +144,6 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
               )}
 
               <Button label="Disconnect" margin={{ top: '14px' }} onClick={onDisconnect} />
-
-              <KYCSection></KYCSection>
             </Card>
           )}
           {transactions
