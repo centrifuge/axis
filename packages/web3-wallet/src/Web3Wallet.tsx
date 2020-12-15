@@ -26,7 +26,7 @@ interface Props {
   transactions: Transaction[]
   getAddressLink: (address: string) => string
   kycStatus: 'none' | 'created' | 'pending' | 'verified'
-  showKycInfo: boolean
+  showKycInfo: boolean // TODO: to be removed when finished
 }
 
 export const Web3Wallet: React.FunctionComponent<Props> = ({
