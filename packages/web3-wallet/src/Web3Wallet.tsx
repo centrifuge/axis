@@ -25,6 +25,8 @@ interface Props {
   onDisconnect: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   transactions: Transaction[]
   getAddressLink: (address: string) => string
+  kycStatus: 'none' | 'created' | 'pending' | 'verified'
+  showKycInfo: boolean
 }
 
 export const Web3Wallet: React.FunctionComponent<Props> = ({
@@ -34,6 +36,8 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
   onDisconnect,
   transactions,
   getAddressLink,
+  kycStatus,
+  showKycInfo,
   ...rest
 }) => {
   const [open, setOpen] = useState(false)
@@ -58,10 +62,14 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
         <InnerWallet>
           <IdenticonSmall>
             <img src={toDataUrl(address)} width={24} height={24} />
+            {kycStatus === 'pending' && <Overlay>⏱</Overlay>}
+            {kycStatus === 'verified' && <Overlay>✓</Overlay>}
           </IdenticonSmall>
           <StatusAddrSmall>
-            <Status>Connected</Status>
             <Addr>{shorten(address, 4)}</Addr>
+            <Status>
+              {kycStatus === 'pending' ? 'Awaiting verification' : kycStatus === 'verified' ? 'Verified' : 'Connected'}
+            </Status>
           </StatusAddrSmall>
           <Caret>
             <FormDown style={{ transform: open ? 'rotate(-180deg)' : '' }} />
@@ -93,9 +101,9 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
               </Identicon>
               <StatusAddrCopyLink>
                 <StatusAddr>
-                  <Status>
+                  <Subtitle>
                     Connected to {providerName} - {networkName}
-                  </Status>
+                  </Subtitle>
                   <Addr title={address}>{shorten(address, 8)}</Addr>
                 </StatusAddr>
                 <Copy
@@ -115,7 +123,22 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
                   <img src={linkIcon} />
                 </Link>
               </StatusAddrCopyLink>
+
+              {showKycInfo && (
+                <KYCSection margin={{ top: 'medium' }}>
+                  <StatusAddr>
+                    <Subtitle>KYC Status</Subtitle>
+                    <Addr>Awaiting verification</Addr>
+                  </StatusAddr>
+                  <ExternalLink plain href={getAddressLink(address)} target="_blank">
+                    <img src={linkIcon} />
+                  </ExternalLink>
+                </KYCSection>
+              )}
+
               <Button label="Disconnect" margin={{ top: '14px' }} onClick={onDisconnect} />
+
+              <KYCSection></KYCSection>
             </Card>
           )}
           {transactions
@@ -142,26 +165,52 @@ const Container = styled(Button)`
 `
 
 const IdenticonSmall = styled.div`
-  margin-top: 4px;
+  margin-top: 2px;
   height: 24px;
-  margin-right: 8px;
+  margin-right: 12px;
+  width: 36px;
+
+  img {
+    border-radius: 4px;
+  }
 `
 
-const StatusAddrSmall = styled.div``
+const Overlay = styled.div`
+  display: inline;
+  position: relative;
+  left: -6px;
+  background: white;
+  font-size: 10px;
+  border-radius: 8px;
+  top: 2px;
+  padding: 0px 0 0 2px;
+`
+
+const StatusAddrSmall = styled.div`
+  text-align: left;
+  width: 100px;
+`
 
 const Status = styled.div`
   height: 14px;
-  font-weight: 500;
   font-size: 10px;
   line-height: 14px;
   color: #7ed321;
+  font-weight: bold;
+`
+
+const Subtitle = styled.div`
+  height: 14px;
+  font-size: 10px;
+  line-height: 14px;
+  color: #999;
 `
 
 const Addr = styled.div`
-  height: 24px;
+  height: 18px;
   font-weight: 500;
   font-size: 14px;
-  line-height: 24px;
+  line-height: 18px;
   color: #000000;
 `
 
@@ -200,6 +249,10 @@ const StatusAddrCopyLink = styled.div`
   width: 100%;
 `
 
+const KYCSection = styled(StatusAddrCopyLink)`
+  margin-top: 12px;
+`
+
 const Copy = styled(Button)`
   margin-top: 1px;
   margin-left: auto;
@@ -210,4 +263,8 @@ const Link = styled(Button)`
   margin-top: 1px;
   margin-left: 8px;
   height: 24px;
+`
+
+const ExternalLink = styled(Link)`
+  margin-left: auto;
 `

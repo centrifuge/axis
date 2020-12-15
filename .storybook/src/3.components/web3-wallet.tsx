@@ -197,3 +197,50 @@ storiesOf('Components | Web3 Wallet', module)
 
     return <Comp />
   })
+  .add('With multiple KYC stati', () => {
+    const Comp = props => {
+      return (
+        <AxisTheme>
+          <Box>
+            <Box gap={'medium'} pad={'medium'}>
+              <Web3Wallet
+                address="0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1"
+                providerName="MetaMask"
+                networkName="Mainnet"
+                onDisconnect={() => console.log('disconnect clicked')}
+                transactions={[]}
+                kycStatus="none"
+                getAddressLink={getAddressLink}
+              />
+            </Box>
+
+            <Box gap={'medium'} pad={'medium'}>
+              <Web3Wallet
+                address="0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1"
+                providerName="MetaMask"
+                networkName="Mainnet"
+                onDisconnect={() => console.log('disconnect clicked')}
+                transactions={[]}
+                kycStatus="pending"
+                getAddressLink={getAddressLink}
+              />
+            </Box>
+
+            <Box gap={'medium'} pad={'medium'}>
+              <Web3Wallet
+                address="0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1"
+                providerName="MetaMask"
+                networkName="Mainnet"
+                onDisconnect={() => console.log('disconnect clicked')}
+                transactions={[]}
+                kycStatus="verified"
+                getAddressLink={getAddressLink}
+              />
+            </Box>
+          </Box>
+        </AxisTheme>
+      )
+    }
+
+    return <Comp />
+  })
