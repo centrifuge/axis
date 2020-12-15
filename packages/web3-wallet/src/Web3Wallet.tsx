@@ -62,6 +62,7 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
         <InnerWallet>
           <IdenticonSmall>
             <img src={toDataUrl(address)} width={24} height={24} />
+            {/* TODO: these icons should be updated still */}
             {kycStatus === 'pending' && <Overlay>⏱</Overlay>}
             {kycStatus === 'verified' && <Overlay>✓</Overlay>}
           </IdenticonSmall>
