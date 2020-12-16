@@ -69,7 +69,7 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
           <StatusAddrSmall>
             <Addr>{shorten(address, 4)}</Addr>
             <Status>
-              {kycStatus === 'pending' ? 'Awaiting verification' : kycStatus === 'verified' ? 'Verified' : 'Connected'}
+              {kycStatus === 'pending' ? 'Pending verification' : kycStatus === 'verified' ? 'Verified' : 'Connected'}
             </Status>
           </StatusAddrSmall>
           <Caret>
@@ -131,7 +131,7 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
                     <Subtitle>KYC Status</Subtitle>
                     <Addr>
                       {kycStatus === 'pending'
-                        ? 'Awaiting verification'
+                        ? 'Pending verification'
                         : kycStatus === 'verified'
                         ? 'Verified'
                         : 'Connected'}
@@ -172,8 +172,9 @@ const Container = styled(Button)`
 const IdenticonSmall = styled.div`
   margin-top: 2px;
   height: 24px;
-  margin-right: 12px;
+  margin-right: 2px;
   width: 36px;
+  text-align: left;
 
   img {
     border-radius: 4px;
@@ -212,17 +213,16 @@ const Subtitle = styled.div`
 `
 
 const Addr = styled.div`
-  height: 18px;
+  height: 16px;
   font-weight: 500;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 16px;
   color: #000000;
 `
 
 const Caret = styled.div`
   height: 24px;
-  margin-left: 20px;
-  margin-top: 4px;
+  margin-left: 8px;
   svg {
     transition: 200ms;
     transform-style: preserve-3d;
