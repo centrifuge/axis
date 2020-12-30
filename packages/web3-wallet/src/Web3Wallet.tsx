@@ -26,7 +26,6 @@ interface Props {
   transactions: Transaction[]
   getAddressLink: (address: string) => string
   kycStatus: 'none' | 'created' | 'pending' | 'verified'
-  showKycInfo: boolean // TODO: to be removed when finished
 }
 
 export const Web3Wallet: React.FunctionComponent<Props> = ({
@@ -37,7 +36,6 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
   transactions,
   getAddressLink,
   kycStatus,
-  showKycInfo,
   ...rest
 }) => {
   const [open, setOpen] = useState(false)
@@ -63,14 +61,11 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
           <IdenticonSmall>
             <img src={toDataUrl(address)} width={24} height={24} />
             {/* TODO: these icons should be updated still */}
-            {kycStatus === 'pending' && <Overlay>⏱</Overlay>}
             {kycStatus === 'verified' && <Overlay>✓</Overlay>}
           </IdenticonSmall>
           <StatusAddrSmall>
             <Addr>{shorten(address, 4)}</Addr>
-            <Status>
-              {kycStatus === 'pending' ? 'Pending verification' : kycStatus === 'verified' ? 'Verified' : 'Connected'}
-            </Status>
+            <Status>{kycStatus === 'verified' ? 'Verified' : 'Connected'}</Status>
           </StatusAddrSmall>
           <Caret>
             <FormDown style={{ transform: open ? 'rotate(-180deg)' : '' }} />
@@ -124,24 +119,6 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
                   <img src={linkIcon} />
                 </Link>
               </StatusAddrCopyLink>
-
-              {showKycInfo && (
-                <KYCSection>
-                  <StatusAddr>
-                    <Subtitle>KYC Status</Subtitle>
-                    <Addr>
-                      {kycStatus === 'pending'
-                        ? 'Pending verification'
-                        : kycStatus === 'verified'
-                        ? 'Verified'
-                        : 'Connected'}
-                    </Addr>
-                  </StatusAddr>
-                  <ExternalLink plain href={getAddressLink(address)} target="_blank">
-                    <img src={linkIcon} />
-                  </ExternalLink>
-                </KYCSection>
-              )}
 
               <Button label="Disconnect" margin={{ top: '14px' }} onClick={onDisconnect} />
             </Card>
