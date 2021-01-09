@@ -42,6 +42,7 @@ interface Props extends TooltipProps {
   description?: string
   link?: TooltipLink
   children: React.ReactNode
+  cursor?: string
 }
 
 export const Tooltip: React.FunctionComponent<Props> = (props: Props) => {
@@ -57,6 +58,7 @@ export const Tooltip: React.FunctionComponent<Props> = (props: Props) => {
         }
         data-html={true}
         data-place={props.place || 'bottom'}
+        cursor={props.cursor || 'help'}
       >
         {props.children}
       </Wrapper>
