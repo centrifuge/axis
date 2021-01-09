@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.span`
+export const Wrapper = styled.span<{ cursor?: string }>`
   width: fit-content;
-  cursor: help;
+  cursor: ${props => (props.cursor ? props.cursor : 'help')};
 `
