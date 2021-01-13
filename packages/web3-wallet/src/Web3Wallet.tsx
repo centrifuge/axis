@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
-import { Drop, Button } from 'grommet'
+import { Drop, Button, Box } from 'grommet'
 import { FormDown } from 'grommet-icons'
 import checkIcon from './img/Check.svg'
 import copyIcon from './img/Copy.svg'
@@ -26,6 +26,7 @@ interface Props {
   transactions: Transaction[]
   getAddressLink: (address: string) => string
   kycStatus: 'none' | 'created' | 'pending' | 'verified'
+  extension?: () => React.ReactNode
 }
 
 export const Web3Wallet: React.FunctionComponent<Props> = ({
@@ -36,6 +37,7 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
   transactions,
   getAddressLink,
   kycStatus,
+  extension,
   ...rest
 }) => {
   const [open, setOpen] = useState(false)
@@ -92,35 +94,38 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
         >
           {open && (
             <Card>
-              <Identicon>
-                <img src={toDataUrl(address)} width={64} height={64} />
-              </Identicon>
-              <StatusAddrCopyLink>
-                <StatusAddr>
-                  <Subtitle>
-                    Connected to {providerName} - {networkName}
-                  </Subtitle>
-                  <Addr title={address}>{shorten(address, 8)}</Addr>
-                </StatusAddr>
-                <Copy
-                  plain
-                  onClick={() =>
-                    copyToClipboard(address)
-                      .then(() => {
-                        setCopied(true)
-                        setTimeout(() => setCopied(false), 2000)
-                      })
-                      .catch(() => console.log('copy api not supported'))
-                  }
-                >
-                  {copied ? <img src={checkIcon} /> : <img src={copyIcon} />}
-                </Copy>
-                <Link plain href={getAddressLink(address)} target="_blank">
-                  <img src={linkIcon} />
-                </Link>
-              </StatusAddrCopyLink>
+              <Box style={{ padding: '16px', alignItems: 'center' }}>
+                <Identicon>
+                  <img src={toDataUrl(address)} width={64} height={64} />
+                </Identicon>
+                <StatusAddrCopyLink>
+                  <StatusAddr>
+                    <Subtitle>
+                      Connected to {providerName} - {networkName}
+                    </Subtitle>
+                    <Addr title={address}>{shorten(address, 8)}</Addr>
+                  </StatusAddr>
+                  <Copy
+                    plain
+                    onClick={() =>
+                      copyToClipboard(address)
+                        .then(() => {
+                          setCopied(true)
+                          setTimeout(() => setCopied(false), 2000)
+                        })
+                        .catch(() => console.log('copy api not supported'))
+                    }
+                  >
+                    {copied ? <img src={checkIcon} /> : <img src={copyIcon} />}
+                  </Copy>
+                  <Link plain href={getAddressLink(address)} target="_blank">
+                    <img src={linkIcon} />
+                  </Link>
+                </StatusAddrCopyLink>
 
-              <Button label="Disconnect" margin={{ top: '14px' }} onClick={onDisconnect} />
+                <Button label="Disconnect" margin={{ top: '14px' }} onClick={onDisconnect} />
+              </Box>
+              {extension && extension()}
             </Card>
           )}
           {transactions
@@ -208,13 +213,11 @@ const Caret = styled.div`
 
 const Card = styled.div`
   width: 356px;
-  padding: 16px;
   background: #ffffff;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-bottom: 8px;
 `
 
