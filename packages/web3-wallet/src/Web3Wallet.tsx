@@ -26,7 +26,7 @@ interface Props {
   transactions: Transaction[]
   getAddressLink: (address: string) => string
   kycStatus: 'none' | 'created' | 'pending' | 'verified'
-  extension?: () => React.ReactNode
+  extension?: React.ReactNode
 }
 
 export const Web3Wallet: React.FunctionComponent<Props> = ({
@@ -125,7 +125,7 @@ export const Web3Wallet: React.FunctionComponent<Props> = ({
 
                 <Button label="Disconnect" margin={{ top: '14px' }} onClick={onDisconnect} />
               </Box>
-              {extension && extension()}
+              {extension}
             </Card>
           )}
           {transactions

@@ -124,11 +124,11 @@ storiesOf('Components | Web3 Wallet', module)
                     transactions={[]}
                     getAddressLink={getAddressLink}
                     style={{ marginLeft: 'auto' }}
-                    extension={() => (
+                    extension={
                       <Box pad="medium" background="#FCBA59" style={{ borderRadius: '0 0 8px 8px' }}>
                         My extension
                       </Box>
-                    )}
+                    }
                   />
                 </Box>
               </Box>
