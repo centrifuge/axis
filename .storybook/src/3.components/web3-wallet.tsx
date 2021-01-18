@@ -93,6 +93,53 @@ storiesOf('Components | Web3 Wallet', module)
 
     return <Comp />
   })
+
+  .add('Within header and with extension (RAD Rewards)', () => {
+    const Comp = props => {
+      return (
+        <AxisTheme>
+          <Box>
+            <Box
+              style={{
+                position: 'sticky',
+                top: 0,
+                height: '56px',
+                zIndex: 2,
+                boxShadow: '0 0 4px 0px #00000075',
+              }}
+              background="white"
+              justify="center"
+              align="center"
+              direction="row"
+              fill="horizontal"
+              pad={{ horizontal: 'small' }}
+            >
+              <Box direction="row" width="xlarge" align="center">
+                <Box align="center" direction="row" basis="full">
+                  <Web3Wallet
+                    address="0x5eA3c06ad387aF16F77fC2f1eD7fC2C7aF3B75c1"
+                    providerName="MetaMask"
+                    networkName="Mainnet"
+                    onDisconnect={() => console.log('disconnect clicked')}
+                    transactions={[]}
+                    getAddressLink={getAddressLink}
+                    style={{ marginLeft: 'auto' }}
+                    extension={
+                      <Box pad="medium" background="#FCBA59" style={{ borderRadius: '0 0 8px 8px' }}>
+                        My extension
+                      </Box>
+                    }
+                  />
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </AxisTheme>
+      )
+    }
+
+    return <Comp />
+  })
   .add('Within header and with transactions', () => {
     const Comp = props => {
       const [showAnimatedBar, setShowAnimatedBar] = useState(true)
