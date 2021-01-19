@@ -11,7 +11,7 @@ jobs:
     script:
     - npm run check-format
   - stage: Publish patch
-    if: "(NOT type IN (pull_request)) AND (branch = develop)"
+    if: "(NOT type IN (pull_request)) AND (branch = main)"
     script:
       - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
       - npm run publish-develop
