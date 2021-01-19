@@ -8,6 +8,7 @@ const StyledTooltip = styled(ReactTooltip)`
   background: #000 !important;
   opacity: 0.9 !important;
   max-width: 240px;
+  text-align: left !important;
 
   em {
     font-weight: bold;
