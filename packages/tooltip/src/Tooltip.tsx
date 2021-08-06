@@ -79,8 +79,8 @@ export const Tooltip: React.FunctionComponent<Props> = (props: Props) => {
   )
 }
 
-let serverHandoffComplete = false;
-let i = 0;
+let serverHandoffComplete = false
+let i = 0
 const genId = () => ++i
 
 function useId(prefix = '') {
@@ -94,7 +94,7 @@ function useId(prefix = '') {
     if (id === null) {
       setId(genId())
     }
-  }, []);
+  }, [])
 
   return id != null ? prefix.concat(id) : undefined
 }
