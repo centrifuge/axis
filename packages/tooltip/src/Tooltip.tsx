@@ -47,6 +47,7 @@ interface Props extends TooltipProps {
 }
 
 export const Tooltip: React.FunctionComponent<Props> = (props: Props) => {
+  const id = useId('tooltip')
   return (
     <>
       <Wrapper
@@ -58,6 +59,7 @@ export const Tooltip: React.FunctionComponent<Props> = (props: Props) => {
             : `${props.title}`
         }
         data-html={true}
+        data-for={id}
         data-place={props.place || 'bottom'}
         cursor={props.cursor || 'help'}
       >
@@ -65,6 +67,7 @@ export const Tooltip: React.FunctionComponent<Props> = (props: Props) => {
       </Wrapper>
 
       <StyledTooltip
+        id={id}
         effect="solid"
         multiline={true}
         arrowColor="transparent"
@@ -74,6 +77,26 @@ export const Tooltip: React.FunctionComponent<Props> = (props: Props) => {
       />
     </>
   )
+}
+
+let serverHandoffComplete = false;
+let i = 0;
+const genId = () => ++i
+
+function useId(prefix = '') {
+  const initialId = serverHandoffComplete ? genId() : null
+
+  const [id, setId] = React.useState(initialId)
+
+  React.useEffect(() => {
+    serverHandoffComplete = true
+
+    if (id === null) {
+      setId(genId())
+    }
+  }, []);
+
+  return id != null ? prefix.concat(id) : undefined
 }
 
 export default Tooltip
