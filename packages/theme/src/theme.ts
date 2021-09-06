@@ -414,6 +414,7 @@ export const axisThemeConfig = deepMerge(base, {
     extend: css`
       width: 100%;
       color: #777777;
+      font-weight: 500;
     `,
     header: {
       pad: {
