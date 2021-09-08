@@ -2,9 +2,8 @@ import React from 'react'
 import styled, { ThemeProps as StyledThemeProps, withTheme } from 'styled-components'
 import { defaultProps, extendDefaultTheme } from 'grommet/default-props'
 import { Anchor, AnchorProps, Box, BoxProps, Text, TextProps } from 'grommet'
-import { MarginType, PolymorphicType } from 'grommet/utils'
+import { PolymorphicType } from 'grommet/utils'
 import { copyToClipboard } from '@centrifuge/axis-utils'
-import { Copy, Icon } from 'grommet-icons'
 import CopyIcon from './CopyIcon'
 
 // Define type for theme props
@@ -18,8 +17,6 @@ interface ThemeProps {
     anchor?: AnchorProps
     extend?: (props) => string
     icons: {
-      copy: Icon
-      margin?: MarginType
       size?: 'small' | 'medium' | 'large' | 'xlarge' | string
     }
   }
@@ -152,7 +149,6 @@ export const defaultThemeProps: ThemeProps = {
       color: 'brand',
     },
     icons: {
-      copy: Copy,
       size: 'small',
     },
   },
