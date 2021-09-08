@@ -5,9 +5,13 @@ import { Anchor, AnchorProps, Box, BoxProps, Text, TextProps } from 'grommet'
 import { MarginType, PolymorphicType } from 'grommet/utils'
 import { copyToClipboard } from '@centrifuge/axis-utils'
 import { Copy, Icon } from 'grommet-icons'
+import CopyIcon from './CopyIcon'
 
 // Define type for theme props
 interface ThemeProps {
+  icon: {
+    size: Record<string, string>
+  }
   displayField: {
     labelBox?: BoxProps
     labelText?: TextProps
@@ -72,8 +76,12 @@ export const DisplayField: React.FunctionComponent<Props> = ({
   theme,
 }) => {
   const {
+    icon,
     displayField: { labelBox, labelText, anchor, icons },
   } = theme
+
+  // get icon size from Grommet config
+  const iconSize = icon.size[icons.size || ''] || icons.size || '24'
 
   const WithLink = ({ link, children }) => {
     return link ? (
@@ -109,7 +117,7 @@ export const DisplayField: React.FunctionComponent<Props> = ({
           }}
           title={'Copy to clipboard'}
         >
-          <icons.copy size={icons.size} />
+          <CopyIcon size={iconSize} />
         </Anchor>
       </Box>
     ) : (
