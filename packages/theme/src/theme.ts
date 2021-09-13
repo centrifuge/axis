@@ -413,8 +413,6 @@ export const axisThemeConfig = deepMerge(base, {
      */
     extend: css`
       width: 100%;
-      color: #777777;
-      font-weight: 500;
     `,
     header: {
       pad: {
@@ -423,7 +421,7 @@ export const axisThemeConfig = deepMerge(base, {
       background: {},
       border: {
         side: 'bottom',
-        color: '#dedede',
+        color: '#eeeeee',
       },
     },
     body: {
@@ -436,7 +434,7 @@ export const axisThemeConfig = deepMerge(base, {
       fill: 'vertical',
       border: {
         side: 'bottom',
-        color: '#dedede',
+        color: '#eeeeee',
       },
       extend: css``,
     },
